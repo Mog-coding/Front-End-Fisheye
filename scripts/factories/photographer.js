@@ -1,16 +1,15 @@
 function photographerFactory(data) {
-    const { name, portrait } = data;
+    const { name, city, country, tagline, price, portrait } = data; //destructuration objet JS
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
+        const $wrapper = `
+        <img src="${picture}"/>
+            <h2>${name}</h2>
+            <div>${city},${country}</div>`;
+        article.innerHTML =$wrapper;
         return (article);
     }
     return { name, picture, getUserCardDOM }
