@@ -1,50 +1,92 @@
+/* import fichier css */
 @import url("photographer.css");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  width: 1440px;
+  margin: auto;
+  max-width: 100%;
 }
 
+/**
+******************* HEADER *******************
+**/
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 21px 100px 0 100px;
 }
-
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
-}
-
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
 }
+h1 {
+  color: #901c1c;
+  font-weight: normal;
+  font-size: 2.15em;
+}
+
+/**
+******************* MAIN *******************
+**/
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 91px 20px 0 20px;
 }
 
+/** userCard **/
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  margin-bottom: 74px;
 }
-
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+  color: #d3573c;
+  font-size: 2.3em;
+  font-weight: normal;
+  margin: 19px 0 0 0;
+}
+.photographer_section article img {
+  height: 200px;
+  width: 200px;
+}
+.userCards {
+  border-radius: 50%;
+}
+.city {
+  font-size: 0.8em;
+  color: rgb(144, 28, 28);
+}
+.tagline {
+  font-size: 0.6em;
+  font-weight: bold;
+  margin-top: 4px;
+}
+.price {
+  font-size: 0.6em;
+  color: rgb(134, 134, 134);
+  margin-top: 2px;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+/**
+******************* RESPONSIVE *******************
+**/
+
+@media screen and (max-width: 1100px) {
+  .photographer_section {
+      padding: 91px 20px 0 20px;
+  }
+  .photographer_section article {
+    width: 50%;
+  }
 }
