@@ -1,8 +1,7 @@
 /* import fichier css */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 @import url("base.css");
-@import url("header.css");
 @import url("components.css");
+@import url("header.css");
 
 /**
 ******************* HEADER *******************
