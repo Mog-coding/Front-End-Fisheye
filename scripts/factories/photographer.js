@@ -8,8 +8,8 @@ function photographerFactory(data) {
         lienUserCard.setAttribute("href", "photographer.html");
         lienUserCard.setAttribute("class", "containerUserCard");
         const $wrapper = `
-        <img class="userCards" src="${picture}" alt="" />
-        <h2>${name}</h2>
+        <img class="userCards imgCards" src="${picture}" alt="" />
+        <h2 class="nameCards">${name}</h2>
         <div class="city">${city},${country}</div>
         <div class="tagline">${tagline}</div>
         <div class="price">${price}€/jour`;

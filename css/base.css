@@ -1,0 +1,11 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    width: 1440px;
+    margin: auto;
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }

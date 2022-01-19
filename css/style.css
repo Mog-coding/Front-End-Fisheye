@@ -1,19 +1,8 @@
 /* import fichier css */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
-@import url("photographer.css");
-
-
-body {
-  font-family: "DM Sans", sans-serif;
-  width: 1440px;
-  margin: auto;
-  max-width: 100%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
+@import url("base.css");
+@import url("header.css");
+@import url("components.css");
 
 /**
 ******************* HEADER *******************
@@ -53,34 +42,6 @@ h1 {
   align-items: center;
   white-space: nowrap;
   margin-bottom: 74px;
-}
-/** userCard **/
-.photographer_section .containerUserCard h2 {
-  color: #d3573c;
-  font-size: 2.3em;
-  font-weight: normal;
-  margin: 19px 0 0 0;
-}
-.photographer_section .containerUserCard img {
-  height: 200px;
-  width: 200px;
-}
-.userCards {
-  border-radius: 50%;
-}
-.city {
-  font-size: 0.8em;
-  color: rgb(144, 28, 28);
-}
-.tagline {
-  font-size: 0.6em;
-  font-weight: bold;
-  margin-top: 4px;
-}
-.price {
-  font-size: 0.6em;
-  color: rgb(134, 134, 134);
-  margin-top: 2px;
 }
 
 /**

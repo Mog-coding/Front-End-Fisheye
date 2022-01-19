@@ -2,10 +2,13 @@
 <html>
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <!-- Font Awesome kit -->
+  <script src="https://kit.fontawesome.com/fb24a858bd.js" crossorigin="anonymous">
+  </script>
   <title>Fisheye - photographe </title>
 </head>
 
@@ -14,23 +17,20 @@
     <img src="assets/images/logo.png" class="logo" />
   </header>
   <main id="main">
-    <div class="containerMain">
+    <div class="containerMain photograph-header">
       <div>
-        <h2>Mimi keel</h2>
+        <h2 class="nameCards">Mimi keel</h2>
         <div class="city">London, UK</div>
         <div class="tagline">Voir le beau dans le quotidien</div>
       </div>
-      <div class="photograph-header">
+      <div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div>
-        <img class="userCards" src="assets/photographers/MimiKeel.jpg" alt="" />
+        <img class="userCards imgCards" src="assets/photographers/MimiKeel.jpg" alt="" />
       </div>
     </div>
   </main>
-
-  <section>
-  </section>
 
   <div id="contact_modal">
     <div class="modal">
@@ -47,6 +47,59 @@
       </form>
     </div>
   </div>
+
+  <section>
+    <div class="containerHeader">
+      <p>Trier par</p>
+      <div class="contact_button unroll">Popularité</div>
+    </div>
+    <div class="containerPhotos">
+      <a class="containerPhotoCards" href="">
+        <img src="assets\Marcel\Architecture_On_a_hill.jpg" alt="" />
+        <div class="sousTitre">
+          <div>Arc-en-ciel</div>
+          <div><i class="fas fa-heart"></i></div>
+        </div>
+      </a>
+      <a class="containerPhotoCards" href="">
+        <img src="assets\Marcel\Architecture_On_a_hill.jpg" alt="" />
+        <div class="sousTitre">
+          <div>Arc-en-ciel</div>
+          <div><i class="fas fa-heart"></i></div>
+        </div>
+      </a>
+      <a class="containerPhotoCards" href="">
+        <img src="assets\Marcel\Architecture_On_a_hill.jpg" alt="" />
+        <div class="sousTitre">
+          <div>Arc-en-ciel</div>
+          <div><i class="fas fa-heart"></i></div>
+        </div>
+      </a>
+      <a class="containerPhotoCards" href="">
+        <img src="assets\Marcel\Architecture_On_a_hill.jpg" alt="" />
+        <div class="sousTitre">
+          <div>Arc-en-ciel</div>
+          <div><i class="fas fa-heart"></i></div>
+        </div>
+      </a>
+      <a class="containerPhotoCards" href="">
+        <img src="assets\Marcel\Architecture_On_a_hill.jpg" alt="" />
+        <div class="sousTitre">
+          <div>Arc-en-ciel</div>
+          <div><i class="fas fa-heart"></i></div>
+        </div>
+      </a>
+      <a class="containerPhotoCards" href="">
+        <img src="assets\Marcel\Architecture_On_a_hill.jpg" alt="" />
+        <div class="sousTitre">
+          <div>Arc-en-ciel</div>
+          <div><i class="fas fa-heart"></i></div>
+        </div>
+      </a>
+    </div>
+    </div>
+  </section>
+
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 

@@ -1,34 +1,37 @@
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+@import url("base.css");
+@import url("header.css");
+@import url("components.css");
+
 
 /**
 ******************* Main *******************
 **/
 
+main{
+    padding: 20px 100px 0 100px;
+}
 .containerMain{
     display: flex;
- 
+    justify-content: space-around;
+    align-items: center;
 }
-
-
-/**
-******************* Bouton *******************
-**/
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+.photograph-header {
+    background-color: #FAFAFA;  /*#FAFAFA #d3ffa1*/
+    height: 310px;
+}
+/** userCards **/
+.nameCards{
+    font-size: 4em;
+    margin: 0;
+}
+.city{
+    font-size: 1.45em;
+}
+.tagline{
+    font-size: 1.15em;
+    font-weight: normal;
+    margin-top: 18px;
 }
 
 /**
@@ -91,4 +94,46 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+/**
+******************* Section *******************
+**/
+
+section{
+    padding: 1px 100px 0px 100px;
+}
+.containerHeader{
+    display: flex;
+    align-items: center;
+}
+.containerHeader{
+    font-weight: bold;
+    font-size: 1.15em;
+}
+.unroll{
+    height: 30px;
+    text-align: center;
+    margin: 0 0 0 25px;
+}
+.containerPhotos{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 39px;
+}
+.containerPhotoCards{
+    width: 28%;
+    margin-bottom: 37px;
+}
+.containerPhotoCards img{
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+}
+.sousTitre{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(144, 28, 28);
+    font-size: 1.75em;
 }
