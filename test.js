@@ -1,9 +1,18 @@
 {
+    "name": "Marcel Nikolic",
+    "id": 195,
+    "city": "Berlin",
+    "country": "France",
+    "tagline": "Toujours à la recherche de LA photo",
+    "price": 300,
+    "portrait": "MarcelNikolic.jpg"
+},
+{
     "name": "Ellie-Rose Wilkens",
     "id": 930,
-    1"city": "Paris",
-    1"country": "France",
-    2"tagline": "Capturer des compositions complexes",
-    3"price": 250,
+    "city": "Paris",
+    "country": "France",
+    "tagline": "Capturer des compositions complexes",
+    "price": 250,
     "portrait": "EllieRoseWilkens.jpg"
 },

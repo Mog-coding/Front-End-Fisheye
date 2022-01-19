@@ -1,12 +1,18 @@
 /* import fichier css */
-@import url("photographer.css");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+@import url("photographer.css");
+
 
 body {
   font-family: "DM Sans", sans-serif;
   width: 1440px;
   margin: auto;
   max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 /**
@@ -40,9 +46,7 @@ h1 {
   flex-wrap: wrap;
   padding: 91px 20px 0 20px;
 }
-
-/** userCard **/
-.photographer_section article {
+.photographer_section .containerUserCard{
   width: 33%;
   display: flex;
   flex-direction: column;
@@ -50,13 +54,14 @@ h1 {
   white-space: nowrap;
   margin-bottom: 74px;
 }
-.photographer_section article h2 {
+/** userCard **/
+.photographer_section .containerUserCard h2 {
   color: #d3573c;
   font-size: 2.3em;
   font-weight: normal;
   margin: 19px 0 0 0;
 }
-.photographer_section article img {
+.photographer_section .containerUserCard img {
   height: 200px;
   width: 200px;
 }
@@ -86,7 +91,7 @@ h1 {
   .photographer_section {
       padding: 91px 20px 0 20px;
   }
-  .photographer_section article {
+  .photographer_section .containerUserCard {
     width: 50%;
   }
 }
