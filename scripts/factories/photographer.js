@@ -1,21 +1,20 @@
-function photographerFactory(data) {
-    const { name, city, country, tagline, price, portrait } = data; 
-    //destructuration objet JS
-    const picture = `assets/photographers/${portrait}`;
 
-    function getUserCardDOM() {
-        const lienUserCard = document.createElement( 'a' );
-        lienUserCard.setAttribute("href", "photographer.html");
-        const wrapper = `    
-        <article class="containerUserCard">
-        <img class="userCards imgCards" src="${picture}" alt="" />
-        <h2 class="nameCards">${name}</h2>
-        <div class="city">${city},${country}</div>
-        <div class="tagline">${tagline}</div>
-        <div class="price">${price}€/jour
-        </article>`;
-        lienUserCard.innerHTML = wrapper;
-        return (lienUserCard);
+class PhotographerFactory {
+    constructor(photoCarde) {
+        this._photoCarde = photoCarde
     }
-    return { name, picture, getUserCardDOM }
+    createPhotographerCard() {
+        const lienPhotoCard = document.createElement('a');
+        lienPhotoCard.setAttribute("href", "photographer.html");
+        const wrapperHtml = `    
+        <article class="containerUserCard">
+        <img class="userCards imgCards" src="${this._photoCarde.portrait}" alt="" />
+        <h2 class="nameCards">${this._photoCarde.name}</h2>
+        <div class="city">${this._photoCarde.city},${this._photoCarde.country}</div>
+        <div class="tagline">${this._photoCarde.tagline}</div>
+        <div class="price">${this._photoCarde.price}€/jour
+        </article>`
+        lienPhotoCard.innerHTML = wrapperHtml;
+        return lienPhotoCard
+    }
 }
