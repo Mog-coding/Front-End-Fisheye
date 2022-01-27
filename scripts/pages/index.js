@@ -1,5 +1,5 @@
 /*RECUP DES DONNEES */
-fetch('/data/photographers.json')   // 1ere promise résolue qd serveur distant repond
+fetch('data/photographers.json')   // 1ere promise résolue qd serveur distant repond
     .then(function (response) {   // 2eme promise résolue qd data chargée
         return response.json();
     })
