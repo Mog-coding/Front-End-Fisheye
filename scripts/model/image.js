@@ -1,7 +1,7 @@
 class Image extends Media {
-    constructor(data, image) {
-        super(id, photographerId, title, likes, date, price);
-        this._image = image;
+    constructor(data) {
+        super(data);
+        this._image = data.image;
     }
     get image() {
         return this._image;
