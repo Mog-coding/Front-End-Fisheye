@@ -1,11 +1,11 @@
 
-class PhotographerFactory {
+export default class PhotographerFactory {
     constructor(photoCarde) {
         this._photoCarde = photoCarde
     }
     createPhotographerCard() {
         const lienPhotoCard = document.createElement('a');
-        lienPhotoCard.setAttribute("href", "photographer.html");
+        lienPhotoCard.setAttribute("href", "photographer.html?id=" + this._photoCarde.id);
         const wrapperHtml = `    
         <article class="containerUserCard">
         <img class="userCards imgCards" src="${this._photoCarde.portrait}" alt="" />

@@ -1,3 +1,6 @@
+import Photographer from "../model/Photographer.js"
+import PhotographerFactory from "../factories/PhotographerFactory.js"
+
 /*RECUP DES DONNEES */
 fetch('data/photographers.json')   // 1ere promise résolue qd serveur distant repond
     .then(function (response) {   // 2eme promise résolue qd data chargée
@@ -15,5 +18,8 @@ fetch('data/photographers.json')   // 1ere promise résolue qd serveur distant r
         })
     }
     );
+
+
+
 
 
