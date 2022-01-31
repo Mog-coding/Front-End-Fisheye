@@ -1,28 +1,22 @@
-class Media {
-    constructor(data) {
-        this._id = data.id;
-        this._photographerId = data.photographerId;
-        this._title = data.title;
-        this._likes = data.likes;
-        this._date = data.date;
-        this._price = data.price;
-    }
-    get id() {
-        return this._id;
-    }
-    get photographerId() {
-        return this._photographerId;
-    }
-    get title() {
-        return this._title;
-    }
-    get likes() {
-        return this._likes;
-    }
-    get date() {
-        return this._date;
-    }
-    get price() {
-        return this._price;
-    }
-}
+const photographers = [
+    {
+        name: "Mimi Keel",
+        id: 243,
+    },
+    {
+        name: "Ellie-Rose Wilkens",
+        id: 930,
+    }];
+
+const result = photographers.filter(function (objet) {
+ return objet.id === 930
+})
+console.log(result);
+
+/*
+const photographers = [ 10, 5, 12, 10, "truc"];
+const result2 = photographers.filter(function(objet){
+    return objet > 4
+});
+console.log(result2);
+*/

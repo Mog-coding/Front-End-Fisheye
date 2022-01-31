@@ -1,7 +1,4 @@
-import Image from "../model/Image.js";
-import Video from "../model/Video.js";
-
-export default class MediaFactory {
+class MediaFactory {
     constructor(media) {
         if (media.image) {
             return new Image(media)
