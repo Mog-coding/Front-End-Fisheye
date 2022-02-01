@@ -120,11 +120,11 @@ section{
     flex-wrap: wrap;
     padding-top: 39px;
 }
-.containerPhotoCards{
+.containerPhotoCards, .containerVideoCards{
     width: 28%;
     margin-bottom: 37px;
 }
-.containerPhotoCards img{
+.containerPhotoCards img, .containerVideoCards video{
     object-fit: cover;
     height: 300px;
     width: 100%;
