@@ -10,8 +10,8 @@ class ImageCardBuilderP2 {
         <div class="sousTitre">
           <div>${this._imageData.title}</div>
           <div>
-          <span class="heart">${this._imageData.likes}</span>
-          <i class="fas fa-heart"></i>
+          <span>${this._imageData.likes}</span>
+          <i class="fas fa-heart heart"></i>
           </div>
         </div>`
         photoCardP2.innerHTML = wrapperHtml;

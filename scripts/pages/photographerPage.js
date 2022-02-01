@@ -1,3 +1,4 @@
+let inverse = 0;
 /*RECUP DES DONNEES */
 fetch('data/photographers.json')    //promise1 résolue: serveur répond
     .then(function (response) {     //promise2 résolue: data chargée
@@ -26,7 +27,7 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         });
         //template Media
         dataMedia.forEach(function (el) {
-            console.log(el);
+            //console.log(el);
             if (el instanceof Image) {
                 const VuePhoto = new ImageCardBuilderP2(el);
                 document.querySelector(".containerPhotos").appendChild(VuePhoto.createImageCard());
@@ -36,10 +37,28 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             }
         }
         );
-        /*
-        document.querySelectorAll(".heart").forEach(addEventListener("click", function () {
-            console.log("truc");;
-        }
-        ));
-        */
-    });
+
+        // Like coeur
+        document.querySelectorAll(".heart").forEach(function (el) {
+            el.addEventListener("click", function (event) {
+                if (inverse === 0) {
+                    inverse = 1;
+                    const spanLike = event.path[0].previousElementSibling;
+                    let like = Number(spanLike.textContent);
+                    like += 1;
+                    spanLike.textContent = like;
+                } else {
+                    inverse = 0;
+                    const spanLike = event.path[0].previousElementSibling;
+                    let like = Number(spanLike.textContent);
+                    like -= 1;
+                    spanLike.textContent = like;
+                }
+            })
+        });
+
+        
+    })
+
+
+

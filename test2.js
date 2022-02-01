@@ -1,22 +1,13 @@
-const photographers = [
-    {
-        name: "Mimi Keel",
-        id: 243,
-    },
-    {
-        name: "Ellie-Rose Wilkens",
-        id: 930,
-    }];
+let x = 1;
 
-const result = photographers.filter(function (objet) {
- return objet.id === 930
-})
-console.log(result);
-
-/*
-const photographers = [ 10, 5, 12, 10, "truc"];
-const result2 = photographers.filter(function(objet){
-    return objet > 4
-});
-console.log(result2);
-*/
+for (let i = 0; i < 5; i++) {
+    if (x === 1) {
+        x = 0;
+        console.log(x)
+        const y = 0;
+    } else {
+        x = 1;
+        console.log(x)
+        const y = 1;
+    }
+}
