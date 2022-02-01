@@ -14,6 +14,7 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             return objet.id === identifiant
         });                        //[{name:"Keel", id: 12}]
         dataMain = dataMain[0];    //{name:"Keel", id: 12}
+        
         //template photographers
         const VueMain = new MainBuilderP2(dataMain);
         document.querySelector("#main").appendChild(VueMain.createMainP2());
@@ -25,6 +26,13 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         dataMedia = dataMedia.map(function (el) {//instance Image/Video
             return new MediaFactory(el)  //{_key1:'t', _key2:'t'} +héritage 
         });
+
+        //Bouton dropdown
+        document.querySelector("#dropdown").addEventListener("change", function(){
+            console.log(document.querySelector("#dropdown").value);
+        })
+        console.log(dataMedia);
+
         //template Media
         dataMedia.forEach(function (el) {
             //console.log(el);
@@ -57,7 +65,7 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             })
         });
 
-        
+
     })
 
 

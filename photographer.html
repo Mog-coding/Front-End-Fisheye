@@ -17,29 +17,16 @@
     <img src="assets/images/logo.png" class="logo" />
   </header>
   <main id="main">
-      <!-- 
-      <div class="containerMain photograph-header">
-      <div>
-        <h1 class="nameCards">Mimi keel</h1>
-        <div class="city">London, UK</div>
-        <div class="tagline">Voir le beau dans le quotidien</div>
-      </div>
-      <div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-      <div>
-        <img class="userCards imgCards" src="assets/photographers/MimiKeel.jpg" alt="" />
-      </div>
-    </div>
-  --> 
   </main>
 
   <div id="contact_modal">
     <div class="modal">
+
       <header>
         <h2>Contactez-moi</h2>
         <img src="assets/icons/close.svg" onclick="closeModal()" />
       </header>
+
       <form>
         <div>
           <label>Prénom</label>
@@ -47,17 +34,24 @@
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
+
     </div>
   </div>
 
   <section>
     <div class="containerHeader">
-      <p>Trier par</p>
-      <div class="contact_button unroll">Popularité</div>
+      <label for="dropdown">Trier par</label>
+      <select class="contact_button dropButton" id="dropdown">
+          <option value="Popularité">Popularité</option>
+          <option value="Date">Date</option>
+          <option value="Titre">Titre</option>
+      </select>
+    </div>
     </div>
     <div class="containerPhotos">
     </div>
   </section>
+
   <script src="scripts/factories/MainBuilderP2.js"></script>
   <script src="scripts/factories/MediaFactory.js"></script>
   <script src="scripts/factories/ImageCardBuilderP2.js"></script>

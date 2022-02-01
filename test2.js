@@ -1,13 +1,18 @@
-let x = 1;
+let array1 = [0,1,2,3,4];
 
-for (let i = 0; i < 5; i++) {
-    if (x === 1) {
-        x = 0;
-        console.log(x)
-        const y = 0;
-    } else {
-        x = 1;
-        console.log(x)
-        const y = 1;
-    }
-}
+//array1.move(0,3); //index 0 en position index 3
+moove(array1, 0, 3);
+console.log(array1); //[1, 2, 3, 0, 4]
+
+function moove(array, from, to){
+  array.splice(to, 0, array.splice(from, 1)[0])
+};
+
+/***
+ Array.prototype.move = function (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+  };
+  rray1.move(0,3); //index 0 en position index 3 
+  
+ * 
+ */
