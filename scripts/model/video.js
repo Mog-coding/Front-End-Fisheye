@@ -1,4 +1,5 @@
-class Video extends Media {
+import Media from "../model/Media.js"
+export default class Video extends Media {
     constructor(data) {
         super(data);
         this._video = data.video;

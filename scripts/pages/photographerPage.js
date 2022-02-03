@@ -1,3 +1,10 @@
+//import photographer factory html
+import MediaFactory from "../factories/MediaFactory.js"
+import PhotographerFactory from "../factories/PhotographerFactory.js"
+import Image from "../model/Image.js"
+import Video from "../model/Video.js"
+
+
 let inverse = 0;
 /*RECUP DES DONNEES */
 fetch('data/photographers.json')    //promise1 résolue: serveur répond
@@ -16,8 +23,8 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         dataMain = dataMain[0];    //{name:"Keel", id: 12}
         
         //template photographers
-        const VueMain = new MainBuilderP2(dataMain);
-        document.querySelector("#main").appendChild(VueMain.createMainP2());
+        const VueMain = new PhotographerFactory(dataMain);
+        document.querySelector("#main").appendChild(VueMain.createPhotographerBanner());
 
         //partie MEDIA                 media = [{key1:'t', key2:'t'}, {...}];
         let dataMedia = media.filter(function (objet) {   //trie medias
@@ -25,6 +32,9 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         });        //media = [{key1:'t', key2:'t'}, {...}];
         dataMedia = dataMedia.map(function (el) {//instance Image/Video
             return new MediaFactory(el)  //{_key1:'t', _key2:'t'} +héritage 
+        })
+        .sort(function(a, b){
+            return a.likes - b.likes;
         });
 
         //Bouton dropdown
@@ -36,12 +46,10 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         //template Media
         dataMedia.forEach(function (el) {
             //console.log(el);
-            if (el instanceof Image) {
-                const VuePhoto = new ImageCardBuilderP2(el);
-                document.querySelector(".containerPhotos").appendChild(VuePhoto.createImageCard());
-            } else if (el instanceof Video) {
-                const VueVideo = new VideoCardBuilderP2(el);
-                document.querySelector(".containerPhotos").appendChild(VueVideo.createVideoCard());
+            if (el.media instanceof Image) {
+                document.querySelector(".containerPhotos").appendChild(el.createImageCard());
+            } else if (el.media instanceof Video) {
+                document.querySelector(".containerPhotos").appendChild(el.createVideoCard());
             }
         }
         );
@@ -67,6 +75,5 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
 
 
     })
-
 
 

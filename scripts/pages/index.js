@@ -1,7 +1,7 @@
 //import class Photographer
 import Photographer from "../model/Photographer.js"
 //import photographer factory html
-import IndexBuilderP1 from "../factories/IndexBuilderP1.js"
+import PhotographerFactory from "../factories/PhotographerFactory.js"
 
 /*RECUP DES DONNEES */
 fetch('data/photographers.json') //promise1 résolue: serveur répond
@@ -14,7 +14,7 @@ fetch('data/photographers.json') //promise1 résolue: serveur répond
             return new Photographer(el)
         })
         dataFactory.forEach(function (el) {
-            const Template = new IndexBuilderP1(el);
+            const Template = new PhotographerFactory(el);
             document.querySelector(".photographer_section").appendChild(Template.createPhotographerCard());
         })
     }
