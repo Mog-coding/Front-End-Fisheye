@@ -4,7 +4,6 @@ import PhotographerFactory from "../factories/PhotographerFactory.js"
 import Image from "../model/Image.js"
 import Video from "../model/Video.js"
 
-
 let inverse = 0;
 /*RECUP DES DONNEES */
 fetch('data/photographers.json')    //promise1 résolue: serveur répond
