@@ -23,6 +23,7 @@ export default class MediaFactory {
         div1.innerText = this.media.title;
         const div2 = document.createElement('div');
         const span21 = document.createElement('span'); 
+        span21.classList.add('likeNumber');
         span21.innerText = this.media.likes;
         const i21 = document.createElement('i');
         i21.classList.add('fas', 'fa-heart', 'heart');
@@ -61,6 +62,7 @@ export default class MediaFactory {
         div1.innerText = this.media.title;
         const div2 = document.createElement('div');
         const span21 = document.createElement('span'); 
+        span21.classList.add('likeNumber');
         span21.innerText = this.media.likes;
         const i21 = document.createElement('i');
         i21.classList.add('fas', 'fa-heart', 'heart');

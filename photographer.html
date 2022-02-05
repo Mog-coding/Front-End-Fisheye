@@ -14,7 +14,9 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="index.html">
+      <img src="assets/images/logo.png" class="logo" />
+    </a>
   </header>
   <main id="main">
   </main>
@@ -42,9 +44,9 @@
     <div class="containerHeader">
       <label for="dropdown">Trier par</label>
       <select class="contact_button dropButton" id="dropdown">
-          <option value="Popularité">Popularité</option>
-          <option value="Date">Date</option>
-          <option value="Titre">Titre</option>
+        <option value="Popularité">Popularité</option>
+        <option value="Date">Date</option>
+        <option value="Titre">Titre</option>
       </select>
     </div>
     </div>
@@ -53,7 +55,13 @@
   </section>
 
   <aside>
-    <div id="compteur"></div>  
+    <div class="containerCompteur">
+      <div>
+        <span id="compteur">564</span>
+        <i class="fas fa-heart"></i>
+      </div>
+      <div id="price"></div>
+    </div>
   </aside>
 
 

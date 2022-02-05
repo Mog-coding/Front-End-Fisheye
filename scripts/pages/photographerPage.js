@@ -18,13 +18,13 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         const url_object = window.location;
         let objetParam = new URL(url_object);
         const identifiant = Number(objetParam.searchParams.get('id'));
-        let dataMain = photographers.filter(function (objet) {
+        let dataPhotographer = photographers.filter(function (objet) {
             return objet.id === identifiant
         });                        //[{name:"Keel", id: 12}]
-        dataMain = dataMain[0];    //{name:"Keel", id: 12}
+        dataPhotographer = dataPhotographer[0];    //{name:"Keel", id: 12}
 
         //template photographers
-        const VueMain = new PhotographerFactory(dataMain);
+        const VueMain = new PhotographerFactory(dataPhotographer);
         document.querySelector("#main").appendChild(VueMain.createPhotographerBanner());
 
 
@@ -85,8 +85,8 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             }
             else if (menuSelect === 'Date') {
                 dataMedia.sort(function (a, b) {
-                    if (a.date > b.date)  return 1;		
-                    if (a.date < b.date)  return -1;		
+                    if (a.date > b.date) return 1;
+                    if (a.date < b.date) return -1;
                     return 0;
                 })
                 const nodeMedia = document.querySelector(".containerPhotos");
@@ -98,6 +98,23 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
         })
 
         // Like coeur
+        let arrayLike = [];
+        document.querySelectorAll(".likeNumber").forEach(function (el) {
+            arrayLike.push(el.textContent);
+        });
+        console.log(arrayLike);
+        const arrayNumb = arrayLike.map(function (el) {
+            return Number(el)
+        });
+        console.log(arrayNumb);
+
+        let total = arrayNumb.reduce(function (a, b) { return a + b; }, 0);
+        console.log(total);
+
+        document.querySelector("#compteur").innerText = total;
+        document.querySelector('#price').innerText = `${dataPhotographer.price}€ / jour`;
+
+        // Listener on change sur coeur
         document.querySelectorAll(".heart").forEach(function (el) {
             el.addEventListener("click", function (event) {
                 if (inverse === 0) {
@@ -106,13 +123,21 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
                     let like = Number(spanLike.textContent);
                     like += 1;
                     spanLike.textContent = like;
+
                 } else {
                     inverse = 0;
                     const spanLike = event.path[0].previousElementSibling;
                     let like = Number(spanLike.textContent);
                     like -= 1;
                     spanLike.textContent = like;
+
                 }
             })
         });
+
+
+
+
+
+
     })

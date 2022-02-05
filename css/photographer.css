@@ -136,6 +136,29 @@ section{
     font-size: 1.75em;
 }
 
+/**
+******************* Aside *******************
+**/
+
+.containerCompteur{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    right: 36px;
+    height: 68px;
+    width: 376px;
+    background-color: rgb(219, 136, 118);
+    border-radius: 5px;
+    font-size: 1.37em;
+    font-weight: bold;
+}
+
+.containerCompteur i{
+    padding-left: 2px;
+}
+
 /***test***/
 .test{
     border: 1px violet solid;
