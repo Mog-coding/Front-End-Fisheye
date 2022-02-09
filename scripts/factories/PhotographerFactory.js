@@ -2,6 +2,7 @@ export default class PhotographerFactory {
     constructor(data) {
         this.photographer = data;
     }
+    //méthode pour créer les cartes photographes de la page 1
     createPhotographerCard() {
         const lienPhotoCard = document.createElement('a');
         lienPhotoCard.setAttribute("href", "photographer.html?id=" + this.photographer.id);
@@ -41,6 +42,7 @@ export default class PhotographerFactory {
         </article>`
         */
     }
+    //méthode pour créer la bannière photographe de la page 2
     createPhotographerBanner() {
         const mainP2 = document.createElement('div');
         mainP2.classList.add("containerMain", "photograph-header");
@@ -56,8 +58,7 @@ export default class PhotographerFactory {
         div12.innerText = this.photographer.tagline;
         const div2 = document.createElement('div');
         const button2 = document.createElement('button');
-        button2.classList.add('contact_button');
-        button2.setAttribute("onclick", 'displayModal()');
+        button2.classList.add('contact_button', 'contactButton');
         button2.innerText = 'Contactez-moi';
         const div3 = document.createElement('div');
         const img3 = document.createElement('img');

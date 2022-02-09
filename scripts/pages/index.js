@@ -1,6 +1,4 @@
-//import class Photographer
 import Photographer from "../model/Photographer.js"
-//import photographer factory html
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 
 /*RECUP DES DONNEES */

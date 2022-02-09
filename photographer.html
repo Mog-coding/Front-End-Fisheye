@@ -21,25 +21,6 @@
   <main id="main">
   </main>
 
-  <div id="contact_modal">
-    <div class="modal">
-
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
-        </div>
-        <button class="contact_button">Envoyer</button>
-      </form>
-
-    </div>
-  </div>
-
   <section>
     <div class="containerHeader">
       <label for="dropdown">Trier par</label>
@@ -64,9 +45,49 @@
     </div>
   </aside>
 
-
+  <div class="background">
+    <div class="modal">
+      <div>
+        <img class="close" src="assets/icons/close.svg" />
+      </div>
+      <div class='containerModal'>
+        <h2>Contactez moi</h2>
+        <form name="contactForm" novalidate>
+          <div>
+            <label for='first'>Prénom</label>
+            <input type='text' id='first' />
+            <div></div>
+          </div>
+          <div>
+            <label for='last'>Prénom</label>
+            <input type='text' id='last' />
+            <div></div>
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" />
+            <div></div>
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea id="message" rows="5" cols="70"> </textarea>
+          </div>
+          <button class=" contact_button">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <script src="scripts/pages/photographerPage.js" type="module"></script>
-
+  <script src="scripts/utils/contactForm.js"></script>
 </body>
+
+
+<!-- 
+    <div id="thankMessage" class="thankMess">
+          <div id="centrer"></div>
+          <div id="thankText"> Votre message a bien été envoyé à </div>
+          <div id="fermer" class="button"> Fermer </div>
+        </div>
+  -->
 
 </html>

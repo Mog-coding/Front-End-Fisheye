@@ -5,41 +5,51 @@ import Image from "../model/Image.js"
 import Video from "../model/Video.js"
 
 let inverse = 0;
+
 /*RECUPERATION DES DONNEES */
-fetch('data/photographers.json')    //promise1 résolue: serveur répond
-    .then(function (response) {     //promise2 résolue: data chargée
-        return response.json();     //data json vers objet
+fetch('data/photographers.json')    // promise1 résolue: serveur répond
+    .then(function (response) {     // promise2 résolue: data chargée
+        return response.json();     // data json vers objet
     })
-    .then(function ({ media, photographers }) { //resolve p2 donne data formatée 
+    .then(function ({ media, photographers }) { //p3 résolue: donne data formatée 
+        // photographers: array contenant 6 objets photographe
 
         /**
-         * partie PHOTOGRAPHERS BANNIERE
+         *  partie PHOTOGRAPHERS BANNIERE
          */
-        const url_object = window.location;
-        let objetParam = new URL(url_object);
-        const identifiant = Number(objetParam.searchParams.get('id'));
-        let dataPhotographer = photographers.filter(function (objet) {
-            return objet.id === identifiant
-        });                        //[{name:"Keel", id: 12}]
-        dataPhotographer = dataPhotographer[0];    //{name:"Keel", id: 12}
 
-        //template photographers
-        const VueMain = new PhotographerFactory(dataPhotographer);
+        // Extraction d'1 objet photographe via son id contenu dans l'url de la page
+        const url_object = window.location;
+        const objetParam = new URL(url_object);
+        const identifiant = Number(objetParam.searchParams.get('id'));
+        const foundPhotographer = photographers.find((objet) => {
+            return objet.id === identifiant
+        });
+
+        // VueMain instance de class PhotographerFactory et création de bannière
+        // dans <main> via méthode de class
+        const VueMain = new PhotographerFactory(foundPhotographer);
         document.querySelector("#main").appendChild(VueMain.createPhotographerBanner());
 
-
         /**
-         * partie MEDIA
+         *  partie MEDIA
          */
-        //function crée Vue Image ou Video en fonction de la data
+
+        // filtre ds tableau d'objets les Medias du photographe via propriété 
+        // photoID égale à la valeur contenue dans l'url de la page    
+        const dataMedia = media.filter((el) => {
+            return el.photographerId === identifiant
+        });
+
+        // function instancie objet Media en classMediaFactory et crée Vue Image ou Video
         function createImageVideoCard(dataMedia) {
-            // --> sortie tableau d'instances de class image ou video extension Media
-            //wrappé dans la classe MediaFactory contenant méthode builder image/videoCard
-            let dataMediaInstance = dataMedia.map(function (el) {
+            // tableau d'objet Media vers tableau d'instance de class MediaFactory 
+            // contenant méthode builder Image/Video Card. Class MediaFactory contient un // objet de class Image ou Video qui sont des extensions de la class Media
+            let dataMediaInstance = dataMedia.map((el) => {
                 return new MediaFactory(el)
             })
-            //Création Vue template Media via méthode builder class MediaFactory 
-            dataMediaInstance.forEach(function (el) {
+            //Création Vue template Media via méthode MediaFactory dans <section> 
+            dataMediaInstance.forEach((el) => {
                 if (el.media instanceof Image) {
                     document.querySelector(".containerPhotos").appendChild(el.createImageCard());
                 } else if (el.media instanceof Video) {
@@ -48,31 +58,29 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             }
             );
         }
-
-        //extrait un objet d'un tableau d'objets en fonction de son identifiant  
-        let dataMedia = media.filter(function (objet) {
-            return objet.photographerId === identifiant
-        });
-
         createImageVideoCard(dataMedia);
 
-        // Bouton dropdown 
-        document.querySelector("#dropdown").addEventListener("change", function () {
-            const menuSelect = document.querySelector("#dropdown").value;
-            console.log(menuSelect);
+        // Menu dropdown 
+        // Trie les objets Media selon valeur du menu select et crée une vue de ces 
+        // Medias en ayant supprimés les Medias précédents
+        document.querySelector("#dropdown").addEventListener("change", (event) => {
+            const menuSelect = event.target.value;
+            //trie clé string title des objets dataMedia par ordre alphabétique  
             if (menuSelect === 'Titre') {
                 dataMedia.sort(function (a, b) {
                     if (a.title > b.title) return 1;
                     if (a.title < b.title) return -1;
                     return 0;
                 })
+                //supression des anciens Medias
                 const nodeMedia = document.querySelector(".containerPhotos");
                 while (nodeMedia.firstChild) {
-                    nodeMedia.removeChild(nodeMedia.lastChild);
+                    nodeMedia.removeChild(nodeMedia.firstChild);
                 }
+                //creation des nouveaux Medias classés
                 createImageVideoCard(dataMedia);
-                //console.log(dataMedia);
             }
+            //trie clé like Number des objets dataMedia par ordre décroissant  
             else if (menuSelect === 'Popularité') {
                 dataMedia.sort(function (a, b) {
                     return b.likes - a.likes
@@ -83,6 +91,7 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
                 }
                 createImageVideoCard(dataMedia);
             }
+            //trie clé string date des objets dataMedia par ordre croissant 
             else if (menuSelect === 'Date') {
                 dataMedia.sort(function (a, b) {
                     if (a.date > b.date) return 1;
@@ -97,24 +106,18 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             }
         })
 
-        // Like coeur
+        // Addition et affichage du total likes
         let arrayLike = [];
         document.querySelectorAll(".likeNumber").forEach(function (el) {
-            arrayLike.push(el.textContent);
+            arrayLike.push(Number(el.textContent));
         });
-        console.log(arrayLike);
-        const arrayNumb = arrayLike.map(function (el) {
-            return Number(el)
+        let total = arrayLike.reduce((accu, el) => {
+            return accu + el;
         });
-        console.log(arrayNumb);
-
-        let total = arrayNumb.reduce(function (a, b) { return a + b; }, 0);
-        console.log(total);
-
         document.querySelector("#compteur").innerText = total;
-        document.querySelector('#price').innerText = `${dataPhotographer.price}€ / jour`;
+        document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
 
-        // Listener on change sur coeur
+        // Ajout like: listener on change sur coeur
         document.querySelectorAll(".heart").forEach(function (el) {
             el.addEventListener("click", function (event) {
                 if (inverse === 0) {
@@ -135,9 +138,77 @@ fetch('data/photographers.json')    //promise1 résolue: serveur répond
             })
         });
 
+        /*****************
+         *****************  partie FORMULAIRE  ***********************
+         *****************/
+
+        /* Ouverture fermeture formulaire */
+        // Ouvre ou ferme le modal avec display: block; ou none; 
+        function switchModal(display) {
+            document.querySelector('.background').style.display = display;
+        }
+        // Ouvre le modal quand click sur bouton 'contactez moi'
+        document.querySelector('.contactButton').addEventListener('click', function () {
+            switchModal('block');
+        })
+        // Ferme le modal quand click sur croix modal
+        document.querySelector('.close').addEventListener('click', function () {
+            switchModal('none');
+        })
+
+
+
+
+        //sauvegarde du noeud formulaire
+        let formNode = document.querySelector(".containerModal");
+
+        // submit formulaire
+        document.querySelector('[name="contactForm"]').addEventListener('submit', function (event) {
+            event.preventDefault();
+            updateInput(dataInput);
+            if (testAllIsValid(dataInput)) {
+                for (const key in dataInput) {
+                    afficheErrorMessage(dataInput[key]);
+                };
+                document.querySelector('[name="contactForm"]').reset();
+                document.querySelector(".containerModal").innerHTML = `<div> Votre message a bien été envoyé à ${foundPhotographer.name} </div>`;
+            } else {
+                for (const key in dataInput) {
+                    afficheErrorMessage(dataInput[key]);
+                };
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
     })
+    //FIN ASYNCHRONE

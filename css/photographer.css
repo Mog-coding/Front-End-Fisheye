@@ -6,160 +6,168 @@
 ******************* Main *******************
 **/
 
-main{
-    padding: 20px 100px 0 100px;
+main {
+  padding: 20px 100px 0 100px;
 }
-.containerMain{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.containerMain {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .photograph-header {
-    background-color: #FAFAFA;  /*#FAFAFA #d3ffa1*/
-    height: 310px;
+  background-color: #fafafa; /*#FAFAFA #d3ffa1*/
+  height: 310px;
 }
 /** userCards **/
-.nameCards{
-    font-size: 4em;
-    margin: 0;
+.nameCards {
+  font-size: 4em;
+  margin: 0;
 }
-.city{
-    font-size: 1.45em;
+.city {
+  font-size: 1.45em;
 }
-.tagline{
-    font-size: 1.15em;
-    font-weight: normal;
-    margin-top: 18px;
-}
-
-/**
-******************* MODAL *******************
-**/
-
-#contact_modal {
-    display: none;
-}
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+.tagline {
+  font-size: 1.15em;
+  font-weight: normal;
+  margin-top: 18px;
 }
 
 /**
 ******************* Section *******************
 **/
 
-section{
-    padding: 1px 100px 0px 100px;
+section {
+  padding: 1px 100px 0px 100px;
 }
-.containerHeader{
-    display: flex;
-    align-items: center;
+.containerHeader {
+  display: flex;
+  align-items: center;
 }
-.containerHeader{
-    font-weight: bold;
-    font-size: 1.15em;
+.containerHeader {
+  font-weight: bold;
+  font-size: 1.15em;
 }
-.dropButton{
-    height: 60px;
-    text-align: center;
-    margin: 0 0 0 25px;
+.dropButton {
+  height: 60px;
+  text-align: center;
+  margin: 0 0 0 25px;
 }
-.containerPhotos{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding-top: 39px;
+.containerPhotos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 39px;
 }
-.containerPhotoCards, .containerVideoCards{
-    width: 28%;
-    margin-bottom: 37px;
+.containerPhotoCards,
+.containerVideoCards {
+  width: 28%;
+  margin-bottom: 37px;
 }
-.containerPhotoCards img, .containerVideoCards video{
-    object-fit: cover;
-    height: 300px;
-    width: 100%;
+.containerPhotoCards img,
+.containerVideoCards video {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
 }
-.sousTitre{
-    display: flex;
-    justify-content: space-between;
-    color: rgb(144, 28, 28);
-    font-size: 1.75em;
+.sousTitre {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(144, 28, 28);
+  font-size: 1.75em;
 }
 
 /**
 ******************* Aside *******************
 **/
 
-.containerCompteur{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 0px;
-    right: 36px;
-    height: 68px;
-    width: 376px;
-    background-color: rgb(219, 136, 118);
-    border-radius: 5px;
-    font-size: 1.37em;
-    font-weight: bold;
+.containerCompteur {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  right: 36px;
+  height: 68px;
+  width: 376px;
+  background-color: rgb(219, 136, 118);
+  border-radius: 5px;
+  font-size: 1.37em;
+  font-weight: bold;
+}
+.containerCompteur i {
+  padding-left: 2px;
 }
 
-.containerCompteur i{
-    padding-left: 2px;
-}
+/**
+******************* MODAL *******************
+**/
 
-/***test***/
-.test{
-    border: 1px violet solid;
+.background {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+.close {
+    position: absolute;
+    right: 26%;
+    top: 55px;
+    cursor: pointer;
   }
+.containerModal {
+  display: flex;
+  flex-direction: column;
+}
+.containerModal h2 {
+    font-size: 4em;
+    margin: 0 0 20px 0;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+
+/* form */
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  color: #312e2e;
+  font-size: 36px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+form input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+}
