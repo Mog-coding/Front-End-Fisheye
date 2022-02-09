@@ -157,7 +157,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         })
 
 
-
+        //ajout nom photographe dans formulaire
+        document.querySelector('.containerModal h2').innerText = 
+        `Contactez moi
+         ${foundPhotographer.name}`;
 
         //sauvegarde du noeud formulaire
         let formNode = document.querySelector(".containerModal");
@@ -182,33 +185,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     })
     //FIN ASYNCHRONE
+
+
+    let test = "bleu";

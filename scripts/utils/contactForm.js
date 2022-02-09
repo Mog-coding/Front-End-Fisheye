@@ -18,6 +18,12 @@ const dataInput = {
         errorMessage: "Veuillez entrer une syntaxe d'email valide",
         regex: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
         isValid: false
+    },
+    textArea: {
+        noeud: document.querySelector('#textArea'),
+        errorMessage: "Veuillez entrer entre 5 et 150 caractères dans le champ Message.",
+        regex: /^[a-zA-ZÀ-ÿ-]{5,150}$/,
+        isValid: false
     }
 };
 
@@ -59,3 +65,4 @@ function testAllIsValid(data) {
 }
 
 
+let test2 = "vert";
