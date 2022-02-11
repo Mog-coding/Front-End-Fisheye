@@ -3,8 +3,7 @@ import MediaFactory from "../factories/MediaFactory.js"
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 import Image from "../model/Image.js"
 import Video from "../model/Video.js"
-
-let inverse = 0;
+let test = "bleu";
 
 /*RECUPERATION DES DONNEES */
 fetch('data/photographers.json')    // promise1 résolue: serveur répond
@@ -63,7 +62,18 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // Menu dropdown 
         // Trie les objets Media selon valeur du menu select et crée une vue de ces 
         // Medias en ayant supprimés les Medias précédents
-        document.querySelector("#dropdown").addEventListener("change", (event) => {
+
+        document.querySelector("#buttonDrop1").addEventListener("click", (event) => {
+            //Apparition / disparition du menu dropdown
+            if (event.target.parentElement.classList.contains('overflow')) {
+                document.querySelector('.containerDropDown').classList.remove('overflow');
+            } else {
+                document.querySelector('.containerDropDown').classList.add('overflow');
+            }
+        })
+
+        function trieMedia(){
+            //Trie des Medias
             const menuSelect = event.target.value;
             //trie clé string title des objets dataMedia par ordre alphabétique  
             if (menuSelect === 'Titre') {
@@ -104,7 +114,35 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 }
                 createImageVideoCard(dataMedia);
             }
+           }
+
+        //Inversion des valeurs du menu DropDown lors du clic
+        document.querySelector('#buttonDrop2').addEventListener('click', function (event) {
+            const node1 = document.querySelector('#buttonDrop1');
+            const node2 = document.querySelector('#buttonDrop2');
+            const button1Value = node1.value;
+            const button2Value = node2.value;
+            node1.innerText = button2Value;
+            node1.setAttribute('value', button2Value);
+            node2.innerText = button1Value;
+            node2.setAttribute('value', button1Value);
+            document.querySelector('.containerDropDown').classList.add('overflow');
+            trieMedia()
         })
+        document.querySelector('#buttonDrop3').addEventListener('click', function (event) {
+            const node1 = document.querySelector('#buttonDrop1');
+            const node3 = document.querySelector('#buttonDrop3');
+            const button1Value = node1.value;
+            const button3Value = node3.value;
+            node1.innerText = button3Value;
+            node1.setAttribute('value', button3Value);
+            node3.innerText = button1Value;
+            node3.setAttribute('value', button1Value);
+            document.querySelector('.containerDropDown').classList.add('overflow');trieMedia()
+        })
+
+
+
 
         // Addition et affichage du total likes
         let arrayLike = [];
@@ -119,22 +157,21 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
         // Ajout like: listener on change sur coeur
         document.querySelectorAll(".heart").forEach(function (el) {
+            let inverse = 0;
             el.addEventListener("click", function (event) {
-                if (inverse === 0) {
-                    inverse = 1;
-                    const spanLike = event.path[0].previousElementSibling;
-                    let like = Number(spanLike.textContent);
-                    like += 1;
-                    spanLike.textContent = like;
-
-                } else {
-                    inverse = 0;
-                    const spanLike = event.path[0].previousElementSibling;
-                    let like = Number(spanLike.textContent);
-                    like -= 1;
-                    spanLike.textContent = like;
-
-                }
+                /*if (inverse === 0) { */
+                inverse = inverse === 0 ? 1 : 0;
+                const spanLike = event.path[0].previousElementSibling;
+                let like = Number(spanLike.textContent);
+                like = inverse === 0 ? like + 1 : like - 1;
+                spanLike.textContent = like;
+                /* } else {
+                     inverse = 0;
+                     const spanLike = event.path[0].previousElementSibling;
+                     let like = Number(spanLike.textContent);
+                     like -= 1;
+                     spanLike.textContent = like;
+                 } */
             })
         });
 
@@ -158,8 +195,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
 
         //ajout nom photographe dans formulaire
-        document.querySelector('.containerModal h2').innerText = 
-        `Contactez moi
+        document.querySelector('.containerModal h2').innerText =
+            `Contactez moi
          ${foundPhotographer.name}`;
 
         //sauvegarde du noeud formulaire
@@ -186,7 +223,4 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
 
     })
-    //FIN ASYNCHRONE
-
-
-    let test = "bleu";
+//FIN ASYNCHRONE

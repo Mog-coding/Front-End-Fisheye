@@ -21,8 +21,8 @@ const dataInput = {
     },
     textArea: {
         noeud: document.querySelector('#textArea'),
-        errorMessage: "Veuillez entrer entre 5 et 150 caractères dans le champ Message.",
-        regex: /^[a-zA-ZÀ-ÿ-]{5,150}$/,
+        errorMessage: "Veuillez entrer entre 5 et 500 caractères dans le champ Message.",
+        regex: /^[A-Za-zÀ-ÿ0-9 .'?!,@$#-_\n\r]{5,500}$/,
         isValid: false
     }
 };

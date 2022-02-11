@@ -7,7 +7,7 @@
 **/
 
 main {
-  padding: 20px 100px 0 100px;
+  padding: 13px 100px 0 100px;
 }
 .containerMain {
   display: flex;
@@ -16,7 +16,7 @@ main {
 }
 .photograph-header {
   background-color: #fafafa; /*#FAFAFA #d3ffa1*/
-  height: 310px;
+  height: 300px;
 }
 /** userCards **/
 .nameCards {
@@ -39,19 +39,26 @@ main {
 section {
   padding: 1px 100px 0px 100px;
 }
-.containerHeader {
+
+/* DropDown Button */
+.containerTrie {
   display: flex;
-  align-items: center;
 }
-.containerHeader {
-  font-weight: bold;
-  font-size: 1.15em;
+.containerDropDown {
+  z-index: 1;
+  width: 200px;
+  height: 50px;
 }
-.dropButton {
-  height: 60px;
-  text-align: center;
-  margin: 0 0 0 25px;
+.buttonDropDown {
+  width: 200px;
+  height: 50px;
 }
+.overflow {
+  overflow: hidden;
+}
+
+/* Media photographe */
+
 .containerPhotos {
   display: flex;
   justify-content: space-between;
@@ -114,19 +121,19 @@ section {
   background-color: rgba(26, 39, 156, 0.4);
 }
 .close {
-    position: absolute;
-    right: 25.5%;
-    top: 40px;
-    cursor: pointer;
-  }
+  position: absolute;
+  right: 25.5%;
+  top: 40px;
+  cursor: pointer;
+}
 .containerModal {
   display: flex;
   flex-direction: column;
 }
 .containerModal h2 {
-    font-size: 4.1em;
-    font-weight: normal;
-    margin: 0 0 20px 0;
+  font-size: 4.1em;
+  font-weight: normal;
+  margin: 0 0 20px 0;
 }
 
 .modal {
@@ -136,7 +143,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 17px 35px 35px 35px ;
+  padding: 17px 35px 35px 35px;
   margin: auto;
 }
 
@@ -167,10 +174,15 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 1.5em;
 }
 
 #textArea {
   width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5em;
+  font-family: inherit;
 }
 
 .error {
