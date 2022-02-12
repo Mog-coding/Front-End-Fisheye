@@ -62,19 +62,21 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // Menu dropdown 
         // Trie les objets Media selon valeur du menu select et crée une vue de ces 
         // Medias en ayant supprimés les Medias précédents
-
-        document.querySelector("#buttonDrop1").addEventListener("click", (event) => {
+        //initialise le trie media avec Popularité
+        const menuSelect = document.querySelector('#buttonDrop1').value;
+        trieMedia(menuSelect);
+        
+        document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
             //Apparition / disparition du menu dropdown
-            if (event.target.parentElement.classList.contains('overflow')) {
+            if (even.target.parentElement.classList.contains('overflow')) {
                 document.querySelector('.containerDropDown').classList.remove('overflow');
             } else {
                 document.querySelector('.containerDropDown').classList.add('overflow');
             }
-        })
+        });
 
-        function trieMedia(){
+        function trieMedia(menuSelect) {
             //Trie des Medias
-            const menuSelect = event.target.value;
             //trie clé string title des objets dataMedia par ordre alphabétique  
             if (menuSelect === 'Titre') {
                 dataMedia.sort(function (a, b) {
@@ -114,7 +116,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 }
                 createImageVideoCard(dataMedia);
             }
-           }
+        }
 
         //Inversion des valeurs du menu DropDown lors du clic
         document.querySelector('#buttonDrop2').addEventListener('click', function (event) {
@@ -122,28 +124,28 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             const node2 = document.querySelector('#buttonDrop2');
             const button1Value = node1.value;
             const button2Value = node2.value;
-            node1.innerText = button2Value; 
+            node1.innerText = button2Value;
             node1.setAttribute('value', button2Value);
             node2.innerText = button1Value;
             node2.setAttribute('value', button1Value);
             document.querySelector('.containerDropDown').classList.add('overflow');
-            trieMedia()
-          })
+            const menuSelect = document.querySelector('#buttonDrop1').value;
+            trieMedia(menuSelect);
+        })
         document.querySelector('#buttonDrop3').addEventListener('click', function (event) {
             const node1 = document.querySelector('#buttonDrop1');
             const node3 = document.querySelector('#buttonDrop3');
             const button1Value = node1.value;
             const button3Value = node3.value;
-            node1.innerText = button3Value; 
+            node1.innerText = button3Value;
             node1.setAttribute('value', button3Value);
             node3.innerText = button1Value;
             node3.setAttribute('value', button1Value);
             document.querySelector('.containerDropDown').classList.add('overflow');
-            trieMedia()
+
+            const menuSelect = document.querySelector('#buttonDrop1').value;
+            trieMedia(menuSelect);
         })
-
-
-
 
         // Addition et affichage du total likes
         let arrayLike = [];
@@ -155,7 +157,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         });
         document.querySelector("#compteur").innerText = total;
         document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
-        
+
         // Ajout like: listener on change sur coeur
         document.querySelectorAll(".heart").forEach(function (el) {
             let inverse = 0;
@@ -225,18 +227,3 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
     })
 //FIN ASYNCHRONE
-
-
-
-/*
-            const node1 = document.querySelector('#buttonDrop1');
-            const node2 = document.querySelector('#buttonDrop2');
-            const button1Value = node1.value;
-            const button2Value = node2.value;
-            node1.innerText = button2Value; 
-            node1.setAttribute('value', button2Value);
-            node2.innerText = button1Value;
-            node2.setAttribute('value', button1Value);
-            document.querySelector('.containerDropDown').classList.add('overflow');
-            trieMedia()
-            */
