@@ -122,23 +122,24 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             const node2 = document.querySelector('#buttonDrop2');
             const button1Value = node1.value;
             const button2Value = node2.value;
-            node1.innerText = button2Value;
+            node1.innerText = button2Value; 
             node1.setAttribute('value', button2Value);
             node2.innerText = button1Value;
             node2.setAttribute('value', button1Value);
             document.querySelector('.containerDropDown').classList.add('overflow');
             trieMedia()
-        })
+          })
         document.querySelector('#buttonDrop3').addEventListener('click', function (event) {
             const node1 = document.querySelector('#buttonDrop1');
             const node3 = document.querySelector('#buttonDrop3');
             const button1Value = node1.value;
             const button3Value = node3.value;
-            node1.innerText = button3Value;
+            node1.innerText = button3Value; 
             node1.setAttribute('value', button3Value);
             node3.innerText = button1Value;
             node3.setAttribute('value', button1Value);
-            document.querySelector('.containerDropDown').classList.add('overflow');trieMedia()
+            document.querySelector('.containerDropDown').classList.add('overflow');
+            trieMedia()
         })
 
 
@@ -154,7 +155,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         });
         document.querySelector("#compteur").innerText = total;
         document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
-
+        
         // Ajout like: listener on change sur coeur
         document.querySelectorAll(".heart").forEach(function (el) {
             let inverse = 0;
@@ -185,7 +186,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             document.querySelector('.background').style.display = display;
         }
         // Ouvre le modal quand click sur bouton 'contactez moi'
-        document.querySelector('.contactButton').addEventListener('click', function () {
+        document.querySelector('.buttonForm').addEventListener('click', function () {
             switchModal('block');
         })
         // Ferme le modal quand click sur croix modal
@@ -224,3 +225,18 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
     })
 //FIN ASYNCHRONE
+
+
+
+/*
+            const node1 = document.querySelector('#buttonDrop1');
+            const node2 = document.querySelector('#buttonDrop2');
+            const button1Value = node1.value;
+            const button2Value = node2.value;
+            node1.innerText = button2Value; 
+            node1.setAttribute('value', button2Value);
+            node2.innerText = button1Value;
+            node2.setAttribute('value', button1Value);
+            document.querySelector('.containerDropDown').classList.add('overflow');
+            trieMedia()
+            */

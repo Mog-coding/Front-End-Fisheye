@@ -58,7 +58,7 @@ export default class PhotographerFactory {
         div12.innerText = this.photographer.tagline;
         const div2 = document.createElement('div');
         const button2 = document.createElement('button');
-        button2.classList.add('contact_button', 'contactButton');
+        button2.classList.add('contact_button', 'buttonContactez');
         button2.innerText = 'Contactez-moi';
         const div3 = document.createElement('div');
         const img3 = document.createElement('img');

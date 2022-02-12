@@ -23,15 +23,15 @@
 
   <section>
     <div class="containerTrie">
-      <div>
+      <div class="trierPar">
         Trier par
       </div>
       <div class="containerDropDown overflow">
-        <button id="buttonDrop1" class="buttonDropDown buttonDrop1" value="Popularité">Popularité
+        <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité">Popularité
         </button>
-        <button id="buttonDrop2" class="buttonDropDown buttonDrop2" value="Titre">Titre
+        <button id="buttonDrop2" class="buttonDropDown contact_button" value="Titre">Titre
         </button>
-        <button id="buttonDrop3" class="buttonDropDown buttonDrop3" value="Date">Date
+        <button id="buttonDrop3" class="buttonDropDown contact_button" value="Date">Date
         </button>
       </div>
     </div>
@@ -60,17 +60,17 @@
         <form name="contactForm" novalidate>
           <div>
             <label for='first'>Prénom</label>
-            <input type='text' id='first' placeholder='John' />
+            <input type='text' id='first' placeholder='Votre Prénom' />
             <div></div>
           </div>
           <div>
             <label for='last'>Nom</label>
-            <input type='text' id='last' placeholder='Doe' />
+            <input type='text' id='last' placeholder='Votre Nom' />
             <div></div>
           </div>
           <div>
             <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder='JohnDoe@tuta.io' />
+            <input type="email" id="email" placeholder='Exemple@mail.com' />
             <div></div>
           </div>
           <div>
@@ -78,14 +78,14 @@
             <textarea id="textArea" rows="11" placeholder='Minimum: 5 caractères'></textarea>
             <div></div>
           </div>
-          <button class=" contact_button">Envoyer</button>
+          <button class=" contact_button buttonForm">Envoyer</button>
         </form>
       </div>
     </div>
   </div>
   <script src="scripts/pages/photographerPage.js" type="module"></script>
   <script src="scripts/utils/contactForm.js"></script>
-  
+
 </body>
 
 

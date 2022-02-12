@@ -7,7 +7,7 @@
 **/
 
 main {
-  padding: 13px 100px 0 100px;
+  padding: 18px 100px 0 100px;
 }
 .containerMain {
   display: flex;
@@ -15,9 +15,16 @@ main {
   align-items: center;
 }
 .photograph-header {
-  background-color: #fafafa; /*#FAFAFA #d3ffa1*/
-  height: 300px;
+  background-color: #d3ffa1; /*#FAFAFA #d3ffa1*/
+  height: 312px;
 }
+.buttonContactez {
+  margin-top: 30px;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+}
+
 /** userCards **/
 .nameCards {
   font-size: 4em;
@@ -39,48 +46,85 @@ main {
 section {
   padding: 1px 100px 0px 100px;
 }
-
-/* DropDown Button */
 .containerTrie {
   display: flex;
+  align-items: center;
+  padding-top: 9px;
+  position: relative;
 }
+.trierPar{
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-right: 26px;
+  padding-bottom: 18px;
+}
+
+/* DropDown Button */
 .containerDropDown {
   z-index: 1;
-  width: 200px;
-  height: 50px;
+  width: 170px;
+  height: 60px;
 }
 .buttonDropDown {
-  width: 200px;
-  height: 50px;
+  width: 170px;
+  height: 60px;
+  text-align: left;
+  padding-left: 20px;
 }
 .overflow {
   overflow: hidden;
 }
 
-/* Media photographe */
+/*style boutons dropdown*/ 
+#buttonDrop1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#buttonDrop1::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    content: "\f078";
+    padding-right: 11px;
+  }
+#buttonDrop1 > i {
+  pointer-events: none;
+}
+#buttonDrop2{
+  border-top: 2px white solid;
+}
+#buttonDrop3{
+  border-top: 2px white solid;
+}
 
+/* Media photographe */
 .containerPhotos {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding-top: 39px;
+  padding-top: 30px;
 }
 .containerPhotoCards,
 .containerVideoCards {
   width: 28%;
-  margin-bottom: 37px;
+  margin-bottom: 30px;
 }
 .containerPhotoCards img,
 .containerVideoCards video {
   object-fit: cover;
   height: 300px;
   width: 100%;
+  border-radius: 5px;
 }
 .sousTitre {
   display: flex;
   justify-content: space-between;
   color: rgb(144, 28, 28);
-  font-size: 1.75em;
+  font-size: 1.6em;
+  margin-top: 3px;
+}
+.sousTitre i {  
+  margin-left: 6px;
 }
 
 /**
@@ -187,4 +231,11 @@ form input {
 
 .error {
   color: red;
+}
+
+.buttonForm{
+    margin-top: 30px;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
 }
