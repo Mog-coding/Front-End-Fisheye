@@ -81,15 +81,17 @@ section {
   justify-content: space-between;
   align-items: center;
 }
-#buttonDrop1::after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900; 
-    content: "\f078";
-    padding-right: 11px;
-  }
-#buttonDrop1 > i {
+/* icone chevron */
+#buttonDrop1 i {
   pointer-events: none;
+  margin-right: 10px;
 }
+.rotate{
+  transition: all 500ms;
+  transform: rotate(180deg);
+}
+
+/*barre rouge*/
 #buttonDrop2{
   border-top: 2px white solid;
 }

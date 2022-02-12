@@ -13,9 +13,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
     .then(function ({ media, photographers }) { //p3 résolue: donne data formatée 
         // photographers: array contenant 6 objets photographe
 
-        /**
-         *  partie PHOTOGRAPHERS BANNIERE
-         */
+        /***
+         ***  partie PHOTOGRAPHERS BANNIERE     ******************
+         ***/
 
         // Extraction d'1 objet photographe via son id contenu dans l'url de la page
         const url_object = window.location;
@@ -30,9 +30,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         const VueMain = new PhotographerFactory(foundPhotographer);
         document.querySelector("#main").appendChild(VueMain.createPhotographerBanner());
 
-        /**
-         *  partie MEDIA
-         */
+        /***
+         ***  partie MEDIA  ************************
+         ***/
 
         // filtre ds tableau d'objets les Medias du photographe via propriété 
         // photoID égale à la valeur contenue dans l'url de la page    
@@ -59,19 +59,27 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         }
         createImageVideoCard(dataMedia);
 
-        // Menu dropdown 
+         /**
+         *  Menu dropdown 
+         */
+
         // Trie les objets Media selon valeur du menu select et crée une vue de ces 
         // Medias en ayant supprimés les Medias précédents
         //initialise le trie media avec Popularité
         const menuSelect = document.querySelector('#buttonDrop1').value;
         trieMedia(menuSelect);
-        
+
         document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
             //Apparition / disparition du menu dropdown
             if (even.target.parentElement.classList.contains('overflow')) {
                 document.querySelector('.containerDropDown').classList.remove('overflow');
             } else {
                 document.querySelector('.containerDropDown').classList.add('overflow');
+            };
+            if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')){
+                document.querySelector('#buttonDrop1 i').classList.remove('rotate')
+            } else {
+                document.querySelector('#buttonDrop1 i').classList.add('rotate');
             }
         });
 
@@ -124,7 +132,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             const node2 = document.querySelector('#buttonDrop2');
             const button1Value = node1.value;
             const button2Value = node2.value;
-            node1.innerText = button2Value;
+            node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
             node1.setAttribute('value', button2Value);
             node2.innerText = button1Value;
             node2.setAttribute('value', button1Value);
@@ -137,7 +145,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             const node3 = document.querySelector('#buttonDrop3');
             const button1Value = node1.value;
             const button3Value = node3.value;
-            node1.innerText = button3Value;
+            node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
             node1.setAttribute('value', button3Value);
             node3.innerText = button1Value;
             node3.setAttribute('value', button1Value);
@@ -147,7 +155,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             trieMedia(menuSelect);
         })
 
-        // Addition et affichage du total likes
+        /**
+         *  Addition et affichage du total likes
+         */
         let arrayLike = [];
         document.querySelectorAll(".likeNumber").forEach(function (el) {
             arrayLike.push(Number(el.textContent));
