@@ -149,40 +149,46 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         })
 
         /*************
-         *************     addition des Likes     *******************
+         *************     Likes     *******************
          *************/
 
-        let arrayLike = [];
+        // Tableau arrayLike contenant tous les likes de chaque média
+        const arrayLike = [];
         document.querySelectorAll(".likeNumber").forEach(function (el) {
             arrayLike.push(Number(el.textContent));
         });
-        let total = arrayLike.reduce((accu, el) => {
-            return accu + el;
-        });
+        // Addition de tous les likes du tableau ds total
+        let total = 0;
+        for (let i = 0; i < arrayLike.length; i++) {
+            total += arrayLike[i];
+        };
+        // Ajout dans compteur aside du total des like et du prix du photographe
         document.querySelector("#compteur").innerText = total;
         document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
 
-        // Ajout like: listener on change sur coeur
+        // Listener sur coeur ds médias: si 1er clic: like +1, compteur total like +1
+        // si 2eme clic: like -1 et compteur total like -1
         document.querySelectorAll(".heart").forEach(function (el) {
             let inverse = 0;
+            // Ajout Listener sur chaque coeur des médias
             el.addEventListener("click", function (event) {
-                /*if (inverse === 0) { */
-                inverse = inverse === 0 ? 1 : 0;
-                console.log(event);
+                inverse = (inverse === 0) ? 1 : 0;
+                // Récupération du nombre de like du média
                 const spanLike = event.target.previousElementSibling;
                 let like = Number(spanLike.textContent);
-                like = inverse === 0 ? like + 1 : like - 1;
+                // Si 1er clic like +1 et compteur +1, si 2 eme clic: -1
+                if (inverse === 1) {
+                    like++;
+                    total++;
+                } else {
+                    like--;
+                    total--;
+                };
+                // Mise à jour du nombre de like et du compteur
                 spanLike.textContent = like;
-                /* } else {
-                     inverse = 0;
-                     const spanLike = event.path[0].previousElementSibling;
-                     let like = Number(spanLike.textContent);
-                     like -= 1;
-                     spanLike.textContent = like;
-                 } */
+                document.querySelector("#compteur").innerText = total;
             })
         });
-
 
         /*************
          *************     partie FORMULAIRE     *******************

@@ -1,5 +1,5 @@
 //FORMULAIRE
-/* Déclaration caractéristiques des 3 objets input :*/
+/* Déclaration caractéristiques des 4 objets input :*/
 const dataInput = {
     firstName: {
         noeud: document.querySelector('#first'),
@@ -63,6 +63,3 @@ function testAllIsValid(data) {
     }
     return result;
 }
-
-
-let test2 = "vert";
