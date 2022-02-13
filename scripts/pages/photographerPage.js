@@ -180,9 +180,12 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 if (inverse === 1) {
                     like++;
                     total++;
+                    console.log(event.target);
+                    event.target.classList.add("heartColor");
                 } else {
                     like--;
                     total--;
+                    event.target.classList.remove("heartColor");
                 };
                 // Mise à jour du nombre de like et du compteur
                 spanLike.textContent = like;
