@@ -1,6 +1,10 @@
-const object1 = {
-    prop1: {key1: 12, key2: 'a'}, prop2: {key1: 13, key2:'b'}
+let couleur = "blanc";
+let inverse = 1;
+if(inverse === 1){
+  inverse = 0;
+  couleur = "bleu";
+}else{
+  inverse = 1;
+  couleur = "vert";
 }
-
-for( const prop in object1 ){					
-  console.log(object1[prop].key1)};	
+console.log(couleur);

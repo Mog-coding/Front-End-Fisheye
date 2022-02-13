@@ -3,9 +3,9 @@ import MediaFactory from "../factories/MediaFactory.js"
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 import Image from "../model/Image.js"
 import Video from "../model/Video.js"
-let test = "bleu";
 
-/*RECUPERATION DES DONNEES */
+
+/*RECUPERATION DES DONNEES AVEC FETCH */
 fetch('data/photographers.json')    // promise1 résolue: serveur répond
     .then(function (response) {     // promise2 résolue: data chargée
         return response.json();     // data json vers objet
@@ -13,9 +13,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
     .then(function ({ media, photographers }) { //p3 résolue: donne data formatée 
         // photographers: array contenant 6 objets photographe
 
-        /***
-         ***  partie PHOTOGRAPHERS BANNIERE     ******************
-         ***/
+        /*************
+         *************     partie PHOTOGRAPHERS BANNIERE     *******************
+         *************/
 
         // Extraction d'1 objet photographe via son id contenu dans l'url de la page
         const url_object = window.location;
@@ -30,9 +30,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         const VueMain = new PhotographerFactory(foundPhotographer);
         document.querySelector("#main").appendChild(VueMain.createPhotographerBanner());
 
-        /***
-         ***  partie MEDIA  ************************
-         ***/
+        /*************
+         *************     partie MEDIA     *******************
+         *************/
 
         // filtre ds tableau d'objets les Medias du photographe via propriété 
         // photoID égale à la valeur contenue dans l'url de la page    
@@ -42,8 +42,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
         // function instancie objet Media en classMediaFactory et crée Vue Image ou Video
         function createImageVideoCard(dataMedia) {
-            // tableau d'objet Media vers tableau d'instance de class MediaFactory 
-            // contenant méthode builder Image/Video Card. Class MediaFactory contient un // objet de class Image ou Video qui sont des extensions de la class Media
+            // Tableau d'objet Media vers tableau d'instance de class MediaFactory 
+            // contenant méthode builder Image/Video Card. Class MediaFactory contient  // un objet de class Image ou Video, extensions de la class Media
             let dataMediaInstance = dataMedia.map((el) => {
                 return new MediaFactory(el)
             })
@@ -57,107 +57,101 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             }
             );
         }
-        createImageVideoCard(dataMedia);
 
-         /**
-         *  Menu dropdown 
-         */
+        /*************
+         *************    menu DROPDOWN     *******************
+         *************/
 
-        // Trie les objets Media selon valeur du menu select et crée une vue de ces 
-        // Medias en ayant supprimés les Medias précédents
-        //initialise le trie media avec Popularité
-        const menuSelect = document.querySelector('#buttonDrop1').value;
-        trieMedia(menuSelect);
+        // initialise la Vue media avec media triés via string "Popularité"
+        const buttonValue = document.querySelector('#buttonDrop1').value;
+        trieMedia(buttonValue);
 
+        // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
-            //Apparition / disparition du menu dropdown
+            // Apparition/disparition du menu dropdown: ajout/retrait class overflow
             if (even.target.parentElement.classList.contains('overflow')) {
                 document.querySelector('.containerDropDown').classList.remove('overflow');
             } else {
                 document.querySelector('.containerDropDown').classList.add('overflow');
             };
-            if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')){
+            // Rotation icon FA chevron: ajout/retrait class rotate
+            if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')) {
                 document.querySelector('#buttonDrop1 i').classList.remove('rotate')
             } else {
                 document.querySelector('#buttonDrop1 i').classList.add('rotate');
             }
         });
 
-        function trieMedia(menuSelect) {
-            //Trie des Medias
-            //trie clé string title des objets dataMedia par ordre alphabétique  
-            if (menuSelect === 'Titre') {
+        // Trie les objets Media selon valeur string et crée une vue de ces 
+        // Medias triés en ayant supprimés les Medias précédents
+        function trieMedia(buttonValue) {
+            // Si string='title' objets dataMedia.title triés par ordre alphabétique   
+            if (buttonValue === 'Titre') {
                 dataMedia.sort(function (a, b) {
                     if (a.title > b.title) return 1;
                     if (a.title < b.title) return -1;
                     return 0;
-                })
-                //supression des anciens Medias
-                const nodeMedia = document.querySelector(".containerPhotos");
-                while (nodeMedia.firstChild) {
-                    nodeMedia.removeChild(nodeMedia.firstChild);
-                }
-                //creation des nouveaux Medias classés
-                createImageVideoCard(dataMedia);
+                });
             }
-            //trie clé like Number des objets dataMedia par ordre décroissant  
-            else if (menuSelect === 'Popularité') {
+            // Si string='Popularité' objets dataMedia.likes triés par ordre décroissant  
+            else if (buttonValue === 'Popularité') {
                 dataMedia.sort(function (a, b) {
                     return b.likes - a.likes
-                })
-                const nodeMedia = document.querySelector(".containerPhotos");
-                while (nodeMedia.firstChild) {
-                    nodeMedia.removeChild(nodeMedia.lastChild);
-                }
-                createImageVideoCard(dataMedia);
+                });
             }
-            //trie clé string date des objets dataMedia par ordre croissant 
-            else if (menuSelect === 'Date') {
+            // Si string='Date' objets dataMedia.date triés par ordre alphabétique
+            else if (buttonValue === 'Date') {
                 dataMedia.sort(function (a, b) {
                     if (a.date > b.date) return 1;
                     if (a.date < b.date) return -1;
                     return 0;
-                })
-                const nodeMedia = document.querySelector(".containerPhotos");
-                while (nodeMedia.firstChild) {
-                    nodeMedia.removeChild(nodeMedia.lastChild);
-                }
-                createImageVideoCard(dataMedia);
+                });
             }
+            //supression des anciens Medias
+            const nodeMedia = document.querySelector(".containerPhotos");
+            while (nodeMedia.firstChild) {
+                nodeMedia.removeChild(nodeMedia.firstChild);
+            };
+            //creation d'une nouvelle Vue avec Medias classés
+            createImageVideoCard(dataMedia);
         }
 
-        //Inversion des valeurs du menu DropDown lors du clic
-        document.querySelector('#buttonDrop2').addEventListener('click', function (event) {
+        // Clic button2: Inverse valeur et contenu button1/2, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
+        document.querySelector('#buttonDrop2').addEventListener('click', () => {
             const node1 = document.querySelector('#buttonDrop1');
             const node2 = document.querySelector('#buttonDrop2');
+            // Clic button2: Inversion des valeurs entre button2 et button1
             const button1Value = node1.value;
             const button2Value = node2.value;
-            node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
             node1.setAttribute('value', button2Value);
-            node2.innerText = button1Value;
             node2.setAttribute('value', button1Value);
+            // Inversion du contenu des balises button2 et button1
+            node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
+            node2.innerText = button1Value;
+            // Clic button2: menu DropDown disparait
             document.querySelector('.containerDropDown').classList.add('overflow');
-            const menuSelect = document.querySelector('#buttonDrop1').value;
-            trieMedia(menuSelect);
+            // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
+            trieMedia(button2Value)
         })
-        document.querySelector('#buttonDrop3').addEventListener('click', function (event) {
+
+        // Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
+        document.querySelector('#buttonDrop3').addEventListener('click', () => {
             const node1 = document.querySelector('#buttonDrop1');
             const node3 = document.querySelector('#buttonDrop3');
             const button1Value = node1.value;
             const button3Value = node3.value;
-            node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
             node1.setAttribute('value', button3Value);
-            node3.innerText = button1Value;
             node3.setAttribute('value', button1Value);
+            node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
+            node3.innerText = button1Value;
             document.querySelector('.containerDropDown').classList.add('overflow');
-
-            const menuSelect = document.querySelector('#buttonDrop1').value;
-            trieMedia(menuSelect);
+            trieMedia(button3Value)
         })
 
-        /**
-         *  Addition et affichage du total likes
-         */
+        /*************
+         *************     addition des Likes     *******************
+         *************/
+
         let arrayLike = [];
         document.querySelectorAll(".likeNumber").forEach(function (el) {
             arrayLike.push(Number(el.textContent));
@@ -174,7 +168,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             el.addEventListener("click", function (event) {
                 /*if (inverse === 0) { */
                 inverse = inverse === 0 ? 1 : 0;
-                const spanLike = event.path[0].previousElementSibling;
+                console.log(event);
+                const spanLike = event.target.previousElementSibling;
                 let like = Number(spanLike.textContent);
                 like = inverse === 0 ? like + 1 : like - 1;
                 spanLike.textContent = like;
@@ -188,9 +183,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             })
         });
 
-        /*****************
-         *****************  partie FORMULAIRE  ***********************
-         *****************/
+
+        /*************
+         *************     partie FORMULAIRE     *******************
+         *************/
 
         /* Ouverture fermeture formulaire */
         // Ouvre ou ferme le modal avec display: block; ou none; 
