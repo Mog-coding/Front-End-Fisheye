@@ -71,7 +71,7 @@ section {
   text-align: left;
   padding-left: 20px;
 }
-.overflow {
+.noverflow {
   overflow: hidden;
 }
 
@@ -130,15 +130,15 @@ section {
 }
 .heart:hover{
   color: rgb(219, 136, 118);
-  animation: shake 100ms cubic-bezier(.4,.1,.6,.9);
-  animation-iteration-count: 3;
+  animation: shake 150ms cubic-bezier(.4,.1,.6,.9);
+  animation-iteration-count: 2;
 }
 @keyframes shake {
   25% {
-      transform: translateX(4%);
+      transform: translateX(8%);
   }
   75% {
-      transform: translateX(-4%);
+      transform: translateX(-8%);
   }
   }   
 .heartColor{

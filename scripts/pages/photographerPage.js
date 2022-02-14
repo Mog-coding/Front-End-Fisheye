@@ -68,11 +68,11 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
-            // Apparition/disparition du menu dropdown: ajout/retrait class overflow
-            if (even.target.parentElement.classList.contains('overflow')) {
-                document.querySelector('.containerDropDown').classList.remove('overflow');
+            // Apparition/disparition du menu dropdown: ajout/retrait class noverflow
+            if (even.target.parentElement.classList.contains('noverflow')) {
+                document.querySelector('.containerDropDown').classList.remove('noverflow');
             } else {
-                document.querySelector('.containerDropDown').classList.add('overflow');
+                document.querySelector('.containerDropDown').classList.add('noverflow');
             };
             // Rotation icon FA chevron: ajout/retrait class rotate
             if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')) {
@@ -81,6 +81,18 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 document.querySelector('#buttonDrop1 i').classList.add('rotate');
             }
         });
+
+        // si clic en dehors menu dropDown quand ouvert: le fermer
+        window.addEventListener("click", (event) => {
+            if (!(event.target.id === 'buttonDrop1'
+                || event.target.id === 'buttonDrop2'
+                || event.target.id === 'buttonDrop3')
+                &&
+                (!document.querySelector('.containerDropDown').classList.contains('noverflow'))) {
+                document.querySelector('.containerDropDown').classList.add('noverflow');
+                document.querySelector('#buttonDrop1 i').classList.remove('rotate');
+            }
+        })
 
         // Trie les objets Media selon valeur string et crée une vue de ces 
         // Medias triés en ayant supprimés les Medias précédents
@@ -129,9 +141,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
             node2.innerText = button1Value;
             // Clic button2: menu DropDown disparait
-            document.querySelector('.containerDropDown').classList.add('overflow');
+            document.querySelector('.containerDropDown').classList.add('noverflow');
             // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
-            trieMedia(button2Value)
+            trieMedia(button2Value);
+            heartLikes();
         })
 
         // Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
@@ -144,54 +157,57 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             node3.setAttribute('value', button1Value);
             node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
             node3.innerText = button1Value;
-            document.querySelector('.containerDropDown').classList.add('overflow');
-            trieMedia(button3Value)
+            document.querySelector('.containerDropDown').classList.add('noverflow');
+            trieMedia(button3Value);
+            heartLikes();
         })
 
         /*************
          *************     Likes     *******************
          *************/
 
-        // Tableau arrayLike contenant tous les likes de chaque média
-        const arrayLike = [];
-        document.querySelectorAll(".likeNumber").forEach(function (el) {
-            arrayLike.push(Number(el.textContent));
-        });
-        // Addition de tous les likes du tableau ds total
-        let total = 0;
-        for (let i = 0; i < arrayLike.length; i++) {
-            total += arrayLike[i];
-        };
-        // Ajout dans compteur aside du total des like et du prix du photographe
-        document.querySelector("#compteur").innerText = total;
-        document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
+        function heartLikes() {
+            // Tableau arrayLike contenant tous les likes de chaque média
+            const arrayLike = [];
+            document.querySelectorAll(".likeNumber").forEach(function (el) {
+                arrayLike.push(Number(el.textContent));
+            });
+            // Addition de tous les likes du tableau ds total
+            let total = 0;
+            for (let i = 0; i < arrayLike.length; i++) {
+                total += arrayLike[i];
+            };
+            // Ajout dans compteur aside du total des like et du prix du photographe
+            document.querySelector("#compteur").innerText = total;
+            document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
 
-        // Listener sur coeur ds médias: si 1er clic: like +1, compteur total like +1
-        // si 2eme clic: like -1 et compteur total like -1
-        document.querySelectorAll(".heart").forEach(function (el) {
-            let inverse = 0;
-            // Ajout Listener sur chaque coeur des médias
-            el.addEventListener("click", function (event) {
-                inverse = (inverse === 0) ? 1 : 0;
-                // Récupération du nombre de like du média
-                const spanLike = event.target.previousElementSibling;
-                let like = Number(spanLike.textContent);
-                // Si 1er clic like +1 et compteur +1, si 2 eme clic: -1
-                if (inverse === 1) {
-                    like++;
-                    total++;
-                    console.log(event.target);
-                    event.target.classList.add("heartColor");
-                } else {
-                    like--;
-                    total--;
-                    event.target.classList.remove("heartColor");
-                };
-                // Mise à jour du nombre de like et du compteur
-                spanLike.textContent = like;
-                document.querySelector("#compteur").innerText = total;
-            })
-        });
+            // Listener sur coeur ds médias: si 1er clic: like +1, compteur total like +1
+            // si 2eme clic: like -1 et compteur total like -1
+            document.querySelectorAll(".heart").forEach(function (el) {
+                let inverse = 0;
+                // Ajout Listener sur chaque coeur des médias
+                el.addEventListener("click", function (event) {
+                    inverse = (inverse === 0) ? 1 : 0;
+                    // Récupération du nombre de like du média
+                    const spanLike = event.target.previousElementSibling;
+                    let like = Number(spanLike.textContent);
+                    // Si 1er clic like +1 et compteur +1, si 2 eme clic: -1
+                    if (inverse === 1) {
+                        like++;
+                        total++;
+                        event.target.classList.add("heartColor");
+                    } else {
+                        like--;
+                        total--;
+                        event.target.classList.remove("heartColor");
+                    };
+                    // Mise à jour du nombre de like et du compteur
+                    spanLike.textContent = like;
+                    document.querySelector("#compteur").innerText = total;
+                })
+            });
+        }
+        heartLikes();
 
         /*************
          *************     partie FORMULAIRE     *******************
@@ -210,7 +226,6 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         document.querySelector('.close').addEventListener('click', function () {
             switchModal('none');
         })
-
 
         //ajout nom photographe dans formulaire
         document.querySelector('.containerModal h2').innerText =
