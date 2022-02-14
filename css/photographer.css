@@ -15,7 +15,7 @@ main {
   align-items: center;
 }
 .photograph-header {
-  background-color: #d3ffa1; /*#FAFAFA #d3ffa1*/
+  background-color: lavender; /*#FAFAFA*/
   height: 312px;
 }
 .buttonContactez {
@@ -217,12 +217,10 @@ form {
   flex-direction: column;
   align-items: flex-start;
 }
-
 form label {
   color: #312e2e;
   font-size: 36px;
 }
-
 form div {
   display: flex;
   flex-direction: column;
@@ -230,7 +228,6 @@ form div {
   align-items: self-start;
   margin-bottom: 0px;
 }
-
 form input {
   width: 100%;
   height: 68px;
@@ -238,7 +235,6 @@ form input {
   border-radius: 5px;
   font-size: 1.5em;
 }
-
 #textArea {
   width: 100%;
   border: none;
@@ -246,14 +242,53 @@ form input {
   font-size: 1.5em;
   font-family: inherit;
 }
-
-.error {
+.errorMessage{
   color: red;
+  font-size: 1.2em;
 }
-
+.borderError{
+  outline: red 3px solid;
+}
 .buttonForm{
     margin-top: 30px;
     padding: 11px;
     width: 170px;
     height: 70px;
+}
+.thankMessage{
+  justify-content: center;
+  text-align: center;
+  height: 90%;
+  width: 50%;
+  font-size: 2em;
+}
+
+/**
+******************* RESPONSIVE *******************
+**/
+
+@media screen and (max-width: 1160px) {
+  /* form */
+  .modal h2 {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  /* form */
+  .modal {
+    width: auto;
+  }
+  .modal h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding-right: 20px;
+  }
+  .thankMessage{
+    width: 100%;
+  }
+  .close{
+    right: 3%;
+    top: 3%
+  }
 }

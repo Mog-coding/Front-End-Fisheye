@@ -213,8 +213,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
          *************     partie FORMULAIRE     *******************
          *************/
 
-        /* Ouverture fermeture formulaire */
-        // Ouvre ou ferme le modal avec display: block; ou none; 
+        // function ouvre / ferme le modal avec display: block; ou none; 
         function switchModal(display) {
             document.querySelector('.background').style.display = display;
         }
@@ -223,29 +222,44 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             switchModal('block');
         })
         // Ferme le modal quand click sur croix modal
+        // Recharge la page si le formulaire a été validé
         document.querySelector('.close').addEventListener('click', function () {
             switchModal('none');
+            if (formValid) {
+                location.reload()
+            };
         })
+        // Formulaire valide ou non
+        let formValid = false;
 
-        //ajout nom photographe dans formulaire
+        // Ajout nom photographe dans entête formulaire
         document.querySelector('.containerModal h2').innerText =
             `Contactez moi
          ${foundPhotographer.name}`;
 
-        //sauvegarde du noeud formulaire
-        let formNode = document.querySelector(".containerModal");
 
-        // submit formulaire
-        document.querySelector('[name="contactForm"]').addEventListener('submit', function (event) {
-            event.preventDefault();
+        /* Submit formulaire
+        Si saisies valides: efface errorMessage, reset form, affiche thankMessage,
+        sinon, affiche erreurs message + empêche soumission form
+        */
+        document.querySelector('#contactForm').addEventListener('submit', function (event) {
+            formValid = false;
             updateInput(dataInput);
+            //si formulaire valide
             if (testAllIsValid(dataInput)) {
                 for (const key in dataInput) {
                     afficheErrorMessage(dataInput[key]);
+                    console.log(`${key}: ${dataInput[key].noeud.value}`);
                 };
-                document.querySelector('[name="contactForm"]').reset();
-                document.querySelector(".containerModal").innerHTML = `<div> Votre message a bien été envoyé à ${foundPhotographer.name} </div>`;
+                // Reset formulaire
+                document.querySelector('#contactForm').reset();
+                // Affichage message remerciement
+                document.querySelector(".modal").classList.add('thankMessage');
+                document.querySelector(".containerModal").innerHTML = `<div> Votre message a bien été envoyé à ${foundPhotographer.name}. </div>`;
+                formValid = true;
             } else {
+                //sinon empêche submit formulaire et affiche message erreur
+                event.preventDefault();
                 for (const key in dataInput) {
                     afficheErrorMessage(dataInput[key]);
                 };

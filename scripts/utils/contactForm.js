@@ -1,5 +1,6 @@
 //FORMULAIRE
-/* Déclaration caractéristiques des 4 objets input :*/
+
+// Déclaration caractéristiques des 4 objets input :
 const dataInput = {
     firstName: {
         noeud: document.querySelector('#first'),
@@ -15,42 +16,32 @@ const dataInput = {
     },
     email: {
         noeud: document.querySelector('#email'),
-        errorMessage: "Veuillez entrer une syntaxe d'email valide",
+        errorMessage: "Veuillez entrer une syntaxe d'email valide.",
         regex: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
         isValid: false
     },
     textArea: {
         noeud: document.querySelector('#textArea'),
-        errorMessage: "Veuillez entrer entre 5 et 500 caractères dans le champ Message.",
+        errorMessage: "Veuillez entrer entre 5 et 500 caractères dans le champ message.",
         regex: /^[A-Za-zÀ-ÿ0-9 .'?!,@$#-_\n\r]{5,500}$/,
         isValid: false
     }
 };
 
+// Pour toutes les entrées: si regex match avec saisie -> isValid = true, sinon false
 function updateInput(data) {
     for (const key in data) {
         if (data[key].regex) {
             if (data[key].noeud.value.match(data[key].regex)) {
                 data[key].isValid = true;
-                console.log('true')
             } else {
                 data[key].isValid = false;
-                console.log('false')
             }
         }
     }
 }
 
-function afficheErrorMessage(key) {
-    if (!key.isValid) {
-        key.noeud.parentElement.classList.add('error');
-        key.noeud.nextElementSibling.innerHTML = key.errorMessage;
-    } else {
-        key.noeud.parentElement.classList.remove('error');
-        key.noeud.nextElementSibling.innerHTML = '';
-    }
-}
-
+// return true si toutes les entrées isValid sont true, sinon false
 function testAllIsValid(data) {
     let result;
     for (let key in data) {
@@ -62,4 +53,15 @@ function testAllIsValid(data) {
         }
     }
     return result;
+}
+
+// Ajoute/retire message d'erreur d'une entrée en fonction de clé isValid
+function afficheErrorMessage(key) {
+    if (!key.isValid) {
+        key.noeud.classList.add('borderError');
+        key.noeud.nextElementSibling.innerHTML = key.errorMessage;
+    } else {
+        key.noeud.classList.remove('borderError');
+        key.noeud.nextElementSibling.innerHTML = '';
+    }
 }
