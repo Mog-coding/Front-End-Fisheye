@@ -2,12 +2,19 @@
 @import url("components.css");
 @import url("header.css");
 
+.wrapper {
+  padding: 0 100px;
+}
+header {
+  padding-left: 0px;
+}
+
 /**
 ******************* Main *******************
 **/
 
 main {
-  padding: 18px 100px 0 100px;
+  padding-top: 18px;
 }
 .containerMain {
   display: flex;
@@ -17,6 +24,7 @@ main {
 .photograph-header {
   background-color: lavender; /*#FAFAFA*/
   height: 312px;
+  border-radius: 5px;
 }
 .buttonContactez {
   margin-top: 30px;
@@ -44,7 +52,7 @@ main {
 **/
 
 section {
-  padding: 1px 100px 0px 100px;
+  padding-top: 1px;
 }
 .containerTrie {
   display: flex;
@@ -52,7 +60,7 @@ section {
   padding-top: 9px;
   position: relative;
 }
-.trierPar{
+.trierPar {
   font-weight: bold;
   font-size: 1.1em;
   margin-right: 26px;
@@ -75,7 +83,7 @@ section {
   overflow: hidden;
 }
 
-/*style boutons dropdown*/ 
+/*style boutons dropdown*/
 #buttonDrop1 {
   display: flex;
   justify-content: space-between;
@@ -86,16 +94,16 @@ section {
   pointer-events: none;
   margin-right: 10px;
 }
-.rotate{
+.rotate {
   transition: all 500ms;
   transform: rotate(180deg);
 }
 
 /*barre rouge*/
-#buttonDrop2{
+#buttonDrop2 {
   border-top: 2px white solid;
 }
-#buttonDrop3{
+#buttonDrop3 {
   border-top: 2px white solid;
 }
 
@@ -117,7 +125,14 @@ section {
   height: 300px;
   width: 100%;
   border-radius: 5px;
-}
+  /*
+  transform: scale(1);
+  transition: transform 0.5s linear;
+  */
+}/*
+.containerPhotoCards img:hover{
+    transform: scale(1.1);
+  }*/
 .sousTitre {
   display: flex;
   justify-content: space-between;
@@ -125,24 +140,30 @@ section {
   font-size: 1.6em;
   margin-top: 3px;
 }
-.sousTitre i {  
+.sousTitre i {
   margin-left: 6px;
 }
-.heart:hover{
+.heart:hover {
   color: rgb(219, 136, 118);
-  animation: shake 150ms cubic-bezier(.4,.1,.6,.9);
+  animation: shake 150ms cubic-bezier(0.4, 0.1, 0.6, 0.9);
   animation-iteration-count: 2;
 }
 @keyframes shake {
   25% {
-      transform: translateX(8%);
+    transform: translateX(5%);
   }
   75% {
-      transform: translateX(-8%);
+    transform: translateX(-5%);
   }
-  }   
-.heartColor{
+}
+.heartColor {
   color: rgb(219, 136, 118);
+}
+.buttonContactezMoi {
+  width: 170px;
+  height: 70px;
+  margin: 30px 0 0 10px;
+  padding: 11px;
 }
 
 /**
@@ -210,7 +231,6 @@ section {
 }
 
 /* form */
-
 form {
   display: flex;
   width: 100%;
@@ -242,20 +262,20 @@ form input {
   font-size: 1.5em;
   font-family: inherit;
 }
-.errorMessage{
+.errorMessage {
   color: red;
   font-size: 1.2em;
 }
-.borderError{
+.borderError {
   outline: red 3px solid;
 }
-.buttonForm{
-    margin-top: 30px;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
+.buttonForm {
+  width: 170px;
+  height: 70px;
+  margin: 30px 0 0 10px;
+  padding: 11px;
 }
-.thankMessage{
+.thankMessage {
   justify-content: center;
   text-align: center;
   height: 90%;
@@ -266,16 +286,65 @@ form input {
 /**
 ******************* RESPONSIVE *******************
 **/
-
-@media screen and (max-width: 1160px) {
+/* form 1160 et 950*/
+@media screen and (max-width: 1180px) {
+  .containerMain h1 {
+    font-size: 3em;
+  }
+  .imgCards {
+    height: 160px;
+    width: 160px;
+    padding: 20px;
+  }
+  .containerPhotoCards,
+  .containerVideoCards {
+    width: 45%;
+  }
   /* form */
   .modal h2 {
     font-size: 3em;
   }
 }
 
+@media screen and (max-width: 1030px) {
+  .wrapper {
+    padding: 0 30px;
+  }
+  #main {
+    padding: 0px;
+  }
+  .info{
+    padding-left: 20px;
+  }
+  
+  .photograph-header {
+    height: unset; 
+  } 
+  .buttonContactezMoi {
+    position: fixed;
+    height: 50px;
+    bottom: 0px;
+    left: 5px;
+    
+  }
+  .containerCompteur{
+    width: 230px;
+    right: 15px;
+    height: 50px;
+  }
+}
+
 @media screen and (max-width: 950px) {
-  /* form */
+
+  .containerPhotoCards,
+  .containerVideoCards {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .sousTitre{
+    margin-top: 0px;
+  }
+  /* form */  
   .modal {
     width: auto;
   }
@@ -284,11 +353,40 @@ form input {
     font-weight: bold;
     padding-right: 20px;
   }
-  .thankMessage{
+  .thankMessage {
     width: 100%;
   }
-  .close{
+  .close {
     right: 3%;
-    top: 3%
+    top: 3%;
+  }
+}
+@media screen and (max-width: 730px) {
+  .containerMain h1 {
+    font-size: 2.5em;
+  }
+  .imgCards {
+    height: 140px;
+    width: 140px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .containerMain h1 {
+    font-size: 2.1em;
+    font-weight: bold;
+  }
+  .imgCards {
+    height: 100px;
+    width: 100px;
+    padding: 20px 10px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .buttonContactezMoi {
+    left: 5px;
+    bottom: 55px;
+  }
+  .containerCompteur{
+    left: 15px;
   }
 }

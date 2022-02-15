@@ -181,7 +181,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             document.querySelector("#compteur").innerText = total;
             document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
 
-            // Listener sur coeur ds médias: si 1er clic: like +1, compteur total like +1
+            // Listener sur coeur médias: si 1er clic: like +1, compteur total like +1
             // si 2eme clic: like -1 et compteur total like -1
             document.querySelectorAll(".heart").forEach(function (el) {
                 let inverse = 0;
@@ -218,7 +218,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             document.querySelector('.background').style.display = display;
         }
         // Ouvre le modal quand click sur bouton 'contactez moi'
-        document.querySelector('.buttonForm').addEventListener('click', function () {
+        document.querySelector('.buttonContactezMoi').addEventListener('click', function () {
             switchModal('block');
         })
         // Ferme le modal quand click sur croix modal

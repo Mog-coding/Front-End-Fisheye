@@ -9,9 +9,8 @@
     height: 200px;
     width: 200px;
     object-fit: cover;
-  }
-  .userCards {
     border-radius: 50%;
+    padding: 0 20px;
   }
   .city {
     font-size: 0.8em;

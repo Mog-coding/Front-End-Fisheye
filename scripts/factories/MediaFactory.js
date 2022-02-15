@@ -11,28 +11,29 @@ export default class MediaFactory {
             throw 'Unknown type format'
         }
     }
+    // Crée les Medias Images page2 dans la section containerPhotos
     createImageCard() {
         const imageCardP2 = document.createElement('a');
         imageCardP2.classList.add("containerPhotoCards");
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/Media/' + this.media.image);
         img.setAttribute('alt', 'assets/Media/' + this.media.title);
-        const div = document.createElement('div');
-        div.classList.add('sousTitre');
-        const div1 = document.createElement('div');
-        div1.innerText = this.media.title;
-        const div2 = document.createElement('div');
-        const span21 = document.createElement('span'); 
-        span21.classList.add('likeNumber');
-        span21.innerText = this.media.likes;
-        const i21 = document.createElement('i');
-        i21.classList.add('fas', 'fa-heart', 'heart');
-        div2.appendChild(span21);
-        div2.appendChild(i21);
-        div.appendChild(div1);
-        div.appendChild(div2);
+        const divSousTitre = document.createElement('div');
+        divSousTitre.classList.add('sousTitre');
+        const divNomImage = document.createElement('div');
+        divNomImage.innerText = this.media.title;
+        const divLike = document.createElement('div');
+        const spanLike = document.createElement('span'); 
+        spanLike.classList.add('likeNumber');
+        spanLike.innerText = this.media.likes;
+        const iHeart = document.createElement('i');
+        iHeart.classList.add('fas', 'fa-heart', 'heart');
+        divLike.appendChild(spanLike);
+        divLike.appendChild(iHeart);
+        divSousTitre.appendChild(divNomImage);
+        divSousTitre.appendChild(divLike);
         imageCardP2.appendChild(img);
-        imageCardP2.appendChild(div);
+        imageCardP2.appendChild(divSousTitre);
         return imageCardP2
         /*
         const wrapperHtml = `    
@@ -48,31 +49,31 @@ export default class MediaFactory {
         return photoCardP2
         */
     }
+    // Crée les Medias Videos page2 dans la section containerPhotos
     createVideoCard() {
         const videoCardP2 = document.createElement('a');
         videoCardP2.classList.add("containerVideoCards");
-       
         const vid = document.createElement('video');
         const source = document.createElement('source');
         source.setAttribute('src', 'assets/Media/' + this.media.video);
         source.setAttribute('type', 'video/mp4');
-        const div = document.createElement('div');
-        div.classList.add('sousTitre');
-        const div1 = document.createElement('div');
-        div1.innerText = this.media.title;
-        const div2 = document.createElement('div');
-        const span21 = document.createElement('span'); 
-        span21.classList.add('likeNumber');
-        span21.innerText = this.media.likes;
-        const i21 = document.createElement('i');
-        i21.classList.add('fas', 'fa-heart', 'heart');
+        const divSousTitre = document.createElement('div');
+        divSousTitre.classList.add('sousTitre');
+        const divNomVideo = document.createElement('div');
+        divNomVideo.innerText = this.media.title;
+        const divLike = document.createElement('div');
+        const spanLike = document.createElement('span'); 
+        spanLike.classList.add('likeNumber');
+        spanLike.innerText = this.media.likes;
+        const iHeart = document.createElement('i');
+        iHeart.classList.add('fas', 'fa-heart', 'heart');
         vid.appendChild(source);
-        div2.appendChild(span21);
-        div2.appendChild(i21);
-        div.appendChild(div1);
-        div.appendChild(div2);
+        divLike.appendChild(spanLike);
+        divLike.appendChild(iHeart);
+        divSousTitre.appendChild(divNomVideo);
+        divSousTitre.appendChild(divLike);
         videoCardP2.appendChild(vid);
-        videoCardP2.appendChild(div);
+        videoCardP2.appendChild(divSousTitre);
         return videoCardP2
         /*
         const wrapperHtml = `    
