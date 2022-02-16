@@ -22,7 +22,7 @@ main {
   align-items: center;
 }
 .photograph-header {
-  background-color: lavender; /*#FAFAFA*/
+  background-color: #FAFAFA; /*#FAFAFA*/
   height: 312px;
   border-radius: 5px;
 }
@@ -381,7 +381,7 @@ form input {
     padding: 20px 10px;
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 470px) {
   .buttonContactezMoi {
     left: 5px;
     bottom: 55px;
