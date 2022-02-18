@@ -66,21 +66,39 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         const buttonValue = document.querySelector('#buttonDrop1').value;
         trieMedia(buttonValue);
 
-        function disapperMenuDrop(){
-            buttonDrop2.classList.add('disappear');
-                buttonDrop3.classList.add('disappear');
-        }
+        let inversse = true;
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
-            const buttonDrop2 = document.querySelector('#buttonDrop2');
-            const buttonDrop3 = document.querySelector('#buttonDrop3');
+            if (inversse) {
+                inversse = false;
+                const button2 = document.createElement("button");
+                button2.classList.add('buttonDropDown', 'contact_button');
+                button2.setAttribute('id', 'buttonDrop2');
+                button2.setAttribute('value', 'Titre');
+                document.querySelector(".containerDropDown").appendChild(button2);
+                const button3 = document.createElement("button");
+                button3.classList.add('buttonDropDown', 'contact_button');
+                button3.setAttribute('id', 'buttonDrop3');
+                button3.setAttribute('value', 'Titre');
+                document.querySelector(".containerDropDown").appendChild(button3);
+            } else {
+                inversse = true;
+                let x = 2;
+                while (x > 0) {	
+                    x --;
+                    let containerDrop = document.querySelector(".containerDropDown");
+                    containerDrop.removeChild(containerDrop.lastChild);   
+            }
+        }
+            /*
             // Apparition/disparition du menu dropdown: ajout/retrait class disappear
             if (buttonDrop2.classList.contains('disappear')) {
-                buttonDrop2.classList.remove('disappear');
                 buttonDrop3.classList.remove('disappear');
             } else {
-                disapperMenuDrop();
+
+                buttonDrop3.classList.add('disappear');
             };
+            */
             // Rotation icon FA chevron: ajout/retrait class rotate
             if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')) {
                 document.querySelector('#buttonDrop1 i').classList.remove('rotate')
@@ -95,8 +113,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 || event.target.id === 'buttonDrop2'
                 || event.target.id === 'buttonDrop3')
                 &&
-                (!document.querySelector('#buttonDrop2').classList.contains('disappear'))) {
-                disapperMenuDrop();
+                (!document.querySelector('.containerDropDown').classList.contains('disappear'))) {
+                document.querySelector('.containerDropDown').classList.add('disappear');
                 document.querySelector('#buttonDrop1 i').classList.remove('rotate');
             }
         })
@@ -136,38 +154,50 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         }
 
         // Clic button2: Inverse valeur et contenu button1/2, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
-        document.querySelector('#buttonDrop2').addEventListener('click', () => {
-            const node1 = document.querySelector('#buttonDrop1');
-            const node2 = document.querySelector('#buttonDrop2');
-            // Clic button2: Inversion des valeurs entre button2 et button1
-            const button1Value = node1.value;
-            const button2Value = node2.value;
-            node1.setAttribute('value', button2Value);
-            node2.setAttribute('value', button1Value);
-            // Inversion du contenu des balises button2 et button1
-            node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
-            node2.innerText = button1Value;
-            // Clic button2: menu DropDown disparait
-            disapperMenuDrop();
-            // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
-            trieMedia(button2Value);
-            heartLikes();
-        })
+        function listenButton2() {
+            let nodeButton2 = document.querySelector('#buttonDrop2');
+            if (nodeButton2) {
+                nodeButton2.addEventListener('click', () => {
+                    const node1 = document.querySelector('#buttonDrop1');
+                    const node2 = document.querySelector('#buttonDrop2');
+                    // Clic button2: Inversion des valeurs entre button2 et button1
+                    const button1Value = node1.value;
+                    const button2Value = node2.value;
+                    node1.setAttribute('value', button2Value);
+                    node2.setAttribute('value', button1Value);
+                    // Inversion du contenu des balises button2 et button1
+                    node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
+                    node2.innerText = button1Value;
+                    // Clic button2: menu DropDown disparait
+                    document.querySelector('.containerDropDown').classList.add('disappear');
+                    // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
+                    trieMedia(button2Value);
+                    heartLikes();
+                });
+            }
+        }
+        listenButton2();
 
         // Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
-        document.querySelector('#buttonDrop3').addEventListener('click', () => {
-            const node1 = document.querySelector('#buttonDrop1');
-            const node3 = document.querySelector('#buttonDrop3');
-            const button1Value = node1.value;
-            const button3Value = node3.value;
-            node1.setAttribute('value', button3Value);
-            node3.setAttribute('value', button1Value);
-            node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
-            node3.innerText = button1Value;
-            disapperMenuDrop();
-            trieMedia(button3Value);
-            heartLikes();
-        })
+        function listenButton3() {
+            let nodeButton3 = document.querySelector('#buttonDrop3');
+            if (nodeButton3) {
+                document.querySelector('#buttonDrop3').addEventListener('click', () => {
+                    const node1 = document.querySelector('#buttonDrop1');
+                    const node3 = document.querySelector('#buttonDrop3');
+                    const button1Value = node1.value;
+                    const button3Value = node3.value;
+                    node1.setAttribute('value', button3Value);
+                    node3.setAttribute('value', button1Value);
+                    node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
+                    node3.innerText = button1Value;
+                    document.querySelector('.containerDropDown').classList.add('disappear');
+                    trieMedia(button3Value);
+                    heartLikes();
+                })
+            }
+        }
+        listenButton3();
 
         /*************
          *************     Likes     *******************

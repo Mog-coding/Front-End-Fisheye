@@ -5,6 +5,15 @@
 .wrapper {
   padding: 0 100px;
 }
+/*
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+background: green;
+}
+*/
 header {
   padding-left: 0px;
 }
@@ -22,7 +31,7 @@ main {
   align-items: center;
 }
 .photograph-header {
-  background-color: #FAFAFA; /*#FAFAFA*/
+  background-color: lavender; /*#FAFAFA*/
   height: 312px;
   border-radius: 5px;
 }
@@ -63,15 +72,20 @@ section {
 .trierPar {
   font-weight: bold;
   font-size: 1.1em;
-  margin-right: 26px;
-  padding-bottom: 18px;
+  padding: 10px 0px 18px 0px;
 }
 
 /* DropDown Button */
 .containerDropDown {
-  z-index: 1;
-  width: 170px;
-  height: 60px;
+  position: absolute;
+  left: 95px;
+  top: 7px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  padding: 0 10px;
+  background-color:rgb(144, 28, 28);
+  border-radius: 4px;
 }
 .buttonDropDown {
   width: 170px;
@@ -79,15 +93,22 @@ section {
   text-align: left;
   padding-left: 20px;
 }
-.noverflow {
-  overflow: hidden;
+.disappear {
+  display:none;
 }
-
 /*style boutons dropdown*/
 #buttonDrop1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#buttonDrop2{
+  border-top: 2px white solid;
+  border-radius: unset;
+}
+#buttonDrop3{
+  border-top: 2px white solid;
+  border-radius: unset;
 }
 /* icone chevron */
 #buttonDrop1 i {
@@ -97,14 +118,6 @@ section {
 .rotate {
   transition: all 500ms;
   transform: rotate(180deg);
-}
-
-/*barre rouge*/
-#buttonDrop2 {
-  border-top: 2px white solid;
-}
-#buttonDrop3 {
-  border-top: 2px white solid;
 }
 
 /* Media photographe */
@@ -195,7 +208,7 @@ section {
 .background {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   height: 100%;

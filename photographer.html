@@ -16,6 +16,7 @@
 
 <body>
   <div class="wrapper">
+    <div class="overlay"></div><!-- -->
   <header>
     <a href="index.html">
       <img src="assets/images/logo.png" class="logo" alt="aria" />
@@ -29,13 +30,13 @@
       <div class="trierPar">
         Trier par
       </div>
-      <div class="containerDropDown noverflow">
+      <div class="containerDropDown">
         <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité">Popularité 
           <i class="fas fa-chevron-down"></i>
         </button>
-        <button id="buttonDrop2" class="buttonDropDown contact_button" value="Titre">Titre
+        <button id="buttonDrop2" class="buttonDropDown contact_button disappear" value="Date">Date 
         </button>
-        <button id="buttonDrop3" class="buttonDropDown contact_button" value="Date">Date
+        <button id="buttonDrop3" class="buttonDropDown contact_button disappear" value="Titre">Titre 
         </button>
       </div>
     </div>
@@ -90,8 +91,8 @@
 
   <script src="scripts/pages/photographerPage.js" type="module"></script>
   <script src="scripts/utils/contactForm.js"></script>
-
 </div>
+
 </body>
 
 
