@@ -66,9 +66,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         const buttonValue = document.querySelector('#buttonDrop1').value;
         trieMedia(buttonValue);
 
-        function disapperMenuDrop(){
+        function disapperMenuDrop() {
             buttonDrop2.classList.add('disappear');
-                buttonDrop3.classList.add('disappear');
+            buttonDrop3.classList.add('disappear');
         }
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
