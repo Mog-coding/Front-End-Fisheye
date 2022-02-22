@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="fr">
+<html lang="fr">
 
 <head>
   <link href="css/photographer.css" rel="stylesheet" type="text/css" />
@@ -17,81 +17,91 @@
 <body>
   <div class="wrapper">
     <div class="overlay"></div><!-- -->
-  <header>
-    <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="aria" />
-    </a>
-  </header>
-  <main id="main">
-  </main>
+    <header>
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="aria" />
+      </a>
+    </header>
+    <main id="main">
+    </main>
 
-  <section>
-    <div class="containerTrie">
-      <div class="trierPar">
-        Trier par
+    <section>
+      <div class="containerTrie">
+        <div class="trierPar">
+          Trier par
+        </div>
+        <div class="containerDropDown">
+          <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité">Popularité
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <button id="buttonDrop2" class="buttonDropDown contact_button disappear" value="Date">Date
+          </button>
+          <button id="buttonDrop3" class="buttonDropDown contact_button disappear" value="Titre">Titre
+          </button>
+        </div>
       </div>
-      <div class="containerDropDown">
-        <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité">Popularité 
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <button id="buttonDrop2" class="buttonDropDown contact_button disappear" value="Date">Date 
-        </button>
-        <button id="buttonDrop3" class="buttonDropDown contact_button disappear" value="Titre">Titre 
-        </button>
+
+      <div class="containerPhotos">
+      </div>
+    </section>
+
+    <aside>
+      <div class="containerCompteur">
+        <div>
+          <span id="compteur">564</span>
+          <i class="fas fa-heart"></i>
+        </div>
+        <div id="price"></div>
+      </div>
+    </aside>
+
+    <div class="background">
+      <div class="modal">
+        <div>
+          <img class="close" src="assets/icons/close.svg" alt="aria" />
+        </div>
+        <div class='containerModal'>
+          <h2></h2>
+          <form id="contactForm" novalidate>
+            <div>
+              <label for='first'>Prénom</label>
+              <input type='text' id='first' placeholder=' Votre Prénom' />
+              <div class="errorMessage"></div>
+            </div>
+            <div>
+              <label for='last'>Nom</label>
+              <input type='text' id='last' placeholder=' Votre Nom' />
+              <div class="errorMessage"></div>
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder=' Exemple@mail.com' />
+              <div class="errorMessage"></div>
+            </div>
+            <div>
+              <label for="textArea">Votre message</label>
+              <textarea id="textArea" rows="11" placeholder=' Minimum: 5 caractères'></textarea>
+              <div class="errorMessage"></div>
+            </div>
+            <button class="contact_button buttonForm" type="submit">Envoyer</button>
+          </form>
+        </div>
       </div>
     </div>
 
-    <div class="containerPhotos">
+    <div id="lightbox">
+      <div class="content">
+        <div class="cross">X</div>
+        <div class="previous">previous</div>
+        <img class="picture">
+        <div class="next">next</div>
+      </div>
     </div>
-  </section>
 
-  <aside>
-    <div class="containerCompteur">
-      <div>
-        <span id="compteur">564</span>
-        <i class="fas fa-heart"></i>
-      </div>
-      <div id="price"></div>
-    </div>
-  </aside>
-
-  <div class="background">
-    <div class="modal">
-      <div>
-        <img class="close" src="assets/icons/close.svg" alt="aria" />
-      </div>
-      <div class='containerModal'>
-        <h2></h2>
-        <form id="contactForm" novalidate>
-          <div>
-            <label for='first'>Prénom</label>
-            <input type='text' id='first' placeholder=' Votre Prénom' />
-            <div class="errorMessage"></div>
-          </div>
-          <div>
-            <label for='last'>Nom</label>
-            <input type='text' id='last' placeholder=' Votre Nom' />
-            <div class="errorMessage"></div>
-          </div>
-          <div>
-            <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder=' Exemple@mail.com' />
-            <div class="errorMessage"></div>
-          </div>
-          <div>
-            <label for="textArea">Votre message</label>
-            <textarea id="textArea" rows="11" placeholder=' Minimum: 5 caractères'></textarea>
-            <div class="errorMessage"></div>
-          </div>
-          <button class="contact_button buttonForm" type="submit">Envoyer</button>
-        </form>
-      </div>
-    </div>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/model/LightBox.js"></script>
+    <script src="scripts/pages/photographerPage.js" type="module"></script>
   </div>
-
-  <script src="scripts/pages/photographerPage.js" type="module"></script>
-  <script src="scripts/utils/contactForm.js"></script>
-</div>
 
 </body>
 

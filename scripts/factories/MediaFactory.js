@@ -18,6 +18,8 @@ export default class MediaFactory {
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/Media/' + this.media.image);
         img.setAttribute('alt', 'assets/Media/' + this.media.title);
+        img.setAttribute('data-id', this.media.id);
+        img.classList.add("imageMedia");
         const divSousTitre = document.createElement('div');
         divSousTitre.classList.add('sousTitre');
         const divNomImage = document.createElement('div');
@@ -35,25 +37,14 @@ export default class MediaFactory {
         imageCardP2.appendChild(img);
         imageCardP2.appendChild(divSousTitre);
         return imageCardP2
-        /*
-        const wrapperHtml = `    
-        <img src="assets/Media/${this.media.image}" alt="" />
-        <div class="sousTitre">
-          <div>${this.media.title}</div>
-          <div>
-          <span>${this.media.likes}</span>
-          <i class="fas fa-heart heart"></i>
-          </div>
-        </div>`
-        photoCardP2.innerHTML = wrapperHtml;
-        return photoCardP2
-        */
     }
     // Crée les Medias Videos page2 dans la section containerPhotos
     createVideoCard() {
         const videoCardP2 = document.createElement('a');
         videoCardP2.classList.add("containerVideoCards");
         const vid = document.createElement('video');
+        vid.setAttribute('data-id', this.media.id); /** */
+        vid.classList.add("imageMedia");
         const source = document.createElement('source');
         source.setAttribute('src', 'assets/Media/' + this.media.video);
         source.setAttribute('type', 'video/mp4');
@@ -75,7 +66,39 @@ export default class MediaFactory {
         videoCardP2.appendChild(vid);
         videoCardP2.appendChild(divSousTitre);
         return videoCardP2
-        /*
+    }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+         /*
+        const wrapperHtml = `    
+        <img src="assets/Media/${this.media.image}" alt="" />
+        <div class="sousTitre">
+          <div>${this.media.title}</div>
+          <div>
+          <span>${this.media.likes}</span>
+          <i class="fas fa-heart heart"></i>
+          </div>
+        </div>`
+        photoCardP2.innerHTML = wrapperHtml;
+        return photoCardP2
+        */
+
+                /*
         const wrapperHtml = `    
         <video>
          <source src="assets/Media/${this.media.video}" type="video/mp4" />
@@ -87,5 +110,3 @@ export default class MediaFactory {
         photoCardP2.innerHTML = wrapperHtml;
         return photoCardP2
         */
-    }
- }

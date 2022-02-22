@@ -296,10 +296,39 @@ form input {
   font-size: 2em;
 }
 
+
+/**
+******************* LIGHTBOX *******************
+**/
+#lightbox {
+  position: fixed;
+  z-index: 4;
+  width: 100vw;
+  height: 100vh;
+  background-color: grey;
+  top: 0px;
+  left: 0px;
+  display: none; 
+}
+#lightbox.show {
+  display: block;
+}
+#lightbox .picture{
+  width: 50%;
+  height: 50%;
+}
+.cross{
+  font-size: 5em;
+}
+
+
+
+
+
 /**
 ******************* RESPONSIVE *******************
 **/
-/* form 1160 et 950*/
+
 @media screen and (max-width: 1180px) {
   .containerMain h1 {
     font-size: 3em;

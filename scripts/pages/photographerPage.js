@@ -38,7 +38,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // photoID égale à la valeur contenue dans l'url de la page    
         const dataMedia = media.filter((el) => {
             return el.photographerId === identifiant
-        });
+        });console.log("truc");console.log(dataMedia);
 
         // function instancie objet Media en classMediaFactory et crée Vue Image ou Video
         function createImageVideoCard(dataMedia) {
@@ -271,6 +271,26 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                     afficheErrorMessage(dataInput[key]);
                 };
             }
+        });
+
+        
+        /*************
+         *************     partie LIGHTBOX     *******************
+         *************/
+        
+        // Fermeture LigtBox
+        document.querySelector(".cross").addEventListener("click", function(event){
+            document.querySelector("#lightbox").classList.remove("show");
+        })
+       
+        console.log(dataMedia); /* [{}, {}, ] */
+        let lightBox = new LightBox(dataMedia);
+
+        document.querySelectorAll(".imageMedia").forEach((el) => {
+            el.addEventListener("click", (event) => {
+                    console.log(event.currentTarget.dataset.id);
+                    lightBox.show(event.currentTarget.dataset.id);
+            })
         });
 
 
