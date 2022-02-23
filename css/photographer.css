@@ -314,8 +314,11 @@ form input {
   display: block;
 }
 #lightbox .picture{
-  width: 50%;
-  height: 50%;
+  width: 80vw;
+  height: 80vh;
+  object-fit: contain ;
+  margin-left: 200px;
+  
 }
 .cross{
   font-size: 5em;

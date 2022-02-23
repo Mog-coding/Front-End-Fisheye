@@ -286,15 +286,20 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         console.log(dataMedia); /* [{}, {}, ] */
         let lightBox = new LightBox(dataMedia);
 
+        //Clic media lance lightbox
         document.querySelectorAll(".imageMedia").forEach((el) => {
             el.addEventListener("click", (event) => {
-                    console.log(event.currentTarget.dataset.id);
                     lightBox.show(event.currentTarget.dataset.id);
             })
         });
-
-
-
+        //Clic next media suivant
+        document.querySelector("#lightbox .next").addEventListener("click", () => {
+            lightBox.next();
+        })
+        //Clic previous media suivant
+        document.querySelector("#lightbox .previous").addEventListener("click", () => {
+            lightBox.previous();
+        })
 
     })
 //FIN ASYNCHRONE

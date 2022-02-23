@@ -5,17 +5,24 @@ class LightBox {
     }
     show(id){
         this.currentElement = this.getElementById(id);
-        console.log(this.currentElement);
-        document.querySelector("#lightbox .content .picture").src = `assets/Media/${this.currentElement.image}`;
-        document.querySelector("#lightbox").classList.add("show");
+        this.display();
       }
     getElementById(id){
         return this.listMedia.find(element => element.id === Number(id))
     }
     next(){
+        let index = this.listMedia.findIndex( element => element.id === Number(this.currentElement.id));
+        this.currentElement = this.listMedia[index +1];
+        this.display();
     }
     previous(){
+        let index = this.listMedia.findIndex( element => element.id === Number(this.currentElement.id));
+        this.currentElement = this.listMedia[index -1];
+        this.display();
     }
-    manageEvent(){ 
+    display(){
+        document.querySelector("#lightbox .content .picture").src = `assets/Media/${this.currentElement.image}`;
+        document.querySelector("#lightbox").classList.add("show");
     }
+
 }
