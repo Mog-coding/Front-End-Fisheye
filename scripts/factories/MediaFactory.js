@@ -67,6 +67,25 @@ export default class MediaFactory {
         videoCardP2.appendChild(divSousTitre);
         return videoCardP2
     }
+    createLightboxContent(){
+      if(this.media instanceof Image){
+          const img = document.createElement('img');
+          img.setAttribute('src', 'assets/Media/' + this.media.image);
+          return img;
+      }else if(this.media instanceof Video){
+         const src = document.createElement('source');
+         src.setAttribute('src', 'assets/Media/' + this.media.video);
+         src.setAttribute('type', 'video/mp4');
+         const vid = document.createElement('video');
+         vid.setAttribute('controls', true);
+         vid.setAttribute('autoplay', true);
+         vid.setAttribute('loop', true);
+         vid.appendChild(src);
+         return vid;
+      }
+    }
+
+
  }
 
 

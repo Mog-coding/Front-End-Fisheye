@@ -1,4 +1,5 @@
 //import photographer factory html
+import LightBox from "./LightBox.js"
 import MediaFactory from "../factories/MediaFactory.js"
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 import Image from "../model/Image.js"
@@ -38,7 +39,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // photoID égale à la valeur contenue dans l'url de la page    
         const dataMedia = media.filter((el) => {
             return el.photographerId === identifiant
-        });console.log("truc");console.log(dataMedia);
+        });
 
         // function instancie objet Media en classMediaFactory et crée Vue Image ou Video
         function createImageVideoCard(dataMedia) {

@@ -31,7 +31,7 @@ main {
   align-items: center;
 }
 .photograph-header {
-  background-color: lavender; /*#FAFAFA*/
+  background-color: #FAFAFA; /*#FAFAFA*/
   height: 312px;
   border-radius: 5px;
 }
@@ -314,8 +314,10 @@ form input {
   display: block;
 }
 #lightbox .picture{
-  width: 50%;
-  height: 50%;
+  width: 50vw;
+  height: 50vh;
+  margin-left: 100px;
+  object-fit: cover;
 }
 .cross{
   font-size: 5em;
