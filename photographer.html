@@ -89,17 +89,18 @@
       </div>
     </div>
 
-    <div id="lightbox">
-      <div class="content">
-        <div class="cross">X</div>
-        <div class="previous">previous</div>
-        <img class="picture">
-        <div class="next">next</div>
+    <div id="lightbox"><div class="content">
+        <div class="cross">
+          <img src="./assets/icons/close.svg">
+        </div>
+        <!-- <i class="fa-solid fa-xmark"></i> -->
+        <div class="previous"><i class="fas fa-chevron-left"></i></div>
+        <div id="mediaContainer"></div>
+        <div class="next"><i class="fas fa-chevron-right"></i></div>
       </div>
     </div>
 
     <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/model/LightBox.js"></script>
     <script src="scripts/pages/photographerPage.js" type="module"></script>
   </div>
 

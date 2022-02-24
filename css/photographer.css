@@ -305,7 +305,7 @@ form input {
   z-index: 4;
   width: 100vw;
   height: 100vh;
-  background-color: grey;
+  background-color: rgba(248, 243, 243, 0.9);
   top: 0px;
   left: 0px;
   display: none; 
@@ -313,18 +313,23 @@ form input {
 #lightbox.show {
   display: block;
 }
-#lightbox .picture{
-  width: 80vw;
-  height: 80vh;
+#mediaContainer img,
+#mediaContainer video {
+  width: 50vw;
+  height: 50vh;
   object-fit: contain ;
   margin-left: 200px;
-  
+}
+.cross, .next, .previous{
+  font-size: 5em;
+  color: black;
+  z-index: 5;
 }
 .cross{
-  font-size: 5em;
+  color: black;
+  font-size: 4em;
+  z-index: 5;
 }
-
-
 
 
 

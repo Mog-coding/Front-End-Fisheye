@@ -3,6 +3,7 @@ import MediaFactory from "../factories/MediaFactory.js"
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 import Image from "../model/Image.js"
 import Video from "../model/Video.js"
+import LightBox from "./LightBox.js"
 
 
 /*RECUPERATION DES DONNEES AVEC FETCH */
@@ -38,7 +39,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // photoID égale à la valeur contenue dans l'url de la page    
         const dataMedia = media.filter((el) => {
             return el.photographerId === identifiant
-        });console.log("truc");console.log(dataMedia);
+        });
 
         // function instancie objet Media en classMediaFactory et crée Vue Image ou Video
         function createImageVideoCard(dataMedia) {
@@ -65,6 +66,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // initialise la Vue media avec media triés via string "Popularité"
         const buttonValue = document.querySelector('#buttonDrop1').value;
         trieMedia(buttonValue);
+        heartLikes();
 
         function disapperMenuDrop() {
             buttonDrop2.classList.add('disappear');
@@ -214,7 +216,6 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 })
             });
         }
-        heartLikes();
 
         /*************
          *************     partie FORMULAIRE     *******************
@@ -273,33 +274,41 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             }
         });
 
-        
+
         /*************
          *************     partie LIGHTBOX     *******************
          *************/
-        
-        // Fermeture LigtBox
-        document.querySelector(".cross").addEventListener("click", function(event){
-            document.querySelector("#lightbox").classList.remove("show");
-        })
-       
-        console.log(dataMedia); /* [{}, {}, ] */
-        let lightBox = new LightBox(dataMedia);
 
-        //Clic media lance lightbox
+        // lightBox instance de Lightbox
+        let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
+
+        // Clic media lance lightbox
         document.querySelectorAll(".imageMedia").forEach((el) => {
             el.addEventListener("click", (event) => {
-                    lightBox.show(event.currentTarget.dataset.id);
+                //appel méthode show() avec id de l'élément cliqué
+                lightBox.show(event.currentTarget.dataset.id);
             })
         });
-        //Clic next media suivant
+        // Clic fermeture LigtBox
+        document.querySelector(".cross").addEventListener("click", function (event) {
+            document.querySelector("#lightbox").classList.remove("show");
+            //supression du media précédemment affiché ds lightbox
+            document.querySelector("#mediaContainer").firstElementChild.remove();
+        })
+        // Clic next -> media suivant
         document.querySelector("#lightbox .next").addEventListener("click", () => {
             lightBox.next();
         })
-        //Clic previous media suivant
+        // Clic previous -> media précédent
         document.querySelector("#lightbox .previous").addEventListener("click", () => {
             lightBox.previous();
         })
 
+
+
+
+
+
+        
     })
 //FIN ASYNCHRONE
