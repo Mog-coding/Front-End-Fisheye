@@ -9,8 +9,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <!-- Font Awesome kit -->
-  <script src="https://kit.fontawesome.com/fb24a858bd.js" crossorigin="anonymous">
-  </script>
+  <script src="https://kit.fontawesome.com/fb24a858bd.js" crossorigin="anonymous"></script>
   <title>Fisheye - photographe </title>
 </head>
 
@@ -30,7 +29,7 @@
         <div class="trierPar">
           Trier par
         </div>
-        <div class="containerDropDown">
+        <div class="containerDropDown" id="containerDrop">
           <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité">Popularité
             <i class="fas fa-chevron-down"></i>
           </button>
@@ -89,14 +88,13 @@
       </div>
     </div>
 
-    <div id="lightbox"><div class="content">
-        <div class="cross">
-          <img src="./assets/icons/close.svg">
+    <div id="lightbox">
+      <div class="content">
+        <div class="cross"><img src="./assets/icons/close.svg"></div>
+        <div class="previous"><img src="./assets/icons/circle-left.svg">
         </div>
-        <!-- <i class="fa-solid fa-xmark"></i> -->
-        <div class="previous"><i class="fas fa-chevron-left"></i></div>
         <div id="mediaContainer"></div>
-        <div class="next"><i class="fas fa-chevron-right"></i></div>
+        <div class="next"><img src="./assets/icons/circle-right.svg"></div>
       </div>
     </div>
 

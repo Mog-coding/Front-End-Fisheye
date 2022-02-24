@@ -43,7 +43,7 @@ export default class MediaFactory {
         const videoCardP2 = document.createElement('a');
         videoCardP2.classList.add("containerVideoCards");
         const vid = document.createElement('video');
-        vid.setAttribute('data-id', this.media.id); /** */
+        vid.setAttribute('data-id', this.media.id); 
         vid.classList.add("imageMedia");
         const source = document.createElement('source');
         source.setAttribute('src', 'assets/Media/' + this.media.video);

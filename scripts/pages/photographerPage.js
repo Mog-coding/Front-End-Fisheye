@@ -66,8 +66,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // initialise la Vue media avec media triés via string "Popularité"
         const buttonValue = document.querySelector('#buttonDrop1').value;
         trieMedia(buttonValue);
-        heartLikes();
+        runHeartLikes();
+        runLightBox();
 
+        // Fait disparaitre/apparaitre menu DropDown
         function disapperMenuDrop() {
             buttonDrop2.classList.add('disappear');
             buttonDrop3.classList.add('disappear');
@@ -91,18 +93,16 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             }
         });
 
-        // si clic en dehors menu dropDown quand ouvert: le fermer
+        // si clic en dehors menu dropDown ET menu ouvert: fermer menu
         window.addEventListener("click", (event) => {
-            if (!(event.target.id === 'buttonDrop1'
-                || event.target.id === 'buttonDrop2'
-                || event.target.id === 'buttonDrop3')
+            if (!(event.target.parentElement.id === 'containerDrop')
                 &&
                 (!document.querySelector('#buttonDrop2').classList.contains('disappear'))) {
                 disapperMenuDrop();
                 document.querySelector('#buttonDrop1 i').classList.remove('rotate');
             }
         })
-
+    
         // Trie les objets Media selon valeur string et crée une vue de ces 
         // Medias triés en ayant supprimés les Medias précédents
         function trieMedia(buttonValue) {
@@ -153,7 +153,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             disapperMenuDrop();
             // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
             trieMedia(button2Value);
-            heartLikes();
+            runHeartLikes();
+            runLightBox()
         })
 
         // Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
@@ -168,14 +169,15 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             node3.innerText = button1Value;
             disapperMenuDrop();
             trieMedia(button3Value);
-            heartLikes();
+            runHeartLikes();
+            runLightBox()
         })
 
         /*************
          *************     Likes     *******************
          *************/
 
-        function heartLikes() {
+        function runHeartLikes() {
             // Tableau arrayLike contenant tous les likes de chaque média
             const arrayLike = [];
             document.querySelectorAll(".likeNumber").forEach(function (el) {
@@ -217,6 +219,39 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             });
         }
 
+
+        /*************
+         *************     partie LIGHTBOX     *******************
+         *************/
+
+        function runLightBox() {
+            // LightBox instance de Lightbox
+            let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
+
+            // Clic media lance lightbox
+            document.querySelectorAll(".imageMedia").forEach((el) => {
+                el.addEventListener("click", (event) => {
+                    // Appel méthode show() avec id de l'élément cliqué
+                    lightBox.show(event.currentTarget.dataset.id);
+                })
+            });
+            // Clic fermeture LigtBox
+            document.querySelector(".cross").addEventListener("click", function (event) {
+                document.querySelector("#lightbox").classList.remove("show");
+                // Supression du media précédemment affiché ds lightbox
+                document.querySelector("#mediaContainer").firstElementChild.remove();
+            })
+            // Clic next -> media suivant
+            document.querySelector("#lightbox .next").addEventListener("click", () => {
+                lightBox.next();
+            })
+            // Clic previous -> media précédent
+            document.querySelector("#lightbox .previous").addEventListener("click", () => {
+                lightBox.previous();
+            })
+        }
+
+
         /*************
          *************     partie FORMULAIRE     *******************
          *************/
@@ -247,9 +282,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
         /* Submit formulaire
         Si saisies valides: efface errorMessage, reset form, affiche thankMessage,
-        sinon, affiche erreurs message + empêche soumission form
-        */
-
+        sinon, affiche erreurs message + empêche soumission form */
         document.querySelector('#contactForm').addEventListener('submit', function (event) {
             event.preventDefault();
             formValid = false;
@@ -275,40 +308,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         });
 
 
-        /*************
-         *************     partie LIGHTBOX     *******************
-         *************/
-
-        // lightBox instance de Lightbox
-        let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
-
-        // Clic media lance lightbox
-        document.querySelectorAll(".imageMedia").forEach((el) => {
-            el.addEventListener("click", (event) => {
-                //appel méthode show() avec id de l'élément cliqué
-                lightBox.show(event.currentTarget.dataset.id);
-            })
-        });
-        // Clic fermeture LigtBox
-        document.querySelector(".cross").addEventListener("click", function (event) {
-            document.querySelector("#lightbox").classList.remove("show");
-            //supression du media précédemment affiché ds lightbox
-            document.querySelector("#mediaContainer").firstElementChild.remove();
-        })
-        // Clic next -> media suivant
-        document.querySelector("#lightbox .next").addEventListener("click", () => {
-            lightBox.next();
-        })
-        // Clic previous -> media précédent
-        document.querySelector("#lightbox .previous").addEventListener("click", () => {
-            lightBox.previous();
-        })
 
 
 
 
 
-
-        
     })
 //FIN ASYNCHRONE
