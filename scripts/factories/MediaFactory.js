@@ -23,8 +23,10 @@ export default class MediaFactory {
         const divSousTitre = document.createElement('div');
         divSousTitre.classList.add('sousTitre');
         const divNomImage = document.createElement('div');
+        divNomImage.classList.add('sousTitreText');
         divNomImage.innerText = this.media.title;
         const divLike = document.createElement('div');
+        divLike.classList.add('likeHeart');
         const spanLike = document.createElement('span'); 
         spanLike.classList.add('likeNumber');
         spanLike.innerText = this.media.likes;
@@ -52,7 +54,9 @@ export default class MediaFactory {
         divSousTitre.classList.add('sousTitre');
         const divNomVideo = document.createElement('div');
         divNomVideo.innerText = this.media.title;
+        divNomVideo.classList.add('sousTitreText');
         const divLike = document.createElement('div');
+        divLike.classList.add('likeHeart');
         const spanLike = document.createElement('span'); 
         spanLike.classList.add('likeNumber');
         spanLike.innerText = this.media.likes;
@@ -67,64 +71,33 @@ export default class MediaFactory {
         videoCardP2.appendChild(divSousTitre);
         return videoCardP2
     }
-    //
+    // Si instance = Image, return figure contenant html et lien image
+    // Si instance = Video, return figure contenant html et lien video 
     createLightboxContent(){
       if(this.media instanceof Image){
+          const figure = document.createElement('figure');
+          figure.classList.add('figureImg');
           const img = document.createElement('img');
           img.setAttribute('src', 'assets/Media/' + this.media.image);
-          return img;
+          const figCaption = document.createElement('figcaption');
+          figCaption.innerText = this.media.title;
+          figure.appendChild(img);
+          figure.appendChild(figCaption);
+          return figure;
       }else if(this.media instanceof Video){
-         const src = document.createElement('source');
-         src.setAttribute('src', 'assets/Media/' + this.media.video);
-         src.setAttribute('type', 'video/mp4');
+         const figure = document.createElement('figure');
+         figure.classList.add('figureVid');
          const vid = document.createElement('video');
+         const figCaption = document.createElement('figcaption');
+         figCaption.innerText = this.media.title;
+         vid.setAttribute('type', 'video/mp4');
+         vid.setAttribute('src', 'assets/Media/' + this.media.video);
          vid.setAttribute('controls', true);
          vid.setAttribute('autoplay', true);
          vid.setAttribute('loop', true);
-         vid.appendChild(src);
-         return vid;
+         figure.appendChild(vid);
+         figure.appendChild(figCaption);
+         return figure;
       }
     }
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-         /*
-        const wrapperHtml = `    
-        <img src="assets/Media/${this.media.image}" alt="" />
-        <div class="sousTitre">
-          <div>${this.media.title}</div>
-          <div>
-          <span>${this.media.likes}</span>
-          <i class="fas fa-heart heart"></i>
-          </div>
-        </div>`
-        photoCardP2.innerHTML = wrapperHtml;
-        return photoCardP2
-        */
-
-                /*
-        const wrapperHtml = `    
-        <video>
-         <source src="assets/Media/${this.media.video}" type="video/mp4" />
-        </video>
-        <div class="sousTitre">
-          <div>${this.media.title}</div>
-          <div><i class="fas fa-heart"></i></div>
-        </div>`
-        photoCardP2.innerHTML = wrapperHtml;
-        return photoCardP2
-        */

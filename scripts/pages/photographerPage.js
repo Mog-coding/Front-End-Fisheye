@@ -102,7 +102,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 document.querySelector('#buttonDrop1 i').classList.remove('rotate');
             }
         })
-    
+
         // Trie les objets Media selon valeur string et crée une vue de ces 
         // Medias triés en ayant supprimés les Medias précédents
         function trieMedia(buttonValue) {
@@ -227,7 +227,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         function runLightBox() {
             // LightBox instance de Lightbox
             let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
-
+            console.log(dataMedia);
             // Clic media lance lightbox
             document.querySelectorAll(".imageMedia").forEach((el) => {
                 el.addEventListener("click", (event) => {
@@ -242,11 +242,11 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 document.querySelector("#mediaContainer").firstElementChild.remove();
             })
             // Clic next -> media suivant
-            document.querySelector("#lightbox .next").addEventListener("click", () => {
+            document.querySelector("#lightbox .next img").addEventListener("click", () => {
                 lightBox.next();
             })
             // Clic previous -> media précédent
-            document.querySelector("#lightbox .previous").addEventListener("click", () => {
+            document.querySelector("#lightbox .previous img").addEventListener("click", () => {
                 lightBox.previous();
             })
         }

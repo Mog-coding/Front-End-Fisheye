@@ -5,15 +5,7 @@
 .wrapper {
   padding: 0 100px;
 }
-/*
-.overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-background: green;
-}
-*/
+
 header {
   padding-left: 0px;
 }
@@ -84,7 +76,7 @@ section {
   flex-direction: column;
   z-index: 2;
   padding: 0 10px;
-  background-color:rgb(144, 28, 28);
+  background-color: rgb(144, 28, 28);
   border-radius: 4px;
 }
 .buttonDropDown {
@@ -94,7 +86,7 @@ section {
   padding-left: 20px;
 }
 .disappear {
-  display:none;
+  display: none;
 }
 /*style boutons dropdown*/
 #buttonDrop1 {
@@ -102,11 +94,11 @@ section {
   justify-content: space-between;
   align-items: center;
 }
-#buttonDrop2{
+#buttonDrop2 {
   border-top: 2px white solid;
   border-radius: unset;
 }
-#buttonDrop3{
+#buttonDrop3 {
   border-top: 2px white solid;
   border-radius: unset;
 }
@@ -126,6 +118,7 @@ section {
   justify-content: space-between;
   flex-wrap: wrap;
   padding-top: 30px;
+  margin-bottom: 30px;
 }
 .containerPhotoCards,
 .containerVideoCards {
@@ -138,23 +131,34 @@ section {
   height: 300px;
   width: 100%;
   border-radius: 5px;
-  /*
+  /* animation
   transform: scale(1);
   transition: transform 0.5s linear;
   */
-}/*
+} /*
 .containerPhotoCards img:hover{
     transform: scale(1.1);
   }*/
 .sousTitre {
   display: flex;
   justify-content: space-between;
+  flex-wrap: nowrap;
   color: rgb(144, 28, 28);
   font-size: 1.6em;
   margin-top: 3px;
 }
+.sousTitreText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} 
 .sousTitre i {
   margin-left: 6px;
+}
+.likeHeart {
+  display: flex;
+  align-items:baseline;
+  flex-wrap: nowrap;
 }
 .heart {
   color: rgb(219, 136, 118);
@@ -172,7 +176,7 @@ section {
     transform: translateX(-5%);
   }
 }
-.heartColor{
+.heartColor {
   color: rgb(144, 28, 28);
 }
 .buttonContactezMoi {
@@ -223,7 +227,8 @@ section {
   position: absolute;
   right: 25.5%;
   top: 40px;
-  cursor: pointer;
+  filter: invert(100%) sepia(8%) saturate(6063%) hue-rotate(58deg)
+    brightness(121%) contrast(108%);
 }
 .containerModal {
   display: flex;
@@ -290,6 +295,11 @@ form input {
   height: 70px;
   margin: 30px 0 0 10px;
   padding: 11px;
+  text-align: center;
+}
+.buttonForm:hover {
+  color: #901c1c;
+  background-color: rgb(236, 225, 225);
 }
 .thankMessage {
   justify-content: center;
@@ -299,10 +309,10 @@ form input {
   font-size: 2em;
 }
 
-
 /**
 ******************* LIGHTBOX *******************
 **/
+
 #lightbox {
   position: fixed;
   z-index: 4;
@@ -311,68 +321,103 @@ form input {
   background-color: rgba(248, 243, 243, 0.92);
   top: 0px;
   left: 0px;
-  display: none; 
+  display: none;
 }
 #lightbox.show {
   display: block;
 }
-.content{
+.content {
   display: flex;
   justify-content: center;
   position: relative;
 }
 #mediaContainer {
-  height: 95vh;
+  margin-top: 30px;
 }
-
+#mediaContainer .figureImg {
+  height: 90vh;
+  margin: 0px;
+}
+#mediaContainer .figureVid {
+  height: 75vh;
+  margin: 0px;
+}
+#mediaContainer figcaption {
+  text-align: center;
+  font-size: 1.5em;
+  color: rgb(144, 28, 28);
+}
 #mediaContainer img,
 #mediaContainer video {
-  height: 100%;
+  max-height: 95%;
   width: 100%;
-  object-fit: contain ;
+  object-fit: contain;
 }
-.cross{
+.cross {
   z-index: 6;
   position: absolute;
   right: 50px;
-  top: 20px;
-  transform: scale(1.3);
-  padding: 20px
+  top: 10px;
+  transform: scale(1.1);
+  padding: 20px;
 }
-.cross img, .next img, .previous img{
-  filter: invert(61%) sepia(17%) saturate(1070%) hue-rotate(323deg) brightness(97%) contrast(86%);
+.next,
+.previous {
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.next, .previous{
- z-index: 5;
- display: flex;
- flex-direction: column;
- justify-content: center;
- width: 4vw;
- padding: 0 40px;
- transform: scale(1.2);
+.next img,
+.previous img {
+  width: 80px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.previous img {
+  padding-right: 20px;
+}
+.next img {
+  padding-left: 20px;
+}
+.cross img,
+.next img,
+.previous img {
+  filter: invert(61%) sepia(17%) saturate(1070%) hue-rotate(323deg)
+    brightness(97%) contrast(86%);
+}
+.cross img:hover,
+.next img:hover,
+.previous img:hover,
+.close:hover {
+  filter: invert(19%) sepia(27%) saturate(6301%) hue-rotate(346deg)
+    brightness(84%) contrast(93%);
+  cursor: pointer;
+}
 
 /**
 ******************* RESPONSIVE *******************
 **/
+
+@media screen and (max-width: 1300px) {
+  /* Lightbox */
+  #mediaContainer {
+    margin-top: 10px;
+  }
+  .cross {
+    right: 20px;
+    top: 10px;
+    transform: unset;
+  }
+  .next img,
+  .previous img {
+    width: 60px;
+  }
+  .previous img {
+    padding-right: 10px;
+  }
+  .next img {
+    padding-left: 10px;
+  }
+}
 
 @media screen and (max-width: 1180px) {
   .containerMain h1 {
@@ -393,6 +438,16 @@ form input {
   }
 }
 
+@media screen and (max-width: 1100px) {
+  /* Lightbox */
+  #mediaContainer .figureImg {
+    height: 80vh;
+  }
+  #mediaContainer .figureVid {
+    height: 65vh;
+  }
+}
+
 @media screen and (max-width: 1030px) {
   .wrapper {
     padding: 0 30px;
@@ -400,38 +455,55 @@ form input {
   #main {
     padding: 0px;
   }
-  .info{
+  .info {
     padding-left: 20px;
   }
-  
   .photograph-header {
-    height: unset; 
-  } 
+    height: unset;
+  }
   .buttonContactezMoi {
     position: fixed;
     height: 50px;
     bottom: 0px;
     left: 5px;
-    
   }
-  .containerCompteur{
+  .containerCompteur {
     width: 230px;
     right: 15px;
     height: 50px;
   }
+  /* Lightbox */
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  #mediaContainer .figureImg {
+    height: 75vh;
+  }
+  #mediaContainer .figureVid {
+    height: 65vh;
+  }
+  .previous img {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+  .next img {
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
 }
 
 @media screen and (max-width: 950px) {
-
   .containerPhotoCards,
   .containerVideoCards {
     width: 100%;
     margin-bottom: 20px;
   }
-  .sousTitre{
+  .sousTitre {
     margin-top: 0px;
   }
-  /* form */  
+  /* form */
   .modal {
     width: auto;
   }
@@ -448,6 +520,7 @@ form input {
     top: 3%;
   }
 }
+
 @media screen and (max-width: 730px) {
   .containerMain h1 {
     font-size: 2.5em;
@@ -457,6 +530,7 @@ form input {
     width: 140px;
   }
 }
+
 @media screen and (max-width: 650px) {
   .containerMain h1 {
     font-size: 2.1em;
@@ -468,12 +542,13 @@ form input {
     padding: 20px 10px;
   }
 }
+
 @media screen and (max-width: 470px) {
   .buttonContactezMoi {
     left: 5px;
     bottom: 55px;
   }
-  .containerCompteur{
+  .containerCompteur {
     left: 15px;
   }
 }

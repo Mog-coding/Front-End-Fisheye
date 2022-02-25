@@ -1,39 +1,46 @@
 /** userCard **/
 .nameCards {
-    color: #d3573c;
-    font-size: 2.3em;
-    font-weight: normal;
-    margin: 19px 0 0 0;
-  }
-  .imgCards {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    padding: 0 20px;
-  }
-  .city {
-    font-size: 0.8em;
-    color: rgb(144, 28, 28);
-  }
-  .tagline {
-    font-size: 0.6em;
-    font-weight: bold;
-    margin-top: 4px;
-  }
-  .price {
-    font-size: 0.6em;
-    color: rgb(134, 134, 134);
-    margin-top: 2px;
-  }
+  color: #d3573c;
+  font-size: 2.3em;
+  font-weight: normal;
+  margin: 19px 0 0 0;
+}
+.imgCards {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0 20px;
+}
+.city {
+  font-size: 0.8em;
+  color: rgb(144, 28, 28);
+}
+.tagline {
+  font-size: 0.6em;
+  font-weight: bold;
+  margin-top: 4px;
+}
+.price {
+  font-size: 0.6em;
+  color: rgb(134, 134, 134);
+  margin-top: 2px;
+}
+.containerUserCard:hover h2 {
+  color: rgb(144, 28, 28);
+}
 
-  /** contact bouton **/
-  .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+/** contact bouton **/
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.contact_button:hover {
+  background-color: #db8876;
+  color: black;
 }
