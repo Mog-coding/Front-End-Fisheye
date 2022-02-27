@@ -3,18 +3,36 @@
 **/
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 14px 100px 0px 100px;
+}
+.logo {
+  height: 50px;
+}
+h1 {
+  color: #901c1c;
+  font-weight: normal;
+  font-size: 2.15em;
+}
+
+@media screen and (max-width: 1030px) {
+  header {
+    padding: 0 30px;
+  }
+  header h1 {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  header {
+    flex-direction: column;
     align-items: center;
-    height: 90px;
-    padding: 23px 100px 0 100px;
+    height: unset;
+    padding-top: 20px;
   }
-  .logo {
-    height: 50px;
-  }
-  h1 {
-    color: #901c1c;
-    font-weight: normal;
-    font-size: 2.15em;
-  }
+}

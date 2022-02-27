@@ -11,7 +11,7 @@ export default class MediaFactory {
             throw 'Unknown type format'
         }
     }
-    // Crée les Medias Images page2 dans la section containerPhotos
+    // Crée les Medias Images page2 dans la section containerMedias
     createImageCard() {
         const imageCardP2 = document.createElement('a');
         imageCardP2.classList.add("containerPhotoCards");
@@ -40,7 +40,7 @@ export default class MediaFactory {
         imageCardP2.appendChild(divSousTitre);
         return imageCardP2
     }
-    // Crée les Medias Videos page2 dans la section containerPhotos
+    // Crée les Medias Videos page2 dans la section containerMedias
     createVideoCard() {
         const videoCardP2 = document.createElement('a');
         videoCardP2.classList.add("containerVideoCards");

@@ -28,6 +28,7 @@
 }
 .containerUserCard:hover h2 {
   color: rgb(144, 28, 28);
+  font-weight: bold;
 }
 
 /** contact bouton **/

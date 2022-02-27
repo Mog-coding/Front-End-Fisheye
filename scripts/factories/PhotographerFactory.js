@@ -44,8 +44,8 @@ export default class PhotographerFactory {
     }
     //méthode pour créer la bannière photographe de la page 2
     createPhotographerBanner() {
-        const mainP2 = document.createElement('div');
-        mainP2.classList.add("containerMain", "photograph-header");
+        const articleP2 = document.createElement('div');
+        articleP2.classList.add("containerArticle", "photograph-header");
         const divInfo = document.createElement('div');
         divInfo.classList.add('info');
         const h1 = document.createElement('h1');
@@ -71,10 +71,10 @@ export default class PhotographerFactory {
         divInfo.appendChild(divTagline);
         divButton.appendChild(buttonContact);
         divImage.appendChild(imgPhotographer);
-        mainP2.appendChild(divInfo);
-        mainP2.appendChild(divButton);
-        mainP2.appendChild(divImage);
-        return mainP2;
+        articleP2.appendChild(divInfo);
+        articleP2.appendChild(divButton);
+        articleP2.appendChild(divImage);
+        return articleP2;
         /*
         const wrapperHtml = `    
         <div>
@@ -88,8 +88,8 @@ export default class PhotographerFactory {
         <div>
           <img class="userCards imgCards" src="assets/photographers/${this.photographer.portrait}" alt="" />
         </div>`
-        mainP2.innerHTML = wrapperHtml;
-        return mainP2
+        articleP2.innerHTML = wrapperHtml;
+        return articleP2
         */
     }
 }

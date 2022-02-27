@@ -26,10 +26,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             return objet.id === identifiant
         });
 
-        // VueMain instance de class PhotographerFactory et création de bannière
-        // dans <main> via méthode de class
-        const VueMain = new PhotographerFactory(foundPhotographer);
-        document.querySelector("#main").appendChild(VueMain.createPhotographerBanner());
+        // VueArticle instance de class PhotographerFactory et création de bannière
+        // dans <article> via méthode de class
+        const VueArticle = new PhotographerFactory(foundPhotographer);
+        document.querySelector("#article").appendChild(VueArticle.createPhotographerBanner());
 
         /*************
          *************     partie MEDIA     *******************
@@ -51,9 +51,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             //Création Vue template Media via méthode MediaFactory dans <section> 
             dataMediaInstance.forEach((el) => {
                 if (el.media instanceof Image) {
-                    document.querySelector(".containerPhotos").appendChild(el.createImageCard());
+                    document.querySelector(".containerMedias").appendChild(el.createImageCard());
                 } else if (el.media instanceof Video) {
-                    document.querySelector(".containerPhotos").appendChild(el.createVideoCard());
+                    document.querySelector(".containerMedias").appendChild(el.createVideoCard());
                 }
             }
             );
@@ -129,7 +129,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 });
             }
             //supression des anciens Medias
-            const nodeMedia = document.querySelector(".containerPhotos");
+            const nodeMedia = document.querySelector(".containerMedias");
             while (nodeMedia.firstChild) {
                 nodeMedia.removeChild(nodeMedia.firstChild);
             };
