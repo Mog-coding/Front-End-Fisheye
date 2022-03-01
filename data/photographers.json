@@ -7,7 +7,8 @@
 			"country": "UK",
 			"tagline": "Voir le beau dans le quotidien",
 			"price": 400,
-			"portrait": "MimiKeel.jpg"
+			"portrait": "MimiKeel.jpg",
+			"alt": "Portrait de la photographe Mimi Keel"
 		},
 		{
 			"name": "Ellie-Rose Wilkens",
@@ -16,7 +17,8 @@
 			"country": "France",
 			"tagline": "Capturer des compositions complexes",
 			"price": 250,
-			"portrait": "EllieRoseWilkens.jpg"
+			"portrait": "EllieRoseWilkens.jpg",
+			"alt": "Portrait de la photographe Ellie-Rose Wilkems aux cheveux muticolores"
 		},
 		{
 			"name": "Tracy Galindo",
@@ -25,7 +27,8 @@
 			"country": "Canada",
 			"tagline": "Photographe freelance",
 			"price": 500,
-			"portrait": "TracyGalindo.jpg"
+			"portrait": "TracyGalindo.jpg",
+			"alt": "Portrait du photographe Tracy Galindo à la barbe proéminente"
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -34,7 +37,8 @@
 			"country": "Mexico",
 			"tagline": "Toujours aller de l'avant",
 			"price": 350,
-			"portrait": "NabeelBradford.jpg"
+			"portrait": "NabeelBradford.jpg",
+			"alt": "Portrait du photographe Nabeel Bradford pensif face à un couché de soleil"
 		},
 		{
 			"name": "Rhode Dubois",
@@ -43,7 +47,8 @@
 			"country": "Spain",
 			"tagline": "Je crée des souvenirs",
 			"price": 275,
-			"portrait": "RhodeDubois.jpg"
+			"portrait": "RhodeDubois.jpg",
+			"alt": "Portrait de la photographe Rhode Dubois sur fond noir"
 		},
 		{
 			"name": "Marcel Nikolic",
@@ -52,7 +57,8 @@
 			"country": "Germany",
 			"tagline": "Toujours à la recherche de LA photo",
 			"price": 300,
-			"portrait": "MarcelNikolic.jpg"
+			"portrait": "MarcelNikolic.jpg",
+			"alt": "Portrait du photographe Marcel Nikolic réparant son appareil photo"
 		}
 	],
 	"media": [
@@ -63,7 +69,8 @@
 			"image": "Fashion_Yellow_Beach.jpg",
 			"likes": 62,
 			"date": "2011-12-08",
-			"price": 55
+			"price": 55,
+			"alt": "Femme en survêtement jaune, bottes blanches à talons, pose sur fond de ciel bleu"
 		},
 		{
 			"id": 8520927,
@@ -72,7 +79,8 @@
 			"image": "Fashion_Urban_Jungle.jpg",
 			"likes": 11,
 			"date": "2011-11-06",
-			"price": 55
+			"price": 55,
+			"alt": "Femme blonde en pantalon et haut imprimé jungle, pose accroupie au milieu de la route sur fond de gratte-ciels"
 		},
 		{
 			"id": 9025895,
@@ -81,7 +89,8 @@
 			"image": "Fashion_Pattern_on_Pattern.jpg",
 			"likes": 72,
 			"date": "2013-08-12",
-			"price": 55
+			"price": 55,
+			"alt": "Femme brune en robe courte à rayures verticales noires et jaunes, pose devant un mur en damier noir et blanc"
 		},
 		{
 			"id": 9275938,
@@ -90,7 +99,8 @@
 			"image": "Event_WeddingGazebo.jpg",
 			"likes": 69,
 			"date": "2018-02-22",
-			"price": 55
+			"price": 55,
+			"alt": "Kiosque de mariage sur fond d'arbres"
 		},
 		{
 			"id": 2053494,
@@ -99,7 +109,8 @@
 			"image": "Event_Sparklers.jpg",
 			"likes": 2,
 			"date": "2020-05-25",
-			"price": 55
+			"price": 55,
+			"alt": "Un couple de dos face à des gens tenant des cierges"
 		},
 		{
 			"id": 7324238,
@@ -108,7 +119,8 @@
 			"image": "Event_18thAnniversary.jpg",
 			"likes": 33,
 			"date": "2019-06-12",
-			"price": 55
+			"price": 55,
+			"alt": "Salle de réception avec au premier plan une table dressée et plus loin des ballons en forme de dix huit"
 		},
 		{
 			"id": 8328953,
@@ -126,7 +138,8 @@
 			"image": "Art_Triangle_Man.jpg",
 			"likes": 88,
 			"date": "2007-05-07",
-			"price": 55
+			"price": 55,
+			"alt": "Peinture stylisée d'un homme la tête en arrière sur un mur bleu"
 		},
 		{
 			"id": 8523492,
@@ -135,7 +148,8 @@
 			"image": "Art_Purple_light.jpg",
 			"likes": 24,
 			"date": "2018-05-05",
-			"price": 55
+			"price": 55,
+			"alt": "Tunnel faiblement éclairé d'une lumière pourpre avec des graphitis sur les murs"
 		},
 		{
 			"id": 75902334,
@@ -144,7 +158,8 @@
 			"image": "Art_Mine.jpg",
 			"likes": 75,
 			"date": "2019-11-25",
-			"price": 55
+			"price": 55,
+			"alt": "Peinture stylisée d'oiseaux rouges et bleus formants un pattern"
 		},
 
 		{
@@ -154,7 +169,8 @@
 			"image": "Sport_2000_with_8.jpg",
 			"likes": 52,
 			"date": "2013-02-30",
-			"price": 70
+			"price": 70,
+			"alt": "équipe d'aviron vue du dessus, eau noire"
 		},
 		{
 			"id": 92758372,
@@ -163,7 +179,8 @@
 			"image": "Fashion_Wings.jpg",
 			"likes": 58,
 			"date": "2018-07-17",
-			"price": 70
+			"price": 70,
+			"alt": "Une femme en combinaison bleu ciel les yeux fermés levant le bras gauche, derrière elle un homme les yeux fermés levant le bras droit"
 		},
 		{
 			"id": 32958383,
@@ -172,7 +189,8 @@
 			"image": "Fashion_Melody_Red_on_Stripes.jpg",
 			"likes": 11,
 			"date": "2019-08-12",
-			"price": 70
+			"price": 70,
+			"alt": "Une femme descend des escaliers en robe rouge"
 		},
 		{
 			"id": 928587383,
@@ -181,7 +199,8 @@
 			"image": "Event_VentureConference.jpg",
 			"likes": 2,
 			"date": "2019-01-02",
-			"price": 70
+			"price": 70,
+			"alt": "Réunion de bureau, ordinateur portable, tableau blanc et post-it"
 		},
 		{
 			"id": 725639493,
@@ -190,7 +209,8 @@
 			"image": "Event_ProductPitch.jpg",
 			"likes": 3,
 			"date": "2019-05-20",
-			"price": 70
+			"price": 70,
+			"alt": "Un homme présente un produit à des personnes assises en face de lui"
 		},
 		{
 			"id": 23394384,
@@ -199,7 +219,8 @@
 			"image": "Event_KeyboardCheck.jpg",
 			"likes": 52,
 			"date": "2019-07-18",
-			"price": 70
+			"price": 70,
+			"alt": "Gros plan d'une femme sur scène assise derrière un piano électrique"
 		},
 		{
 			"id": 87367293,
@@ -208,7 +229,8 @@
 			"image": "Event_Emcee.jpg",
 			"likes": 23,
 			"date": "2018-02-22",
-			"price": 70
+			"price": 70,
+			"alt": "Chanteuse sur scène, micro dans la main et gilet à franges"
 		},
 		{
 			"id": 593834784,
@@ -217,7 +239,8 @@
 			"image": "Animals_Majesty.jpg",
 			"likes": 52,
 			"date": "2017-03-13",
-			"price": 70
+			"price": 70,
+			"alt": "Cerf à l'orée d'un bois"
 		},
 		{
 			"id": 83958935,
@@ -244,7 +267,8 @@
 			"image": "Travel_Outdoor_Baths.jpg",
 			"likes": 101,
 			"date": "2017-04-03",
-			"price": 45
+			"price": 45,
+			"alt": "Des gens qui se baignent dans une source chaude"
 		},
 		{
 			"id": 73434243,
@@ -253,7 +277,8 @@
 			"image": "Travel_Road_into_Hill.jpg",
 			"likes": 99,
 			"date": "2018-04-30",
-			"price": 45
+			"price": 45,
+			"alt": "Panorama de petites collines traversées par une route en lacets"
 		},
 		{
 			"id": 23425523,
@@ -262,7 +287,8 @@
 			"image": "Travel_Bridge_into_Forest.jpg",
 			"likes": 34,
 			"date": "2016-04-05",
-			"price": 45
+			"price": 45,
+			"alt": "Vue d'une forêt depuis une petite passerelle"
 		},
 		{
 			"id": 23134513,
@@ -271,7 +297,8 @@
 			"image": "Travel_Boat_Wanderer.jpg",
 			"likes": 23,
 			"date": "2017-03-18",
-			"price": 45
+			"price": 45,
+			"alt": "Vue sur des montagnes depuis une barque au milieu d'une large rivière"
 		},
 		{
 			"id": 92352352,
@@ -280,7 +307,8 @@
 			"image": "Portrait_Sunkissed.jpg",
 			"likes": 66,
 			"date": "2018-05-24",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'une jeune femme souriante, cheveux roux en chignons et rouge aux lèvres"
 		},
 		{
 			"id": 34513453,
@@ -289,7 +317,8 @@
 			"image": "Portrait_Shaw.jpg",
 			"likes": 52,
 			"date": "2017-04-21",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'un homme, coupe afro, visage de trois quart sur fond noir"
 		},
 		{
 			"id": 23523533,
@@ -298,7 +327,8 @@
 			"image": "Portrait_Alexandra.jpg",
 			"likes": 95,
 			"date": "2018-11-02",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'une femme de face, cheveux et sourcils blanc sur fond blanc"
 		},
 		{
 			"id": 525834234,
@@ -307,7 +337,8 @@
 			"image": "Portrait_AfternoonBreak.jpg",
 			"likes": 25,
 			"date": "2019-01-02",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'un homme de face, cigarette à la main sur fond blanc"
 		},
 
 		{
@@ -317,7 +348,8 @@
 			"image": "Travel_Lonesome.jpg",
 			"likes": 88,
 			"date": "2019-02-03",
-			"price": 45
+			"price": 45,
+			"alt": "Panorama de montagne"
 		},
 		{
 			"id": 625025343,
@@ -326,7 +358,8 @@
 			"image": "Travel_HillsideColor.jpg",
 			"likes": 85,
 			"date": "2019-04-03",
-			"price": 45
+			"price": 45,
+			"alt": "Vue d'un village sur une falaise avec des maisons colorées"
 		},
 		{
 			"id": 2525345343,
@@ -335,7 +368,8 @@
 			"image": "Portrait_Wednesday.jpg",
 			"likes": 34,
 			"date": "2019-04-07",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'un enfant la tête posée sur ses mains"
 		},
 		{
 			"id": 2523434634,
@@ -344,7 +378,8 @@
 			"image": "Portrait_Nora.jpg",
 			"likes": 63,
 			"date": "2019-04-07",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'une jeune femme portant des lunettes sous des néons"
 		},
 		{
 			"id": 398847109,
@@ -353,7 +388,8 @@
 			"image": "Portrait_Background.jpg",
 			"likes": 55,
 			"date": "2019-06-20",
-			"price": 45
+			"price": 45,
+			"alt": "Portrait d'une femme menton levé sur fond noir"
 		},
 		{
 			"id": 2534342,
@@ -362,7 +398,8 @@
 			"image": "Event_SeasideWedding.jpg",
 			"likes": 25,
 			"date": "2019-06-21",
-			"price": 45
+			"price": 45,
+			"alt": "Table dressée sur la plage"
 		},
 		{
 			"id": 65235234,
@@ -371,7 +408,8 @@
 			"image": "Event_PintoWedding.jpg",
 			"likes": 52,
 			"date": "2019-06-25",
-			"price": 45
+			"price": 45,
+			"alt": "Couple de mariés au milieu des rochers"
 		},
 		{
 			"id": 23523434,
@@ -380,7 +418,8 @@
 			"image": "Event_BenevidesWedding.jpg",
 			"likes": 77,
 			"date": "2019-06-28",
-			"price": 45
+			"price": 45,
+			"alt": "Couple de marié sous la lumière des guirlandes"
 		},
 		{
 			"id": 5234343,
@@ -398,7 +437,8 @@
 			"image": "Animals_Rainbow.jpg",
 			"likes": 59,
 			"date": "2019-07-02",
-			"price": 60
+			"price": 60,
+			"alt": "Petit oiseau coloré pourpre, bleu et jaune sur une branche"
 		},
 
 		{
@@ -408,7 +448,8 @@
 			"image": "Travel_Tower.jpg",
 			"likes": 25,
 			"date": "2019-04-03",
-			"price": 60
+			"price": 60,
+			"alt": "2 Japonaises en kimono au milieu d'une rue pietonne avec temple au fond"
 		},
 		{
 			"id": 2523434,
@@ -417,7 +458,8 @@
 			"image": "Travel_SunsetonCanals.jpg",
 			"likes": 53,
 			"date": "2019-05-06",
-			"price": 60
+			"price": 60,
+			"alt": "Couché de soleil sur un canal de Venise"
 		},
 		{
 			"id": 95293534,
@@ -426,7 +468,8 @@
 			"image": "Travel_OpenMountain.jpg",
 			"likes": 33,
 			"date": "2019-05-12",
-			"price": 60
+			"price": 60,
+			"alt": "Vue sur un lac de montagne entouré de forêt"
 		},
 		{
 			"id": 356234343,
@@ -435,7 +478,8 @@
 			"image": "Travel_Bike_and_Stair.jpg",
 			"likes": 53,
 			"date": "2019-06-20",
-			"price": 60
+			"price": 60,
+			"alt": "Vélo au pied d'un escalier sur fond de lampadaire et d'immeubles Parisiens"
 		},
 		{
 			"id": 235234343,
@@ -444,7 +488,8 @@
 			"image": "Travel_Adventure_Door.jpg",
 			"likes": 63,
 			"date": "2019-06-26",
-			"price": 60
+			"price": 60,
+			"alt": "Mur en pierre avec des bas relief, ouvert sur un paysage"
 		},
 		{
 			"id": 6234234343,
@@ -453,7 +498,8 @@
 			"image": "Architecture_Contrast.jpg",
 			"likes": 52,
 			"date": "2019-06-30",
-			"price": 60
+			"price": 60,
+			"alt": "Vue sur les domes de batiment de style baroque"
 		},
 		{
 			"id": 6525666253,
@@ -462,7 +508,8 @@
 			"image": "Architecture_On_a_hill.jpg",
 			"likes": 63,
 			"date": "2019-07-20",
-			"price": 60
+			"price": 60,
+			"alt": "Panorama de montagne avec un village escarpé en premier plan"
 		},
 		{
 			"id": 98252523433,
@@ -471,7 +518,8 @@
 			"image": "Architecture_Dome.jpg",
 			"likes": 88,
 			"date": "2020-01-05",
-			"price": 60
+			"price": 60,
+			"alt": "La tour de Pise"
 		},
 		{
 			"id": 9259398453,
@@ -489,7 +537,8 @@
 			"image": "Architecture_Corner_Room.jpg",
 			"likes": 54,
 			"date": "2020-05-05",
-			"price": 60
+			"price": 60,
+			"alt": "Haut d'un immeuble en coin"
 		},
 		{
 			"id": 952343423,
@@ -507,7 +556,8 @@
 			"image": "Sport_Next_Hold.jpg",
 			"likes": 101,
 			"date": "2018-03-05",
-			"price": 65
+			"price": 65,
+			"alt": "Personne escaladant à main nue"
 		},
 		{
 			"id": 235343222,
@@ -516,7 +566,8 @@
 			"image": "sport_water_tunnel.jpg",
 			"likes": 103,
 			"date": "2018-03-10",
-			"price": 70
+			"price": 70,
+			"alt": "Surfeur dans le tube d'une vague"
 		},
 		{
 			"id": 7775342343,
@@ -525,7 +576,8 @@
 			"image": "Sport_Sky_Cross.jpg",
 			"likes": 77,
 			"date": "2018-04-16",
-			"price": 50
+			"price": 50,
+			"alt": "Skieur en plein saut, les skis croisés. Vue en contre plongée sur fond de ciel bleu"
 		},
 		{
 			"id": 9253445784,
@@ -534,7 +586,8 @@
 			"image": "Sport_Race_End.jpg",
 			"likes": 88,
 			"date": "2018-04-22",
-			"price": 65
+			"price": 65,
+			"alt": "Gros plan sur un groupe de coureuses, dans un stade, pendant une compétition"
 		},
 		{
 			"id": 22299394,
@@ -543,7 +596,8 @@
 			"image": "Sport_Jump.jpg",
 			"likes": 95,
 			"date": "2018-04-27",
-			"price": 70
+			"price": 70,
+			"alt": "Skateur en plein saut, dans un skate park en bord de mer"
 		},
 		{
 			"id": 3452342633,
@@ -552,7 +606,8 @@
 			"image": "Architecture_White_Light.jpg",
 			"likes": 52,
 			"date": "2018-05-03",
-			"price": 75
+			"price": 75,
+			"alt": "Verrière blanche, vue de dessous"
 		},
 		{
 			"id": 939234243,
@@ -561,7 +616,8 @@
 			"image": "Architecture_Water_on_Modern.jpg",
 			"likes": 55,
 			"date": "2018-05-10",
-			"price": 72
+			"price": 72,
+			"alt": "Architecture moderne, plan d'eau."
 		},
 		{
 			"id": 222959233,
@@ -570,7 +626,8 @@
 			"image": "Architecture_Horseshoe.jpg",
 			"likes": 85,
 			"date": "2018-05-15",
-			"price": 71
+			"price": 71,
+			"alt": "Immeuble moderne de plusieurs étages, en forme de fer à cheval. Vue de dessous"
 		},
 		{
 			"id": 965933434,
@@ -579,7 +636,8 @@
 			"image": "Architecture_Cross_Bar.jpg",
 			"likes": 66,
 			"date": "2018-05-20",
-			"price": 58
+			"price": 58,
+			"alt": "Grand immeuble moderne. Acier et verre grimpant vers le ciel. Vue de dessous"
 		},
 		{
 			"id": 777723343,
@@ -588,7 +646,8 @@
 			"image": "Architecture_Connected_Curves.jpg",
 			"likes": 79,
 			"date": "2018-05-21",
-			"price": 80
+			"price": 80,
+			"alt": "Immeuble blanc moderne. Tout en courbe"
 		}
 	]
 }

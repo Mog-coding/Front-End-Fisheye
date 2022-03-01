@@ -82,8 +82,10 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             if (buttonDrop2.classList.contains('disappear')) {
                 buttonDrop2.classList.remove('disappear');
                 buttonDrop3.classList.remove('disappear');
+                even.target.parentElement.setAttribute('aria-expanded', 'true');
             } else {
                 disapperMenuDrop();
+                even.target.parentElement.setAttribute('aria-expanded', 'false');
             };
             // Rotation icon FA chevron: ajout/retrait class rotate
             if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')) {

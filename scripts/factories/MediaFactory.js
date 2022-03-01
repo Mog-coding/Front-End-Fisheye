@@ -17,7 +17,7 @@ export default class MediaFactory {
         imageCardP2.classList.add("containerPhotoCards");
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/Media/' + this.media.image);
-        img.setAttribute('alt', 'assets/Media/' + this.media.title);
+        img.setAttribute('alt', this.media.alt);
         img.setAttribute('data-id', this.media.id);
         img.classList.add("imageMedia");
         const divSousTitre = document.createElement('div');

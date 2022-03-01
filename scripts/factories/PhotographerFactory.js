@@ -10,7 +10,7 @@ export default class PhotographerFactory {
         article.classList.add("containerUserCard");
         const imgPhotographer = document.createElement("img");
         imgPhotographer.setAttribute("src", this.photographer.portrait);
-        imgPhotographer.setAttribute("alt", this.photographer.name);
+        imgPhotographer.setAttribute("alt", this.photographer.alt);
         imgPhotographer.classList.add("userCards","imgCards");
         const h2 = document.createElement("h2");
         h2.classList.add("nameCards");
@@ -31,17 +31,8 @@ export default class PhotographerFactory {
         article.appendChild(divPrice);
         lienPhotoCard.appendChild(article);
         return lienPhotoCard
-        /*
-        const wrapperHtml = `    
-        <article class="containerUserCard">
-        <img class="userCards imgCards" src="${this.photographer.portrait}" alt="" />
-        <h2 class="nameCards">${this.photographer.name}</h2>
-        <div class="city">${this.photographer.city},${this.photographer.country}</div>
-        <div class="tagline">${this.photographer.tagline}</div>
-        <div class="price">${this.photographer.price}€/jour
-        </article>`
-        */
     }
+
     //méthode pour créer la bannière photographe de la page 2
     createPhotographerBanner() {
         const articleP2 = document.createElement('div');
@@ -65,7 +56,7 @@ export default class PhotographerFactory {
         const imgPhotographer = document.createElement('img');
         imgPhotographer.classList.add('imgCards');
         imgPhotographer.setAttribute('src', 'assets/photographers/' + this.photographer.portrait);
-        imgPhotographer.setAttribute("alt", this.photographer.name);
+        imgPhotographer.setAttribute("alt", this.photographer.alt);
         divInfo.appendChild(h1);
         divInfo.appendChild(divCity);
         divInfo.appendChild(divTagline);
@@ -75,21 +66,5 @@ export default class PhotographerFactory {
         articleP2.appendChild(divButton);
         articleP2.appendChild(divImage);
         return articleP2;
-        /*
-        const wrapperHtml = `    
-        <div>
-          <h1 class="nameCards">${this.photographer.name}</h1>
-          <div class="city">${this.photographer.city}, ${this.photographer.country}</div>
-          <div class="tagline">${this.photographer.tagline}</div>
-        </div>
-        <div>
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        </div>
-        <div>
-          <img class="userCards imgCards" src="assets/photographers/${this.photographer.portrait}" alt="" />
-        </div>`
-        articleP2.innerHTML = wrapperHtml;
-        return articleP2
-        */
     }
 }

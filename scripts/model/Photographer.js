@@ -6,7 +6,8 @@ export default class Photographer {
         this._country = data.country;
         this._tagline = data.tagline;
         this._price = data.price;
-        this._portrait = data.portrait
+        this._portrait = data.portrait;
+        this._alt = data.alt
     }
     get name() {
         return this._name;
@@ -28,5 +29,8 @@ export default class Photographer {
     }
     get portrait() {
         return `assets/photographers/${this._portrait}`;
+    }
+    get alt() {
+        return this._alt;
     }
 }

@@ -16,29 +16,29 @@
 <body>
 
   <div class="wrapper">
-    <header>
+    <header role="banner">
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="aria" />
+        <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
       </a>
     </header>
 
-    <main>
+    <main role="main">
       <!-- Bannière photographes -->
       <article id="article">
       </article>
 
       <!-- Menu Dropdown et Medias photographes -->
-      <section>
+      <section role="region">
         <!-- Menu Dropdown -->
         <div class="containerTrie">
           <div class="trierPar">Trier par</div>
-          <nav class="containerDropDown" id="containerDrop">
-            <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité">Popularité
-              <i class="fas fa-chevron-down"></i>
+          <nav class="containerDropDown" id="containerDrop" role="navigation">
+            <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité" aria-label="Trier par popularité">Popularité
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </button>
-            <button id="buttonDrop2" class="buttonDropDown contact_button disappear" value="Date">Date
+            <button id="buttonDrop2" class="buttonDropDown contact_button disappear" value="Date" aria-label="Trier par date">Date
             </button>
-            <button id="buttonDrop3" class="buttonDropDown contact_button disappear" value="Titre">Titre
+            <button id="buttonDrop3" class="buttonDropDown contact_button disappear" value="Titre" aria-label="Trier par titre">Titre
             </button>
           </nav>
         </div>
@@ -48,7 +48,7 @@
       </section>
 
       <!-- Compteur Like -->
-      <aside>
+      <aside role="complementary">
         <div class="containerCompteur">
           <div>
             <span id="compteur">564</span>
@@ -68,28 +68,28 @@
       </div>
       <div class='containerModal'>
         <h2></h2>
-        <form id="contactForm" novalidate>
+        <form id="contactForm" role="form" novalidate>
           <div>
             <label for='first'>Prénom</label>
-            <input type='text' id='first' placeholder=' Votre Prénom' />
+            <input type='text' id='first'  aria-label="Votre Prénom" placeholder=' Votre Prénom' required aria-required="true" />
             <div class="errorMessage"></div>
           </div>
           <div>
             <label for='last'>Nom</label>
-            <input type='text' id='last' placeholder=' Votre Nom' />
+            <input type='text' id='last'  aria-label="Votre Nom" placeholder=' Votre Nom'required aria-required="true" />
             <div class="errorMessage"></div>
           </div>
           <div>
             <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder=' Exemple@mail.com' />
+            <input type="email" id="email"  aria-label="Votre email" placeholder=' Exemple@mail.com' required aria-required="true" />
             <div class="errorMessage"></div>
           </div>
           <div>
             <label for="textArea">Votre message</label>
-            <textarea id="textArea" rows="11" placeholder=' Minimum: 5 caractères'></textarea>
+            <textarea id="textArea" rows="11"  aria-label="Votre message" placeholder=' Minimum: 5 caractères' required aria-required="true"></textarea>
             <div class="errorMessage"></div>
           </div>
-          <button class="contact_button buttonForm" type="submit">Envoyer</button>
+          <button class="contact_button buttonForm" type="submit" aria-label="Soumission formulaire">Envoyer</button>
         </form>
       </div>
     </div>
