@@ -202,7 +202,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 el.addEventListener("click", function (event) {
                     inverse = (inverse === 0) ? 1 : 0;
                     // Récupération du nombre de like du média
-                    const spanLike = event.target.previousElementSibling;
+                    const spanLike = event.target.parentElement.previousElementSibling;
                     let like = Number(spanLike.textContent);
                     // Si 1er clic like +1 et compteur +1, si 2 eme clic: -1
                     if (inverse === 1) {

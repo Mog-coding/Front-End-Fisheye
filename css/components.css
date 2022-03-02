@@ -29,6 +29,11 @@
 .containerUserCard:hover h2 {
   color: rgb(144, 28, 28);
   font-weight: bold;
+  cursor: pointer;
+}
+.photographer_section a:focus h2 {
+  color: rgb(144, 28, 28);
+  font-weight: bold;
 }
 
 /** contact bouton **/

@@ -19,9 +19,10 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 17px;
 }
 .photograph-header {
-  background-color: #FAFAFA; /*#FAFAFA*/
+  background-color: lightblue; /*#FAFAFA*/
   height: 312px;
   border-radius: 5px;
 }
@@ -145,21 +146,34 @@ section {
   justify-content: space-between;
   flex-wrap: nowrap;
   color: rgb(144, 28, 28);
-  font-size: 1.6em;
+  font-size: 1.5em;
   margin-top: 3px;
 }
-.sousTitreText {
+.sousTitre h2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.sousTitre i {
-  margin-left: 6px;
+  margin: 0px;
+  font-size: 1em;
+  font-weight: normal;
 }
 .likeHeart {
   display: flex;
   align-items: baseline;
   flex-wrap: nowrap;
+}
+.sousTitre button {
+  margin-left: 6px;
+  /* Supression button apparence */
+  background: none;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  padding-top: 5px;
+}
+.sousTitre i {
+  font-size: 1.7em;
 }
 .heart {
   color: rgb(219, 136, 118);
@@ -421,9 +435,9 @@ form input {
 }
 
 @media screen and (max-width: 1200px) {
-  .containerArticle h1 {
-    font-size: 3em;
-  }
+  .containerArticle {
+    margin-top: 0px;      /* ajout */
+   }
   .imgCards {
     height: 160px;
     width: 160px;
