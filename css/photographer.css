@@ -22,7 +22,7 @@ main {
   margin-top: 17px;
 }
 .photograph-header {
-  background-color: lightblue; /*#FAFAFA*/
+  background-color: #FAFAFA; /*#FAFAFA*/
   height: 312px;
   border-radius: 5px;
 }
@@ -238,10 +238,13 @@ section {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-.close {
+.closeForm {
   position: absolute;
   right: 25.5%;
   top: 40px;
+}
+
+.closeForm img {
   filter: invert(100%) sepia(8%) saturate(6063%) hue-rotate(58deg)
     brightness(121%) contrast(108%);
 }
@@ -402,7 +405,7 @@ form input {
 .cross img:hover,
 .next img:hover,
 .previous img:hover,
-.close:hover {
+.svgClose:hover {
   filter: invert(19%) sepia(27%) saturate(6301%) hue-rotate(346deg)
     brightness(84%) contrast(93%);
   cursor: pointer;
@@ -527,7 +530,7 @@ form input {
   .thankMessage {
     width: 100%;
   }
-  .close {
+  .svgClose {
     right: 3%;
     top: 3%;
   }

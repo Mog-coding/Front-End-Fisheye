@@ -15,7 +15,7 @@
 
 <body>
 
-  <div class="wrapper">
+  <div class="wrapper" aria-hidden="false">
     <header role="banner">
       <a href="index.html">
         <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
@@ -62,10 +62,10 @@
 
   <!-- Formulaire contact -->
   <div class="background">
-    <div class="modal">
-      <div>
-        <img class="close" src="assets/icons/close.svg" alt="aria" />
-      </div>
+    <div class="modal" aria-hidden="true" role="dialog">
+      <a href="#" class="close closeForm">
+        <img src="assets/icons/close.svg" alt="aria" />
+      </a>
       <div class='containerModal'>
         <h2></h2>
         <form id="contactForm" role="form" novalidate>

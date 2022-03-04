@@ -231,7 +231,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
             console.log(dataMedia);
             // Clic media lance lightbox
-            document.querySelectorAll(".imageMedia").forEach((el) => {
+            document.querySelectorAll(".clickLightbox").forEach((el) => {
                 el.addEventListener("click", (event) => {
                     // Appel méthode show() avec id de l'élément cliqué
                     lightBox.show(event.currentTarget.dataset.id);
@@ -258,15 +258,30 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
          *************     partie FORMULAIRE     *******************
          *************/
 
-        // function ouvre / ferme le modal avec display: block; ou none; 
+        // function ouvre / ferme le modal avec display: block; ou none; + gère accessibilité 
         function switchModal(display) {
             document.querySelector('.background').style.display = display;
+            if (display = "block") {
+                document.querySelector('.wrapper').setAttribute('aria-hidden', 'true');
+                document.querySelector('.modal').setAttribute('aria-hidden', 'false');
+                // Met le focus sur la croix de fermeture modal
+                document.querySelector('.close').focus();
+            } else if (display = "none") {
+                document.querySelector('.wrapper').setAttribute('aria-hidden', 'false');
+                document.querySelector('.modal').setAttribute('aria-hidden', 'true');
+            } else {
+                console.log("error form switchModal");
+            }
         }
         // Ouvre le modal quand click sur bouton 'contactez moi'
         document.querySelector('.buttonContactezMoi').addEventListener('click', function () {
             switchModal('block');
         })
-        // Ferme le modal quand click sur croix modal
+
+        // Formulaire valide ou non
+        let formValid = false;
+
+        // Ferme le modal quand click sur croix modal + gère accessibilité formulaire
         // Recharge la page si le formulaire a été validé
         document.querySelector('.close').addEventListener('click', function () {
             switchModal('none');
@@ -274,8 +289,6 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 location.reload()
             };
         })
-        // Formulaire valide ou non
-        let formValid = false;
 
         // Ajout nom photographe dans entête formulaire
         document.querySelector('.containerModal h2').innerText =
@@ -310,6 +323,44 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         });
 
 
+        /*************
+         *************     focus trap FORMULAIRE     *******************
+         *************/
+  
+
+        // Si tab ou shit tab appuyé dans la modale et que focus sur 1er ou dernier élément,
+        // alors retour au dernier ou 1er élement.
+        document.querySelector(".modal").addEventListener("keydown", function (e) {
+            console.log(document.activeElement);
+            if (e.key === "Tab" || e.keyCode === 9) {		// Si tab 
+                if (e.shiftKey) {				        // + shift appuyé
+                    if (document.activeElement.classList.contains("close")) {
+                        e.preventDefault();
+                        document.querySelector(".buttonForm").focus();
+                    }
+                } else {					 // Si tab est appuyé
+                    if (document.activeElement.classList.contains("buttonForm")) {
+                        e.preventDefault();
+                        document.querySelector(".close").focus();
+                    }
+                }
+            }
+            if (e.key === "Escape") {       // Si Escape appuyé
+                switchModal('none');
+            }
+
+            if (e.key === "Enter") {         // Si Enter appuyé
+                if (document.activeElement.classList.contains("close")) {
+                    switchModal('none');
+                }
+            }
+
+        });
+
+
+        var focusableEls = document.querySelector(".modal").querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+        console.log(focusableEls);
+
 
 
 
@@ -317,3 +368,5 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
     })
 //FIN ASYNCHRONE
+
+

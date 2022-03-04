@@ -23,6 +23,7 @@ export default class MediaFactory {
         img.setAttribute('src', 'assets/Media/' + this.media.image);
         img.setAttribute('alt', this.media.alt);
         img.setAttribute('data-id', this.media.id);
+        img.classList.add("clickLightbox");
         /* Création éléments sous titre */
         const divSousTitre = document.createElement('div');
         divSousTitre.classList.add('sousTitre');
@@ -71,8 +72,10 @@ export default class MediaFactory {
         /* Création éléments video */
         videoCardP2.classList.add("containerVideoCards");
         const videoLink = document.createElement('a');
+        videoLink.setAttribute('tabindex', '0');
         const vid = document.createElement('video');
         vid.setAttribute('data-id', this.media.id);
+        vid.classList.add("clickLightbox");
         const source = document.createElement('source');
         source.setAttribute('src', 'assets/Media/' + this.media.video);
         source.setAttribute('type', 'video/mp4');
