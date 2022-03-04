@@ -326,40 +326,46 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         /*************
          *************     focus trap FORMULAIRE     *******************
          *************/
-  
 
-        // Si tab ou shit tab appuyé dans la modale et que focus sur 1er ou dernier élément,
+
+        // Si tab ou shift tab appuyé dans la modale et que focus sur 1er ou dernier élément,
         // alors retour au dernier ou 1er élement.
-        document.querySelector(".modal").addEventListener("keydown", function (e) {
-            console.log(document.activeElement);
-            if (e.key === "Tab" || e.keyCode === 9) {		// Si tab 
-                if (e.shiftKey) {				        // + shift appuyé
-                    if (document.activeElement.classList.contains("close")) {
-                        e.preventDefault();
-                        document.querySelector(".buttonForm").focus();
-                    }
-                } else {					 // Si tab est appuyé
-                    if (document.activeElement.classList.contains("buttonForm")) {
-                        e.preventDefault();
-                        document.querySelector(".close").focus();
+        
+        focusTrap(document.querySelector(".modal"));
+        
+        function focusTrap(el) {
+            const focusEls = el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+            const firstFocusEl = focusEls[0];  // <a>
+            const lastFocusEl = focusEls[focusEls.length - 1];  // Button form
+
+            el.addEventListener("keydown", function (e) {
+                if (e.key === "Tab" || e.keyCode === 9) {		// Si tab 
+                    if (e.shiftKey) {				        // + shift appuyé
+                        if (document.activeElement === firstFocusEl) {
+                            e.preventDefault();
+                            lastFocusEl.focus();
+                        }
+                    } else {					 // Si tab est appuyé
+                        if (document.activeElement === lastFocusEl) {
+                            e.preventDefault();
+                            firstFocusEl.focus();
+                        }
                     }
                 }
-            }
-            if (e.key === "Escape") {       // Si Escape appuyé
-                switchModal('none');
-            }
-
-            if (e.key === "Enter") {         // Si Enter appuyé
-                if (document.activeElement.classList.contains("close")) {
+                if (e.key === "Escape") {       // Si Escape appuyé
                     switchModal('none');
                 }
-            }
 
-        });
+                if (e.key === "Enter") {         // Si Enter appuyé
+                    if (document.activeElement.classList.contains("close")) {
+                        switchModal('none');
+                    }
+                }
+
+            });
 
 
-        var focusableEls = document.querySelector(".modal").querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-        console.log(focusableEls);
+        }
 
 
 
