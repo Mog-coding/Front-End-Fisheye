@@ -63,9 +63,9 @@
   <!-- Formulaire contact -->
   <div class="background">
     <div class="modal" aria-hidden="true" role="dialog">
-      <a href="#" class="close closeForm">
+      <button  class="closeForm buttonStylDel enterClose">
         <img src="assets/icons/close.svg" alt="aria" />
-      </a>
+      </button>
       <div class='containerModal'>
         <h2></h2>
         <form id="contactForm" role="form" novalidate>
@@ -76,7 +76,7 @@
           </div>
           <div>
             <label for='last'>Nom</label>
-            <input type='text' id='last'  aria-label="Votre Nom" placeholder=' Votre Nom'required aria-required="true" />
+            <input type='text' id='last'  aria-label="Votre Nom" placeholder=' Votre Nom' required aria-required="true" />
             <div class="errorMessage"></div>
           </div>
           <div>
@@ -98,11 +98,10 @@
   <!-- Lightbox Medias -->
   <div id="lightbox">
     <div class="content">
-      <div class="cross"><img src="./assets/icons/close.svg"></div>
-      <div class="previous"><img src="./assets/icons/circle-left.svg">
-      </div>
+      <button class="cross buttonStylDel enterClose"><img src="./assets/icons/close.svg"></button>
+      <button class="previous buttonStylDel"><img src="./assets/icons/circle-left.svg"></button>
       <div id="mediaContainer"></div>
-      <div class="next"><img src="./assets/icons/circle-right.svg"></div>
+      <button class="next buttonStylDel"><img src="./assets/icons/circle-right.svg"></button>
     </div>
   </div>
 

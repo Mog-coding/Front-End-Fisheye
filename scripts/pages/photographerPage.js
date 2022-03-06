@@ -225,23 +225,43 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         /*************
          *************     partie LIGHTBOX     *******************
          *************/
+        /* MODIF ---------------------- */
+        function closeLightbox() {
+            document.querySelector("#lightbox").classList.remove("show");
+            // Supression du media précédemment affiché ds lightbox
+            if (document.querySelector("#mediaContainer").firstElementChild) {
+                document.querySelector("#mediaContainer").firstElementChild.remove();
+            }
+            ariaHidden(".wrapper", false, '#lightbox', true);
+        }
 
         function runLightBox() {
             // LightBox instance de Lightbox
             let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
-            console.log(dataMedia);
             // Clic media lance lightbox
             document.querySelectorAll(".clickLightbox").forEach((el) => {
                 el.addEventListener("click", (event) => {
                     // Appel méthode show() avec id de l'élément cliqué
                     lightBox.show(event.currentTarget.dataset.id);
+                    /* MODIF ---------------------- */
+                    ariaHidden(".wrapper", true, '#lightbox', false);
+                    document.querySelector('.next').focus();
                 })
             });
-            // Clic fermeture LigtBox
+            // Appuie touche Enter sur media lance lightbox
+            document.querySelectorAll(".enterLight").forEach((el) => {
+                el.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.keyCode === 13) {
+                        lightBox.show(e.currentTarget.firstElementChild.dataset.id);
+                        /* MODIF ---------------------- */
+                        ariaHidden(".wrapper", true, '#lightbox', false);
+                        document.querySelector('.next').focus();
+                    }
+                })
+            });
+            // Clic fermeture LightBox
             document.querySelector(".cross").addEventListener("click", function (event) {
-                document.querySelector("#lightbox").classList.remove("show");
-                // Supression du media précédemment affiché ds lightbox
-                document.querySelector("#mediaContainer").firstElementChild.remove();
+                closeLightbox();
             })
             // Clic next -> media suivant
             document.querySelector("#lightbox .next img").addEventListener("click", () => {
@@ -251,40 +271,52 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             document.querySelector("#lightbox .previous img").addEventListener("click", () => {
                 lightBox.previous();
             })
+            // clic sur fleches/* MODIF ---------------------- */
+            document.querySelector("#lightbox").addEventListener("keydown", (e) => {
+                if (e.key === "ArrowRight" || e.keyCode === 39) {        // Si -> appuyé
+                    lightBox.next();
+                }
+                if (e.key === "ArrowLeft" || e.keyCode === 37) {        // Si <- appuyé
+                    lightBox.previous();
+                }
+                if (e.key === "Enter" || e.keyCode === 13) {        // Si Enter appuyé
+                    if (document.activeElement.classList.contains("next")) {
+                        lightBox.next();
+                    } else if (document.activeElement.classList.contains("previous")) {
+                        lightBox.previous();
+                    }
+                }
+            });
         }
-
 
         /*************
          *************     partie FORMULAIRE     *******************
          *************/
 
-        // function ouvre / ferme le modal avec display: block; ou none; + gère accessibilité 
+        // Ouvre/ferme le modal avec display: block; ou none; + gère accessibilité 
         function switchModal(display) {
             document.querySelector('.background').style.display = display;
-            if (display = "block") {
-                document.querySelector('.wrapper').setAttribute('aria-hidden', 'true');
-                document.querySelector('.modal').setAttribute('aria-hidden', 'false');
-                // Met le focus sur la croix de fermeture modal
-                document.querySelector('.close').focus();
-            } else if (display = "none") {
-                document.querySelector('.wrapper').setAttribute('aria-hidden', 'false');
-                document.querySelector('.modal').setAttribute('aria-hidden', 'true');
-            } else {
-                console.log("error form switchModal");
+            // Si display block,focus sur croix modal, aria-hidden activé sur form
+            if (display === "block") {
+                ariaHidden(".wrapper", true, '.modal', false);
+                document.querySelector('.closeForm').focus();
+                // Si display none, aria-hidden activé sur wrapper
+            } else if (display === "none") {
+                ariaHidden(".wrapper", false, '.modal', true);
             }
         }
         // Ouvre le modal quand click sur bouton 'contactez moi'
         document.querySelector('.buttonContactezMoi').addEventListener('click', function () {
-            switchModal('block');
+            switchModal("block");
         })
 
         // Formulaire valide ou non
         let formValid = false;
 
-        // Ferme le modal quand click sur croix modal + gère accessibilité formulaire
-        // Recharge la page si le formulaire a été validé
-        document.querySelector('.close').addEventListener('click', function () {
-            switchModal('none');
+        /* Ferme le modal quand click sur croix modal + gère accessibilité formulaire
+        Recharge la page si le formulaire a été validé */
+        document.querySelector('.closeForm').addEventListener('click', function () {
+            switchModal("none");
             if (formValid) {
                 location.reload()
             };
@@ -324,50 +356,65 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
 
         /*************
-         *************     focus trap FORMULAIRE     *******************
+         *************     Focus trap      *******************
          *************/
 
-
-        // Si tab ou shift tab appuyé dans la modale et que focus sur 1er ou dernier élément,
-        // alors retour au dernier ou 1er élement.
-        
+        /* MODIF ---------------------- */
         focusTrap(document.querySelector(".modal"));
-        
-        function focusTrap(el) {
-            const focusEls = el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-            const firstFocusEl = focusEls[0];  // <a>
-            const lastFocusEl = focusEls[focusEls.length - 1];  // Button form
+        focusTrap(document.querySelector("#lightbox"));
 
+        /* Exécute un focusTrap sur tab et shift + tab, implémente touche escape et touche enter sur croix lightbox/formulaire */
+        function focusTrap(el) {
+            // Sélectionne les élements focusables de l'élément passé en argument
+            const focusEls = el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+            const firstFocusEl = focusEls[0];
+            const lastFocusEl = focusEls[focusEls.length - 1];
+
+            /* Listener de touche appuyée sur l'élément passé en argument */
             el.addEventListener("keydown", function (e) {
-                if (e.key === "Tab" || e.keyCode === 9) {		// Si tab 
-                    if (e.shiftKey) {				        // + shift appuyé
+                // Si tab appuyé 
+                if (e.key === "Tab" || e.keyCode === 9) {
+                    console.log(e.key);
+                    // Si tab + shift appuyé sur 1 élement -> focus dernier élément
+                    if (e.shiftKey) {
                         if (document.activeElement === firstFocusEl) {
                             e.preventDefault();
                             lastFocusEl.focus();
                         }
-                    } else {					 // Si tab est appuyé
+                        // Si tab est appuyé sur dernier élément -> focus 1er élément
+                    } else {
                         if (document.activeElement === lastFocusEl) {
                             e.preventDefault();
                             firstFocusEl.focus();
                         }
                     }
                 }
-                if (e.key === "Escape") {       // Si Escape appuyé
-                    switchModal('none');
-                }
 
-                if (e.key === "Enter") {         // Si Enter appuyé
-                    if (document.activeElement.classList.contains("close")) {
+                /* Si Escape appuyé -> ferme la lightbox si ouverte, sinon ferme formulaire */
+                if (e.key === "Escape" || e.keyCode === 27) {
+                    if (document.querySelector("#lightbox").classList.contains("show")) {
+                        closeLightbox();
+                    } else {
                         switchModal('none');
                     }
                 }
-
+                /* Si Enter appuyé sur croix -> ferme la lightbox si ouverte, sinon ferme formulaire */
+                if (e.key === "Enter" || e.keyCode === 13) {        // Si Enter appuyé
+                    if (document.activeElement.classList.contains("enterClose")) {
+                        if (document.querySelector("#lightbox").classList.contains("show")) {
+                            closeLightbox();
+                        } else {
+                            switchModal('none');
+                        }
+                    }
+                }
             });
-
-
         }
 
-
+        function ariaHidden(ele1, boole, ele2, boole2) {
+            document.querySelector(ele1).setAttribute('aria-hidden', boole);
+            document.querySelector(ele2).setAttribute('aria-hidden', boole2);
+        }
 
 
 

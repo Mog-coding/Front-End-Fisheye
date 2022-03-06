@@ -17,8 +17,9 @@ export default class MediaFactory {
         const imageCardP2 = document.createElement('article');
         /* Création éléments image */
         imageCardP2.classList.add("containerPhotoCards");
-        const imgLink = document.createElement('a');
+        const imgLink = document.createElement('a');          
         imgLink.setAttribute('tabindex', '0');
+        imgLink.classList.add("enterLight");
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/Media/' + this.media.image);
         img.setAttribute('alt', this.media.alt);
@@ -72,6 +73,7 @@ export default class MediaFactory {
         /* Création éléments video */
         videoCardP2.classList.add("containerVideoCards");
         const videoLink = document.createElement('a');
+        videoLink.classList.add("enterLight");
         videoLink.setAttribute('tabindex', '0');
         const vid = document.createElement('video');
         vid.setAttribute('data-id', this.media.id);

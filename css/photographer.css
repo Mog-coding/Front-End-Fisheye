@@ -349,6 +349,16 @@ form input {
   justify-content: center;
   position: relative;
 }
+.buttonStylDel {
+  /* Supression button apparence */
+  background: none;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  padding-top: 5px;
+ }
+ 
 #mediaContainer {
   margin-top: 30px;
 }
@@ -405,7 +415,7 @@ form input {
 .cross img:hover,
 .next img:hover,
 .previous img:hover,
-.svgClose:hover {
+.closeForm:hover {
   filter: invert(19%) sepia(27%) saturate(6301%) hue-rotate(346deg)
     brightness(84%) contrast(93%);
   cursor: pointer;
@@ -530,7 +540,7 @@ form input {
   .thankMessage {
     width: 100%;
   }
-  .svgClose {
+  .closeForm {
     right: 3%;
     top: 3%;
   }

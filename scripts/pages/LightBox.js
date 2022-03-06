@@ -19,7 +19,6 @@ export default class LightBox {
     }
     next() {
         let index = this.listMedia.findIndex(element => element.id === Number(this.currentElement.id));
-        console.log(index);
         if (index + 1 === this.listMedia.length) {
             this.currentElement = this.listMedia[0];
         } else {
@@ -34,7 +33,6 @@ export default class LightBox {
             this.currentElement = this.listMedia[this.listMedia.length - 1];
         } else {
             this.currentElement = this.listMedia[index - 1];
-            console.log(this.currentElement);
         }
         this.mediaFactory = new MediaFactory(this.currentElement);
         this.display();
@@ -46,8 +44,10 @@ export default class LightBox {
         if (mediaContain.firstElementChild) {
             mediaContain.firstElementChild.remove();
         };
+        console.log(this.mediaFactory);
         // Appel méthode Vue de la MediaFactory avec l'objet selectionné via id
         const htmlElement = this.mediaFactory.createLightboxContent();
+        console.log(htmlElement);
         mediaContain.appendChild(htmlElement);
         document.querySelector("#lightbox").classList.add("show");
     }
