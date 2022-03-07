@@ -194,18 +194,16 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             document.querySelector("#compteur").innerText = total;
             document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
 
-            // Listener sur coeur médias: si 1er clic: like +1, compteur total like +1
-            // si 2eme clic: like -1 et compteur total like -1
+            /* Listener sur coeur médias: si 1er clic: like +1, compteur total like +1
+            si 2eme clic: like -1 et compteur total like -1 */
             document.querySelectorAll(".heart").forEach(function (el) {
-                let inverse = 0;
                 // Ajout Listener sur chaque coeur des médias
                 el.addEventListener("click", function (event) {
-                    inverse = (inverse === 0) ? 1 : 0;
                     // Récupération du nombre de like du média
                     const spanLike = event.target.parentElement.previousElementSibling;
                     let like = Number(spanLike.textContent);
                     // Si 1er clic like +1 et compteur +1, si 2 eme clic: -1
-                    if (inverse === 1) {
+                    if (!event.target.classList.contains("heartColor")) {
                         like++;
                         total++;
                         event.target.classList.add("heartColor");
@@ -219,13 +217,39 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                     document.querySelector("#compteur").innerText = total;
                 })
             });
+
+            /* Listener sur bouton coeur médias: si 1er enter: like +1, compteur total like +1, si 2eme enter: like -1 et compteur total like -1 */
+            document.querySelectorAll(".buttonHeart").forEach(function (el) {
+                // Ajout Listener sur chaque bouton coeur des médias
+                el.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter" || event.keyCode === 13) { 
+                    // Récupération du nombre de like du média
+                    const spanLike = event.target.previousElementSibling;
+                    let like = Number(spanLike.textContent);
+                    // Si 1er clic like +1 et compteur +1, si 2 eme clic: -1
+                    if (!event.target.firstChild.classList.contains("heartColor")) {
+                        like++;
+                        total++;
+                        event.target.firstChild.classList.add("heartColor");
+                    } else {
+                        like--;
+                        total--;
+                        event.target.firstChild.classList.remove("heartColor");
+                    };
+                    // Mise à jour du nombre de like et du compteur
+                    spanLike.textContent = like;
+                    document.querySelector("#compteur").innerText = total;
+                }
+                })
+            });
         }
 
 
         /*************
          *************     partie LIGHTBOX     *******************
          *************/
-        /* MODIF ---------------------- */
+
+        // Ferme la lightbox et supprime le media crée + gestion accessibilité 
         function closeLightbox() {
             document.querySelector("#lightbox").classList.remove("show");
             // Supression du media précédemment affiché ds lightbox
@@ -235,51 +259,56 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             ariaHidden(".wrapper", false, '#lightbox', true);
         }
 
+        /* Lance lightbox quand clic sur medias, gère focus, aria-hidden,
+        et gère les clics et appuis touches sur menu  lightbox
+        */
         function runLightBox() {
-            // LightBox instance de Lightbox
+            // lightBox instance de Lightbox
             let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
-            // Clic media lance lightbox
+            // Clic media lance lightbox + gestion accessibilité et focus
             document.querySelectorAll(".clickLightbox").forEach((el) => {
                 el.addEventListener("click", (event) => {
                     // Appel méthode show() avec id de l'élément cliqué
                     lightBox.show(event.currentTarget.dataset.id);
-                    /* MODIF ---------------------- */
+                    // Focus sur next, wrapper aria hidden
                     ariaHidden(".wrapper", true, '#lightbox', false);
                     document.querySelector('.next').focus();
                 })
             });
-            // Appuie touche Enter sur media lance lightbox
+            // Appuie touche Entrée sur media: lance lightbox
             document.querySelectorAll(".enterLight").forEach((el) => {
                 el.addEventListener("keydown", (e) => {
                     if (e.key === "Enter" || e.keyCode === 13) {
                         lightBox.show(e.currentTarget.firstElementChild.dataset.id);
-                        /* MODIF ---------------------- */
                         ariaHidden(".wrapper", true, '#lightbox', false);
                         document.querySelector('.next').focus();
                     }
                 })
             });
-            // Clic fermeture LightBox
+            // Clic croix: fermeture LightBox
             document.querySelector(".cross").addEventListener("click", function (event) {
                 closeLightbox();
             })
-            // Clic next -> media suivant
+            // Clic icone next: media suivant
             document.querySelector("#lightbox .next img").addEventListener("click", () => {
                 lightBox.next();
             })
-            // Clic previous -> media précédent
+            // Clic icone previous: media précédent
             document.querySelector("#lightbox .previous img").addEventListener("click", () => {
                 lightBox.previous();
             })
-            // clic sur fleches/* MODIF ---------------------- */
+            // Touche entrée et touches flèches gauche/droite: change media
             document.querySelector("#lightbox").addEventListener("keydown", (e) => {
-                if (e.key === "ArrowRight" || e.keyCode === 39) {        // Si -> appuyé
+                // Si touche -> appuyée: media suivant
+                if (e.key === "ArrowRight" || e.keyCode === 39) {
                     lightBox.next();
                 }
-                if (e.key === "ArrowLeft" || e.keyCode === 37) {        // Si <- appuyé
+                // Si touche <- appuyée: media précédent
+                if (e.key === "ArrowLeft" || e.keyCode === 37) {
                     lightBox.previous();
                 }
-                if (e.key === "Enter" || e.keyCode === 13) {        // Si Enter appuyé
+                // Si touche enter appuyée sur icone next ou previous: media next/prev
+                if (e.key === "Enter" || e.keyCode === 13) {
                     if (document.activeElement.classList.contains("next")) {
                         lightBox.next();
                     } else if (document.activeElement.classList.contains("previous")) {
@@ -292,6 +321,12 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         /*************
          *************     partie FORMULAIRE     *******************
          *************/
+
+        // Empêche la technologie d'assistance d'accéder au contenu aria-hidden
+        function ariaHidden(ele1, boole, ele2, boole2) {
+            document.querySelector(ele1).setAttribute('aria-hidden', boole);
+            document.querySelector(ele2).setAttribute('aria-hidden', boole2);
+        }
 
         // Ouvre/ferme le modal avec display: block; ou none; + gère accessibilité 
         function switchModal(display) {
@@ -409,11 +444,6 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                     }
                 }
             });
-        }
-
-        function ariaHidden(ele1, boole, ele2, boole2) {
-            document.querySelector(ele1).setAttribute('aria-hidden', boole);
-            document.querySelector(ele2).setAttribute('aria-hidden', boole2);
         }
 
 

@@ -42,6 +42,7 @@ export default class MediaFactory {
         /* Ajout enfants image */
         imgLink.appendChild(img);
         iButton.appendChild(iHeart);
+        iButton.classList.add("buttonHeart");
         divLike.appendChild(spanLike);
         divLike.appendChild(iButton);
         /* Ajout enfants sous titre */
@@ -52,20 +53,6 @@ export default class MediaFactory {
         imageCardP2.appendChild(divSousTitre);
         return imageCardP2
     }
-    /*
-    <article class="containerPhotoCards" >
-        <a>
-            <img>
-        </a>
-        <div class="sousTitres">
-            <h2 class="sousTitreText">Climber</h2>
-            <div class="likeHeart">
-                <span class="likeNumber>101</span>
-                <button><i class="heart"></i></button>
-            </div>
-         </div>
-    </article>
-     */
 
     // Crée les Medias Videos page2 dans la section containerMedias
     createVideoCard() {
@@ -100,6 +87,7 @@ export default class MediaFactory {
         videoLink.appendChild(vid);
         /* Ajout enfants sous titre */
         iButton.appendChild(iHeart);
+        iButton.classList.add("buttonHeart");
         divLike.appendChild(spanLike);
         divLike.appendChild(iButton);
         divSousTitre.appendChild(h2);
