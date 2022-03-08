@@ -17,7 +17,7 @@
 
   <div class="wrapper" aria-hidden="false">
     <header role="banner">
-      <a href="index.html">
+      <a href="index.html" aria-label="Naviguer vers la page d'accueil">
         <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
       </a>
     </header>
@@ -43,7 +43,7 @@
           </nav>
         </div>
         <!-- Medias photographes -->
-        <div class="containerMedias">
+        <div class="containerMedias"><!-- rempli dynamiquement via JS -->
         </div>
       </section>
 
@@ -63,11 +63,11 @@
   <!-- Formulaire contact -->
   <div class="background">
     <div class="modal" aria-hidden="true" role="dialog">
-      <button  class="closeForm buttonStylDel enterClose">
-        <img src="assets/icons/close.svg" alt="aria" />
+      <button class="closeForm buttonStylDel enterClose" aria-label="Fermer le formulaire">
+        <img src="assets/icons/close.svg" alt="" />
       </button>
       <div class='containerModal'>
-        <h2></h2>
+        <h2><!-- rempli dynamiquement via JS --></h2>
         <form id="contactForm" role="form" novalidate>
           <div>
             <label for='first'>Prénom</label>
@@ -89,7 +89,7 @@
             <textarea id="textArea" rows="11"  aria-label="Votre message" placeholder=' Minimum: 5 caractères' required aria-required="true"></textarea>
             <div class="errorMessage"></div>
           </div>
-          <button class="contact_button buttonForm" type="submit" aria-label="Soumission formulaire">Envoyer</button>
+          <button class="contact_button buttonForm" type="submit" aria-label="Soumettre le formulaire">Envoyer</button>
         </form>
       </div>
     </div>
@@ -98,10 +98,10 @@
   <!-- Lightbox Medias -->
   <div id="lightbox">
     <nav class="content">
-      <button class="cross buttonStylDel enterClose"><img src="./assets/icons/close.svg"></button>
-      <button class="previous buttonStylDel"><img src="./assets/icons/circle-left.svg"></button>
+      <button class="cross buttonStylDel enterClose" aria-label="Fermer la lightbox"><img src="./assets/icons/close.svg" alt=""></button>
+      <button class="previous buttonStylDel" aria-label="média précédent"><img src="./assets/icons/circle-left.svg"  alt="" ></button>
       <div id="mediaContainer"></div>
-      <button class="next buttonStylDel"><img src="./assets/icons/circle-right.svg"></button>
+      <button class="next buttonStylDel" aria-label="média suivant"><img src="./assets/icons/circle-right.svg" alt=""></button>
     </nav>
   </div>
 

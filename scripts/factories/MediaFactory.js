@@ -42,6 +42,7 @@ export default class MediaFactory {
         /* Ajout enfants image */
         imgLink.appendChild(img);
         iButton.appendChild(iHeart);
+        iButton.setAttribute('aria-label', "liker le média");
         iButton.classList.add("buttonHeart");
         divLike.appendChild(spanLike);
         divLike.appendChild(iButton);
@@ -62,8 +63,10 @@ export default class MediaFactory {
         const videoLink = document.createElement('a');
         videoLink.classList.add("enterLight");
         videoLink.setAttribute('tabindex', '0');
+        videoLink.setAttribute('href', '#');
         const vid = document.createElement('video');
-        vid.setAttribute('data-id', this.media.id);
+        vid.setAttribute('data-id', this.media.id); 
+        vid.setAttribute('title', this.media.alt); 
         vid.classList.add("clickLightbox");
         const source = document.createElement('source');
         source.setAttribute('src', 'assets/Media/' + this.media.video);
@@ -80,6 +83,7 @@ export default class MediaFactory {
         spanLike.classList.add('likeNumber');
         spanLike.innerText = this.media.likes;
         const iButton = document.createElement('button');
+        iButton.setAttribute('aria-label', "liker le média");
         const iHeart = document.createElement('i');
         iHeart.classList.add('fas', 'fa-heart', 'heart');
         /* Ajout enfants video */
@@ -106,6 +110,8 @@ export default class MediaFactory {
             figure.classList.add('figureImg');
             const img = document.createElement('img');
             img.setAttribute('src', 'assets/Media/' + this.media.image);
+            img.setAttribute('alt', this.media.alt);
+            img.setAttribute('tabindex', '0');
             const figCaption = document.createElement('figcaption');
             figCaption.innerText = this.media.title;
             figure.appendChild(img);
@@ -122,6 +128,8 @@ export default class MediaFactory {
             vid.setAttribute('controls', true);
             vid.setAttribute('autoplay', true);
             vid.setAttribute('loop', true);
+            vid.setAttribute('tabindex', '0');
+            vid.setAttribute('title', this.media.alt);
             figure.appendChild(vid);
             figure.appendChild(figCaption);
             return figure;

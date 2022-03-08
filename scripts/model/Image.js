@@ -8,7 +8,4 @@ export default class Image extends Media {
     get image() {
         return this._image;
    }
-   get alt() {
-    return this._alt;
-}
 }

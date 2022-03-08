@@ -51,6 +51,7 @@ export default class PhotographerFactory {
         const divButton = document.createElement('div');
         const buttonContact = document.createElement('button');
         buttonContact.classList.add('contact_button', 'buttonContactezMoi');
+        buttonContact.setAttribute('aria-label', 'Contacter ' + this.photographer.name);
         buttonContact.innerText = 'Contactez-moi';
         const divImage = document.createElement('div');
         const imgPhotographer = document.createElement('img');

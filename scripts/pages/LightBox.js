@@ -44,10 +44,8 @@ export default class LightBox {
         if (mediaContain.firstElementChild) {
             mediaContain.firstElementChild.remove();
         };
-        console.log(this.mediaFactory);
         // Appel méthode Vue de la MediaFactory avec l'objet selectionné via id
         const htmlElement = this.mediaFactory.createLightboxContent();
-        console.log(htmlElement);
         mediaContain.appendChild(htmlElement);
         document.querySelector("#lightbox").classList.add("show");
     }

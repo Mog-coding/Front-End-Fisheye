@@ -13,6 +13,9 @@ header {
 .logo {
   height: 50px;
 }
+.logo:hover{
+  cursor: pointer;
+}
 h1 {
   color: #901c1c;
   font-weight: normal;

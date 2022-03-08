@@ -6,6 +6,7 @@ export default class Media {
         this._likes = data.likes;
         this._date = data.date;
         this._price = data.price;
+        this._alt = data.alt;
     }
     get id() {
         return this._id;
@@ -24,5 +25,8 @@ export default class Media {
     }
     get price() {
         return this._price;
+    }
+    get alt() {
+        return this._alt;
     }
 }

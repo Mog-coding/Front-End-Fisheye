@@ -18,7 +18,7 @@
 			"tagline": "Capturer des compositions complexes",
 			"price": 250,
 			"portrait": "EllieRoseWilkens.jpg",
-			"alt": "Portrait de la photographe Ellie-Rose Wilkems aux cheveux muticolores"
+			"alt": "Portrait de la photographe Ellie-Rose Wilkems"
 		},
 		{
 			"name": "Tracy Galindo",
@@ -28,7 +28,7 @@
 			"tagline": "Photographe freelance",
 			"price": 500,
 			"portrait": "TracyGalindo.jpg",
-			"alt": "Portrait du photographe Tracy Galindo à la barbe proéminente"
+			"alt": "Portrait du photographe Tracy Galindo"
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -38,7 +38,7 @@
 			"tagline": "Toujours aller de l'avant",
 			"price": 350,
 			"portrait": "NabeelBradford.jpg",
-			"alt": "Portrait du photographe Nabeel Bradford pensif face à un couché de soleil"
+			"alt": "Photographe Nabeel Bradford face à un couché de soleil"
 		},
 		{
 			"name": "Rhode Dubois",
@@ -58,7 +58,7 @@
 			"tagline": "Toujours à la recherche de LA photo",
 			"price": 300,
 			"portrait": "MarcelNikolic.jpg",
-			"alt": "Portrait du photographe Marcel Nikolic réparant son appareil photo"
+			"alt": "Portrait du photographe Marcel Nikolic en noir et blanc"
 		}
 	],
 	"media": [
@@ -129,7 +129,8 @@
 			"video": "Art_Wooden_Horse_Sculpture.mp4",
 			"likes": 24,
 			"date": "2011-12-08",
-			"price": 100
+			"price": 100,
+			"alt": "Sculpture d'un cheval avec des morceaux de bois"
 		  },
 		{
 			"id": 7502053,
@@ -249,7 +250,8 @@
 			"video": "Animals_Puppiness.mp4",
 			"likes": 52,
 			"date": "2016-06-12",
-			"price": 70
+			"price": 70,
+			"alt": "Chiot jouant sur la plage avec sa laisse"
 		},
 		{
 			"id": 394583434,
@@ -258,7 +260,8 @@
 			"video": "Travel_Rock_Mountains.mp4",
 			"likes": 23,
 			"date": "2017-03-18",
-			"price": 45
+			"price": 45,
+			"alt": "Vue du sommet d'une montagne"
 		},
 		{
 			"id": 343423425,
@@ -428,8 +431,9 @@
 			"video": "Animals_Wild_Horses_in_the_mountains.mp4",
 			"likes": 142,
 			"date": "2019-08-23",
-			"price": 60
-		  },
+			"price": 60,
+			"alt": "Troupeau de chevaux en mouvement"
+		},
 		{
 			"id": 95234343,
 			"photographerId": 243,
@@ -528,7 +532,8 @@
 			"video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
 			"likes": 57,
 			"date": "2020-01-20",
-			"price": 65
+			"price": 65,
+			"alt": "Vue sur de grands échangeurs d'autoroute"
 		  },
 		{
 			"id": 3523523534,
@@ -547,7 +552,8 @@
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
-			"price": 70
+			"price": 70,
+			"alt": "Gymnaste suspendue par le bras qui tourne sur elle même"
 		  },
 		{
 			"id": 235234343,

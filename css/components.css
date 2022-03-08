@@ -13,23 +13,25 @@
   padding: 0 20px;
 }
 .city {
-  font-size: 0.8em;
+  font-size: 1.2em; /* 0.8em */
   color: rgb(144, 28, 28);
 }
 .tagline {
-  font-size: 0.6em;
-  font-weight: bold;
+  font-size: 1em; /* 0.6em */
+  font-weight: normal;
   margin-top: 4px;
 }
 .price {
-  font-size: 0.6em;
+  font-size: 1em;  /* 0.6em */
   color: rgb(134, 134, 134);
   margin-top: 2px;
+}
+.containerUserCard:hover {
+  cursor: pointer;
 }
 .containerUserCard:hover h2 {
   color: rgb(144, 28, 28);
   font-weight: bold;
-  cursor: pointer;
 }
 .photographer_section a:focus h2 {
   color: rgb(144, 28, 28);
@@ -47,6 +49,10 @@
   cursor: pointer;
 }
 .contact_button:hover {
+  background-color: #db8876;
+  color: black;
+}
+.contact_button:focus {
   background-color: #db8876;
   color: black;
 }
