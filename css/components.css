@@ -1,6 +1,6 @@
 /** userCard **/
 .nameCards {
-  color: #d3573c;
+  color: #D3573C;
   font-size: 2.3em;
   font-weight: normal;
   margin: 19px 0 0 0;
@@ -14,7 +14,7 @@
 }
 .city {
   font-size: 1.2em; /* 0.8em */
-  color: rgb(144, 28, 28);
+  color: #901C1C;
 }
 .tagline {
   font-size: 1em; /* 0.6em */
@@ -23,18 +23,18 @@
 }
 .price {
   font-size: 1em;  /* 0.6em */
-  color: rgb(134, 134, 134);
+  color: #525252;
   margin-top: 2px;
 }
 .containerUserCard:hover {
   cursor: pointer;
 }
 .containerUserCard:hover h2 {
-  color: rgb(144, 28, 28);
+  color: #901C1C;
   font-weight: bold;
 }
 .photographer_section a:focus h2 {
-  color: rgb(144, 28, 28);
+  color: #901C1C;
   font-weight: bold;
 }
 
@@ -44,15 +44,15 @@
   font-weight: bold;
   color: white;
   border: none;
-  background-color: #901c1c;
+  background-color: #901C1C;
   border-radius: 5px;
   cursor: pointer;
 }
 .contact_button:hover {
-  background-color: #db8876;
+  background-color: #DB8876;
   color: black;
 }
 .contact_button:focus {
-  background-color: #db8876;
+  background-color: #DB8876;
   color: black;
 }

@@ -8,41 +8,41 @@ export default class MediaFactory {
         } else if (media.video) {
             this.media = new Video(media)
         } else {
-            throw 'Unknown type format'
+            throw "Unknown type format"
         }
     }
 
     // Crée les Medias Images page2 dans la section containerMedias
     createImageCard() {
-        const imageCardP2 = document.createElement('article');
+        const imageCardP2 = document.createElement("article");
         /* Création éléments image */
         imageCardP2.classList.add("containerPhotoCards");
-        const imgLink = document.createElement('a');          
-        imgLink.setAttribute('tabindex', '0');
+        const imgLink = document.createElement("a");          
+        imgLink.setAttribute("tabindex", "0");
         imgLink.classList.add("enterLight");
-        const img = document.createElement('img');
-        img.setAttribute('src', 'assets/Media/' + this.media.image);
-        img.setAttribute('alt', this.media.alt);
-        img.setAttribute('data-id', this.media.id);
+        const img = document.createElement("img");
+        img.setAttribute("src", "assets/Media/" + this.media.image);
+        img.setAttribute("alt", this.media.alt);
+        img.setAttribute("data-id", this.media.id);
         img.classList.add("clickLightbox");
         /* Création éléments sous titre */
-        const divSousTitre = document.createElement('div');
-        divSousTitre.classList.add('sousTitre');
-        const h2 = document.createElement('h2');
-        h2.classList.add('sousTitreText');
+        const divSousTitre = document.createElement("div");
+        divSousTitre.classList.add("sousTitre");
+        const h2 = document.createElement("h2");
+        h2.classList.add("sousTitreText");
         h2.innerText = this.media.title;
-        const divLike = document.createElement('div');
-        divLike.classList.add('likeHeart');
-        const spanLike = document.createElement('span');
-        spanLike.classList.add('likeNumber');
+        const divLike = document.createElement("div");
+        divLike.classList.add("likeHeart");
+        const spanLike = document.createElement("span");
+        spanLike.classList.add("likeNumber");
         spanLike.innerText = this.media.likes;
-        const iButton = document.createElement('button');
-        const iHeart = document.createElement('i');
-        iHeart.classList.add('fas', 'fa-heart', 'heart');
+        const iButton = document.createElement("button");
+        const iHeart = document.createElement("i");
+        iHeart.classList.add("fas", "fa-heart", "heart");
         /* Ajout enfants image */
         imgLink.appendChild(img);
         iButton.appendChild(iHeart);
-        iButton.setAttribute('aria-label', "liker le média");
+        iButton.setAttribute("aria-label", "liker le média");
         iButton.classList.add("buttonHeart");
         divLike.appendChild(spanLike);
         divLike.appendChild(iButton);
@@ -57,38 +57,42 @@ export default class MediaFactory {
 
     // Crée les Medias Videos page2 dans la section containerMedias
     createVideoCard() {
-        const videoCardP2 = document.createElement('article');
+        const videoCardP2 = document.createElement("article");
         /* Création éléments video */
         videoCardP2.classList.add("containerVideoCards");
-        const videoLink = document.createElement('a');
+        const videoLink = document.createElement("a");
         videoLink.classList.add("enterLight");
-        videoLink.setAttribute('tabindex', '0');
-        videoLink.setAttribute('href', '#');
-        const vid = document.createElement('video');
-        vid.setAttribute('data-id', this.media.id); 
-        vid.setAttribute('title', this.media.alt); 
+        videoLink.setAttribute("tabindex", "0");
+        videoLink.setAttribute("href", "#");
+        const vid = document.createElement("video");
+        vid.setAttribute("data-id", this.media.id); 
+        vid.setAttribute("title", this.media.alt); 
         vid.classList.add("clickLightbox");
-        const source = document.createElement('source');
-        source.setAttribute('src', 'assets/Media/' + this.media.video);
-        source.setAttribute('type', 'video/mp4');
+        const playIcon = document.createElement("div");
+        /* playIcon.innerHTML = "<i class='fa-solid fa-circle-play'></i>" */
+        playIcon.classList.add("playIcon");
+        const source = document.createElement("source");
+        source.setAttribute("src", "assets/Media/" + this.media.video);
+        source.setAttribute("type", "video/mp4");
         /* Création éléments sous titre */
-        const divSousTitre = document.createElement('div');
-        divSousTitre.classList.add('sousTitre');
-        const h2 = document.createElement('h2');
-        h2.classList.add('sousTitreText');
+        const divSousTitre = document.createElement("div");
+        divSousTitre.classList.add("sousTitre");
+        const h2 = document.createElement("h2");
+        h2.classList.add("sousTitreText");
         h2.innerText = this.media.title;
-        const divLike = document.createElement('div');
-        divLike.classList.add('likeHeart');
-        const spanLike = document.createElement('span');
-        spanLike.classList.add('likeNumber');
+        const divLike = document.createElement("div");
+        divLike.classList.add("likeHeart");
+        const spanLike = document.createElement("span");
+        spanLike.classList.add("likeNumber");
         spanLike.innerText = this.media.likes;
-        const iButton = document.createElement('button');
-        iButton.setAttribute('aria-label', "liker le média");
-        const iHeart = document.createElement('i');
-        iHeart.classList.add('fas', 'fa-heart', 'heart');
+        const iButton = document.createElement("button");
+        iButton.setAttribute("aria-label", "liker le média");
+        const iHeart = document.createElement("i");
+        iHeart.classList.add("fas", "fa-heart", "heart");
         /* Ajout enfants video */
         vid.appendChild(source);
         videoLink.appendChild(vid);
+        videoLink.appendChild(playIcon);
         /* Ajout enfants sous titre */
         iButton.appendChild(iHeart);
         iButton.classList.add("buttonHeart");
@@ -106,30 +110,30 @@ export default class MediaFactory {
     // Si instance = Video, return figure contenant html et lien video 
     createLightboxContent() {
         if (this.media instanceof Image) {
-            const figure = document.createElement('figure');
-            figure.classList.add('figureImg');
-            const img = document.createElement('img');
-            img.setAttribute('src', 'assets/Media/' + this.media.image);
-            img.setAttribute('alt', this.media.alt);
-            img.setAttribute('tabindex', '0');
-            const figCaption = document.createElement('figcaption');
+            const figure = document.createElement("figure");
+            figure.classList.add("figureImg");
+            const img = document.createElement("img");
+            img.setAttribute("src", "assets/Media/" + this.media.image);
+            img.setAttribute("alt", this.media.alt);
+            img.setAttribute("tabindex", "0");
+            const figCaption = document.createElement("figcaption");
             figCaption.innerText = this.media.title;
             figure.appendChild(img);
             figure.appendChild(figCaption);
             return figure;
         } else if (this.media instanceof Video) {
-            const figure = document.createElement('figure');
-            figure.classList.add('figureVid');
-            const vid = document.createElement('video');
-            const figCaption = document.createElement('figcaption');
+            const figure = document.createElement("figure");
+            figure.classList.add("figureVid");
+            const vid = document.createElement("video");
+            const figCaption = document.createElement("figcaption");
             figCaption.innerText = this.media.title;
-            vid.setAttribute('type', 'video/mp4');
-            vid.setAttribute('src', 'assets/Media/' + this.media.video);
-            vid.setAttribute('controls', true);
-            vid.setAttribute('autoplay', true);
-            vid.setAttribute('loop', true);
-            vid.setAttribute('tabindex', '0');
-            vid.setAttribute('title', this.media.alt);
+            vid.setAttribute("type", "video/mp4");
+            vid.setAttribute("src", "assets/Media/" + this.media.video);
+            vid.setAttribute("controls", true);
+            vid.setAttribute("autoplay", true);
+            vid.setAttribute("loop", true);
+            vid.setAttribute("tabindex", "0");
+            vid.setAttribute("title", this.media.alt);
             figure.appendChild(vid);
             figure.appendChild(figCaption);
             return figure;

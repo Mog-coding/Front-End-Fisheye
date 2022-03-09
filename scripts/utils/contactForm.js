@@ -3,25 +3,25 @@
 // Déclaration caractéristiques des 4 objets input :
 const dataInput = {
     firstName: {
-        noeud: document.querySelector('#first'),
+        noeud: document.querySelector("#first"),
         errorMessage: "Veuillez entrer entre 2 et 30 caractères dans le champ Prénom.",
         regex: /^[a-zA-ZÀ-ÿ-]{2,30}$/,
         isValid: false
     },
     lastName: {
-        noeud: document.querySelector('#last'),
+        noeud: document.querySelector("#last"),
         errorMessage: "Veuillez entrer entre 2 et 30 caractères dans le champ Nom.",
         regex: /^[a-zA-ZÀ-ÿ-]{2,30}$/,
         isValid: false
     },
     email: {
-        noeud: document.querySelector('#email'),
+        noeud: document.querySelector("#email"),
         errorMessage: "Veuillez entrer une syntaxe d'email valide.",
         regex: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
         isValid: false
     },
     textArea: {
-        noeud: document.querySelector('#textArea'),
+        noeud: document.querySelector("#textArea"),
         errorMessage: "Veuillez entrer entre 5 et 500 caractères dans le champ message.",
         regex: /^[A-Za-zÀ-ÿ0-9 .'?!,@$#-_\n\r]{5,500}$/,
         isValid: false
@@ -58,10 +58,10 @@ function testAllIsValid(data) {
 // Ajoute/retire message d'erreur d'une entrée en fonction de clé isValid
 function afficheErrorMessage(key) {
     if (!key.isValid) {
-        key.noeud.classList.add('borderError');
+        key.noeud.classList.add("borderError");
         key.noeud.nextElementSibling.innerHTML = key.errorMessage;
     } else {
-        key.noeud.classList.remove('borderError');
-        key.noeud.nextElementSibling.innerHTML = '';
+        key.noeud.classList.remove("borderError");
+        key.noeud.nextElementSibling.innerHTML = "";
     }
 }

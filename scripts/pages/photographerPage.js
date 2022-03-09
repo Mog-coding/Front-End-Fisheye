@@ -7,7 +7,7 @@ import LightBox from "./LightBox.js"
 
 
 /*RECUPERATION DES DONNEES AVEC FETCH */
-fetch('data/photographers.json')    // promise1 résolue: serveur répond
+fetch("data/photographers.json")    // promise1 résolue: serveur répond
     .then(function (response) {     // promise2 résolue: data chargée
         return response.json();     // data json vers objet
     })
@@ -21,7 +21,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         // Extraction d'1 objet photographe via son id contenu dans l'url de la page
         const url_object = window.location;
         const objetParam = new URL(url_object);
-        const identifiant = Number(objetParam.searchParams.get('id'));
+        const identifiant = Number(objetParam.searchParams.get("id"));
         const foundPhotographer = photographers.find((objet) => {
             return objet.id === identifiant
         });
@@ -35,16 +35,14 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
          *************     partie MEDIA     *******************
          *************/
 
-        // filtre ds tableau d'objets les Medias du photographe via propriété 
-        // photoID égale à la valeur contenue dans l'url de la page    
+        /* filtre ds tableau d'objets les Medias du photographe via propriété photoID égale à la valeur contenue dans l'url de la page */
         const dataMedia = media.filter((el) => {
             return el.photographerId === identifiant
         });
 
-        // function instancie objet Media en classMediaFactory et crée Vue Image ou Video
+        /* function instancie objet Media en classMediaFactory et crée Vue Image ou Video */
         function createImageVideoCard(dataMedia) {
-            // Tableau d'objet Media vers tableau d'instance de class MediaFactory 
-            // contenant méthode builder Image/Video Card. Class MediaFactory contient  // un objet de class Image ou Video, extensions de la class Media
+            /* Tableau d'objet Media vers tableau d'instance de class MediaFactory contenant méthode builder Image/Video Card. Class MediaFactory contient un objet de class Image ou Video, extensions de la class Media */
             let dataMediaInstance = dataMedia.map((el) => {
                 return new MediaFactory(el)
             })
@@ -64,52 +62,63 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
          *************/
 
         // initialise la Vue media avec media triés via string "Popularité"
-        const buttonValue = document.querySelector('#buttonDrop1').value;
+        const buttonValue = document.querySelector("#buttonDrop1").value;
         trieMedia(buttonValue);
         runHeartLikes();
         runLightBox();
 
         // Fait disparaitre/apparaitre menu DropDown
         function disapperMenuDrop() {
-            buttonDrop2.classList.add('disappear');
-            buttonDrop3.classList.add('disappear');
+            buttonDrop2.classList.add("disappear");
+            buttonDrop3.classList.add("disappear");
         }
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
-        document.querySelector("#buttonDrop1").addEventListener("click", (even) => {
-            const buttonDrop2 = document.querySelector('#buttonDrop2');
-            const buttonDrop3 = document.querySelector('#buttonDrop3');
+        document.querySelector("#buttonDrop1").addEventListener("click", (event) => {
+            const buttonDrop2 = document.querySelector("#buttonDrop2");
+            const buttonDrop3 = document.querySelector("#buttonDrop3");
+            /* Déselection focus bouton1 suite au click (sinon 2 boutons sélectionnés si focus :hover sur un autre bouton) */
+            document.querySelector("#buttonDrop1").blur();
             // Apparition/disparition du menu dropdown: ajout/retrait class disappear
-            if (buttonDrop2.classList.contains('disappear')) {
-                buttonDrop2.classList.remove('disappear');
-                buttonDrop3.classList.remove('disappear');
-                even.target.parentElement.setAttribute('aria-expanded', 'true');
+            if (buttonDrop2.classList.contains("disappear")) {
+                buttonDrop2.classList.remove("disappear");
+                buttonDrop3.classList.remove("disappear");
+                event.target.parentElement.setAttribute("aria-expanded", "true");
             } else {
                 disapperMenuDrop();
-                even.target.parentElement.setAttribute('aria-expanded', 'false');
+                event.target.parentElement.setAttribute("aria-expanded", "false");
             };
             // Rotation icon FA chevron: ajout/retrait class rotate
-            if (document.querySelector('#buttonDrop1 i').classList.contains('rotate')) {
-                document.querySelector('#buttonDrop1 i').classList.remove('rotate')
+            if (document.querySelector("#buttonDrop1 i").classList.contains("rotate")) {
+                document.querySelector("#buttonDrop1 i").classList.remove("rotate")
             } else {
-                document.querySelector('#buttonDrop1 i').classList.add('rotate');
+                document.querySelector("#buttonDrop1 i").classList.add("rotate");
             }
         });
 
         // si clic en dehors menu dropDown ET menu ouvert: fermer menu
         window.addEventListener("click", (event) => {
-            if (!(event.target.parentElement.id === 'containerDrop')
+            if (!(event.target.parentElement.id === "containerDrop")
                 &&
-                (!document.querySelector('#buttonDrop2').classList.contains('disappear'))) {
+                (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
                 disapperMenuDrop();
-                document.querySelector('#buttonDrop1 i').classList.remove('rotate');
+                document.querySelector("#buttonDrop1 i").classList.remove("rotate");
             }
         })
 
-        // Trie les objets Media selon valeur string et crée une vue de ces 
-        // Medias triés en ayant supprimés les Medias précédents
+        // si focus en dehors menu dropDown ET menu ouvert: fermer menu
+        document.addEventListener('focusin', function () {
+            if (!(document.activeElement.parentElement.id === "containerDrop")
+                &&
+                (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
+                disapperMenuDrop();
+                document.querySelector("#buttonDrop1 i").classList.remove("rotate");
+            }
+        });
+
+        /* Trie les objets Media selon valeur string et crée une vue de ces Medias triés en ayant supprimés les Medias précédents */
         function trieMedia(buttonValue) {
             // Si string='title' objets dataMedia.title triés par ordre alphabétique   
-            if (buttonValue === 'Titre') {
+            if (buttonValue === "Titre") {
                 dataMedia.sort(function (a, b) {
                     if (a.title > b.title) return 1;
                     if (a.title < b.title) return -1;
@@ -117,13 +126,13 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 });
             }
             // Si string='Popularité' objets dataMedia.likes triés par ordre décroissant  
-            else if (buttonValue === 'Popularité') {
+            else if (buttonValue === "Popularité") {
                 dataMedia.sort(function (a, b) {
                     return b.likes - a.likes
                 });
             }
             // Si string='Date' objets dataMedia.date triés par ordre alphabétique
-            else if (buttonValue === 'Date') {
+            else if (buttonValue === "Date") {
                 dataMedia.sort(function (a, b) {
                     if (a.date > b.date) return 1;
                     if (a.date < b.date) return -1;
@@ -139,15 +148,15 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             createImageVideoCard(dataMedia);
         }
 
-        // Clic button2: Inverse valeur et contenu button1/2, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
-        document.querySelector('#buttonDrop2').addEventListener('click', () => {
-            const node1 = document.querySelector('#buttonDrop1');
-            const node2 = document.querySelector('#buttonDrop2');
+        /* Clic button2: Inverse valeur et contenu button1/2, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue */
+        document.querySelector("#buttonDrop2").addEventListener("click", () => {
+            const node1 = document.querySelector("#buttonDrop1");
+            const node2 = document.querySelector("#buttonDrop2");
             // Clic button2: Inversion des valeurs entre button2 et button1
             const button1Value = node1.value;
             const button2Value = node2.value;
-            node1.setAttribute('value', button2Value);
-            node2.setAttribute('value', button1Value);
+            node1.setAttribute("value", button2Value);
+            node2.setAttribute("value", button1Value);
             // Inversion du contenu des balises button2 et button1
             node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
             node2.innerText = button1Value;
@@ -159,14 +168,14 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             runLightBox()
         })
 
-        // Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue
-        document.querySelector('#buttonDrop3').addEventListener('click', () => {
-            const node1 = document.querySelector('#buttonDrop1');
-            const node3 = document.querySelector('#buttonDrop3');
+        /* Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue */
+        document.querySelector("#buttonDrop3").addEventListener("click", () => {
+            const node1 = document.querySelector("#buttonDrop1");
+            const node3 = document.querySelector("#buttonDrop3");
             const button1Value = node1.value;
             const button3Value = node3.value;
-            node1.setAttribute('value', button3Value);
-            node3.setAttribute('value', button1Value);
+            node1.setAttribute("value", button3Value);
+            node3.setAttribute("value", button1Value);
             node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
             node3.innerText = button1Value;
             disapperMenuDrop();
@@ -186,16 +195,15 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 arrayLike.push(Number(el.textContent));
             });
             // Addition de tous les likes du tableau ds total
-            let total = 0;
-            for (let i = 0; i < arrayLike.length; i++) {
-                total += arrayLike[i];
-            };
+            let total = arrayLike.reduce(function (accu, el) {
+                return accu + el
+            })
+
             // Ajout dans compteur aside du total des like et du prix du photographe
             document.querySelector("#compteur").innerText = total;
-            document.querySelector('#price').innerText = `${foundPhotographer.price}€ / jour`;
+            document.querySelector("#price").innerText = `${foundPhotographer.price}€ / jour`;
 
-            /* Listener sur coeur médias: si 1er clic: like +1, compteur total like +1
-            si 2eme clic: like -1 et compteur total like -1 */
+            /* Listener sur coeur médias: si 1er clic: like +1, compteur total like +1, si 2eme clic: like -1 et compteur total like -1 */
             document.querySelectorAll(".heart").forEach(function (el) {
                 // Ajout Listener sur chaque coeur des médias
                 el.addEventListener("click", function (event) {
@@ -258,12 +266,11 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
             if (document.querySelector("#mediaContainer").firstElementChild) {
                 document.querySelector("#mediaContainer").firstElementChild.remove();
             }
-            ariaHidden(".wrapper", false, '#lightbox', true);
+            ariaHidden(".wrapper", false, "#lightbox", true);
         }
 
         /* Lance lightbox quand clic sur medias, gère focus, aria-hidden,
-        et gère les clics et appuis touches sur menu  lightbox
-        */
+        et gère les clics et appuis touches sur menu  lightbox */
         function runLightBox() {
             // lightBox instance de Lightbox
             let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
@@ -273,8 +280,18 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                     // Appel méthode show() avec id de l'élément cliqué
                     lightBox.show(event.currentTarget.dataset.id);
                     // Focus sur next, wrapper aria hidden
-                    ariaHidden(".wrapper", true, '#lightbox', false);
-                    document.querySelector('.next').focus();
+                    ariaHidden(".wrapper", true, "#lightbox", false);
+                    document.querySelector(".next").focus();
+                })
+            });
+            // Clic icone lecture media video: lance lightbox
+            document.querySelectorAll(".playIcon").forEach((el) => {
+                el.addEventListener("click", (event) => {
+                    // Appel méthode show() avec id de l'élément cliqué
+                    lightBox.show(event.currentTarget.previousElementSibling.dataset.id);
+                    // Focus sur next, wrapper aria hidden
+                    ariaHidden(".wrapper", true, "#lightbox", false);
+                    document.querySelector(".next").focus();
                 })
             });
             // Appuie touche Entrée sur media: lance lightbox
@@ -282,8 +299,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 el.addEventListener("keydown", (e) => {
                     if (e.key === "Enter" || e.keyCode === 13) {
                         lightBox.show(e.currentTarget.firstElementChild.dataset.id);
-                        ariaHidden(".wrapper", true, '#lightbox', false);
-                        document.querySelector('.next').focus();
+                        ariaHidden(".wrapper", true, "#lightbox", false);
+                        document.querySelector(".next").focus();
                     }
                 })
             });
@@ -304,12 +321,14 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                 // Si touche -> appuyée: media suivant
                 if (e.key === "ArrowRight" || e.keyCode === 39) {
                     lightBox.next();
+                    document.querySelector(".cross").focus();
                 }
                 // Si touche <- appuyée: media précédent
                 if (e.key === "ArrowLeft" || e.keyCode === 37) {
                     lightBox.previous();
+                    document.querySelector(".cross").focus();
                 }
-                // Si touche enter appuyée sur icone next ou previous: media next/prev
+                /* Si touche enter appuyée sur icone next ou previous: media next/prev */
                 if (e.key === "Enter" || e.keyCode === 13) {
                     if (document.activeElement.classList.contains("next")) {
                         lightBox.next();
@@ -326,27 +345,27 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
         // Empêche la technologie d'assistance d'accéder au contenu aria-hidden
         function ariaHidden(ele1, boole, ele2, boole2) {
-            document.querySelector(ele1).setAttribute('aria-hidden', boole);
-            document.querySelector(ele2).setAttribute('aria-hidden', boole2);
+            document.querySelector(ele1).setAttribute("aria-hidden", boole);
+            document.querySelector(ele2).setAttribute("aria-hidden", boole2);
         }
 
         // Ouvre/ferme le modal avec display: block; ou none; + gère accessibilité 
         function switchModal(display) {
-            document.querySelector('.background').style.display = display;
+            document.querySelector(".background").style.display = display;
             // Si display block,focus sur croix modal, aria-hidden activé sur form
             if (display === "block") {
-                ariaHidden(".wrapper", true, '.modal', false);
-                document.querySelector('.closeForm').focus();
+                ariaHidden(".wrapper", true, ".modal", false);
+                document.querySelector(".closeForm").focus();
                 // Supression barre défilement
                 document.querySelector("body").classList.add("overflo");
                 // Si display none, aria-hidden activé sur wrapper
             } else if (display === "none") {
-                ariaHidden(".wrapper", false, '.modal', true);
+                ariaHidden(".wrapper", false, ".modal", true);
                 document.querySelector("body").classList.remove("overflo");
             }
         }
         // Ouvre le modal quand click sur bouton 'contactez moi'
-        document.querySelector('.buttonContactezMoi').addEventListener('click', function () {
+        document.querySelector(".buttonContactezMoi").addEventListener("click", function () {
             switchModal("block");
         })
 
@@ -355,7 +374,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
         /* Ferme le modal quand click sur croix modal + gère accessibilité formulaire
         Recharge la page si le formulaire a été validé */
-        document.querySelector('.closeForm').addEventListener('click', function () {
+        document.querySelector(".closeForm").addEventListener("click", function () {
             switchModal("none");
             if (formValid) {
                 location.reload()
@@ -363,14 +382,14 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
         })
 
         // Ajout nom photographe dans entête formulaire
-        document.querySelector('.containerModal h2').innerText =
+        document.querySelector(".containerModal h2").innerText =
             `Contactez moi
          ${foundPhotographer.name}`;
 
         /* Submit formulaire
         Si saisies valides: efface errorMessage, reset form, affiche thankMessage,
         sinon, affiche erreurs message + empêche soumission form */
-        document.querySelector('#contactForm').addEventListener('submit', function (event) {
+        document.querySelector("#contactForm").addEventListener("submit", function (event) {
             event.preventDefault();
             formValid = false;
             updateInput(dataInput);
@@ -381,9 +400,9 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                     console.log(`${key}: ${dataInput[key].noeud.value}`);
                 };
                 // Reset formulaire
-                document.querySelector('#contactForm').reset();
+                document.querySelector("#contactForm").reset();
                 // Affichage message remerciement
-                document.querySelector(".modal").classList.add('thankMessage');
+                document.querySelector(".modal").classList.add("thankMessage");
                 document.querySelector(".containerModal").innerHTML = `<div> Votre message a bien été envoyé à ${foundPhotographer.name}. </div>`;
                 formValid = true;
             } else {
@@ -434,7 +453,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                     if (document.querySelector("#lightbox").classList.contains("show")) {
                         closeLightbox();
                     } else {
-                        switchModal('none');
+                        switchModal("none");
                     }
                 }
                 /* Si Enter appuyé sur croix -> ferme la lightbox si ouverte, sinon ferme formulaire */
@@ -443,7 +462,7 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
                         if (document.querySelector("#lightbox").classList.contains("show")) {
                             closeLightbox();
                         } else {
-                            switchModal('none');
+                            switchModal("none");
                         }
                     }
                 }
@@ -453,6 +472,8 @@ fetch('data/photographers.json')    // promise1 résolue: serveur répond
 
 
 
+    }).catch((error) => {
+        console.log(error)
     })
 //FIN ASYNCHRONE
 

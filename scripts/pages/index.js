@@ -2,7 +2,7 @@ import Photographer from "../model/Photographer.js"
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 
 /*RECUP DES DONNEES */
-fetch('data/photographers.json') //promise1 résolue: serveur répond
+fetch("data/photographers.json") //promise1 résolue: serveur répond
     .then(function (response) {   //promise2 résolue: data chargée
         return response.json();   //data json vers objet
     })
