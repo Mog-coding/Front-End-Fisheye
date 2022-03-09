@@ -42,7 +42,7 @@ export default class MediaFactory {
         /* Ajout enfants image */
         imgLink.appendChild(img);
         iButton.appendChild(iHeart);
-        iButton.setAttribute("aria-label", "liker le média");
+        iButton.setAttribute("aria-label", "aimer le média");
         iButton.classList.add("buttonHeart");
         divLike.appendChild(spanLike);
         divLike.appendChild(iButton);
@@ -86,7 +86,7 @@ export default class MediaFactory {
         spanLike.classList.add("likeNumber");
         spanLike.innerText = this.media.likes;
         const iButton = document.createElement("button");
-        iButton.setAttribute("aria-label", "liker le média");
+        iButton.setAttribute("aria-label", "aimer le média");
         const iHeart = document.createElement("i");
         iHeart.classList.add("fas", "fa-heart", "heart");
         /* Ajout enfants video */
