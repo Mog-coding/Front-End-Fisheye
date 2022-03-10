@@ -11,7 +11,7 @@ export default class PhotographerFactory {
         const imgPhotographer = document.createElement("img");
         imgPhotographer.setAttribute("src", this.photographer.portrait);
         imgPhotographer.setAttribute("alt", this.photographer.alt);
-        imgPhotographer.classList.add("userCards","imgCards");
+        imgPhotographer.classList.add("userCards", "imgCards");
         const h2 = document.createElement("h2");
         h2.classList.add("nameCards");
         h2.innerText = this.photographer.name;
@@ -44,7 +44,7 @@ export default class PhotographerFactory {
         h1.innerText = this.photographer.name;
         const divCity = document.createElement("div");
         divCity.classList.add("city");
-        divCity.innerText = this.photographer.city + ", " + this.photographer.country; 
+        divCity.innerText = this.photographer.city + ", " + this.photographer.country;
         const divTagline = document.createElement("div");
         divTagline.classList.add("tagline");
         divTagline.innerText = this.photographer.tagline;

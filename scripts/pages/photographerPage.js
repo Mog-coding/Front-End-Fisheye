@@ -79,7 +79,8 @@ fetch("data/photographers.json")
                 buttonDrop3.classList.remove("disappear");
                 event.target.parentElement.setAttribute("aria-expanded", "true");
             } else {
-                disapperMenuDrop();
+                buttonDrop2.classList.add("disappear");
+                buttonDrop3.classList.add("disappear");
                 event.target.parentElement.setAttribute("aria-expanded", "false");
             }
             // Rotation icon FA chevron: ajout/retrait class rotate
@@ -89,18 +90,14 @@ fetch("data/photographers.json")
                 document.querySelector("#buttonDrop1 i").classList.add("rotate");
             }
         });
-        // Fait disparaitre/apparaitre menu DropDown
-        function disapperMenuDrop() {
-            buttonDrop2.classList.add("disappear");
-            buttonDrop3.classList.add("disappear");
-        }
 
         // si clic en dehors menu dropDown ET menu ouvert: fermer menu
         window.addEventListener("click", (event) => {
             if (!(event.target.parentElement.id === "containerDrop")
                 &&
                 (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
-                disapperMenuDrop();
+                document.querySelector("#buttonDrop2").classList.add("disappear");
+                document.querySelector("#buttonDrop3").classList.add("disappear");
                 document.querySelector("#buttonDrop1 i").classList.remove("rotate");
             }
         })
@@ -110,7 +107,8 @@ fetch("data/photographers.json")
             if (!(document.activeElement.parentElement.id === "containerDrop")
                 &&
                 (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
-                disapperMenuDrop();
+                document.querySelector("#buttonDrop2").classList.add("disappear");
+                document.querySelector("#buttonDrop3").classList.add("disappear");
                 document.querySelector("#buttonDrop1 i").classList.remove("rotate");
             }
         });
@@ -161,7 +159,8 @@ fetch("data/photographers.json")
             node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
             node2.innerText = button1Value;
             // Clic button2: menu DropDown disparait
-            disapperMenuDrop();
+            document.querySelector("#buttonDrop2").classList.add("disappear");
+            document.querySelector("#buttonDrop3").classList.add("disappear");
             // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
             trieMedia(button2Value);
             runHeartLikes();
@@ -178,7 +177,8 @@ fetch("data/photographers.json")
             node3.setAttribute("value", button1Value);
             node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
             node3.innerText = button1Value;
-            disapperMenuDrop();
+            document.querySelector("#buttonDrop2").classList.add("disappear");
+            document.querySelector("#buttonDrop3").classList.add("disappear");
             trieMedia(button3Value);
             runHeartLikes();
             runLightBox()
@@ -253,16 +253,14 @@ fetch("data/photographers.json")
                     }
                 })
             });
-
-
         }
 
         /*************
          *************     partie LIGHTBOX     *******************
          *************/
 
-        // lightBox instance de Lightbox
-        let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
+        // Initialisation lightbox
+        let lightBox = new LightBox(dataMedia);
         lightBoxInit();
         runLightBox();
 
@@ -310,7 +308,7 @@ fetch("data/photographers.json")
             });
         }
 
-        // Initialisation Lightbox gère les clics et appuis touches sur menu  
+        // Gère les clics et appuis touches sur menu lightbox  
         function lightBoxInit() {
             // Clic croix: fermeture LightBox
             document.querySelector(".cross").addEventListener("click", () => {
@@ -426,7 +424,7 @@ fetch("data/photographers.json")
          *************     Focus trap      *******************
          *************/
 
-        /* MODIF ---------------------- */
+        /* Initialise le focus trap sur formulaire et lightbox */
         focusTrap(document.querySelector(".modal"));
         focusTrap(document.querySelector("#lightbox"));
 
@@ -465,7 +463,8 @@ fetch("data/photographers.json")
                     }
                 }
                 /* Si Enter appuyé sur croix -> ferme la lightbox si ouverte, sinon ferme formulaire */
-                if (e.key === "Enter" || e.keyCode === 13) {        // Si Enter appuyé
+                // Si Enter appuyé
+                if (e.key === "Enter" || e.keyCode === 13) {
                     if (document.activeElement.classList.contains("enterClose")) {
                         if (document.querySelector("#lightbox").classList.contains("show")) {
                             closeLightbox();
@@ -477,12 +476,8 @@ fetch("data/photographers.json")
             });
         }
 
-
-
-
     }).catch((error) => {
-        console.log(error)
+        console.log("catch error: " + error)
     })
-//FIN ASYNCHRONE
 
 

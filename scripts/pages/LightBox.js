@@ -3,12 +3,12 @@ import MediaFactory from "../factories/MediaFactory.js"
 export default class LightBox {
     constructor(listMedia) {
         this.listMedia = listMedia;
-        this.currentElement = null; 
+        this.currentElement = null;
         this.mediaFactory = null;
     }
     // Affiche un objet img ou video grâce à son id 
     show(id) {
-        this.currentElement = this.getElementById(id); 
+        this.currentElement = this.getElementById(id);
         // utilisation Pattern Factory pour distinguer l'instance video/img
         this.mediaFactory = new MediaFactory(this.currentElement);
         this.display();

@@ -17,7 +17,7 @@ export default class MediaFactory {
         const imageCardP2 = document.createElement("article");
         /* Création éléments image */
         imageCardP2.classList.add("containerPhotoCards");
-        const imgLink = document.createElement("a");          
+        const imgLink = document.createElement("a");
         imgLink.setAttribute("tabindex", "0");
         imgLink.classList.add("enterLight");
         const img = document.createElement("img");
@@ -65,8 +65,8 @@ export default class MediaFactory {
         videoLink.setAttribute("tabindex", "0");
         videoLink.setAttribute("href", "#");
         const vid = document.createElement("video");
-        vid.setAttribute("data-id", this.media.id); 
-        vid.setAttribute("title", this.media.alt); 
+        vid.setAttribute("data-id", this.media.id);
+        vid.setAttribute("title", this.media.alt);
         vid.classList.add("clickLightbox");
         const playIcon = document.createElement("div");
         /* playIcon.innerHTML = "<i class='fa-solid fa-circle-play'></i>" */

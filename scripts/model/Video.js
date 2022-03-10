@@ -6,5 +6,5 @@ export default class Video extends Media {
     }
     get video() {
         return this._video;
-   }
+    }
 }

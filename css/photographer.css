@@ -128,7 +128,7 @@ section {
   margin-bottom: 30px;
 }
 .containerPhotoCards a,
-.containerVideoCards a{
+.containerVideoCards a {
   height: 300px;
 }
 .containerPhotoCards img,
@@ -185,7 +185,6 @@ section {
 .enterLight:hover {
   cursor: pointer;
 }
-
 /* heart */
 .likeHeart {
   display: flex;
@@ -288,7 +287,6 @@ section {
   font-weight: normal;
   margin: 0 0 20px 0;
 }
-
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -299,11 +297,9 @@ section {
   padding: 17px 35px 35px 35px;
   margin: auto;
 }
-
 .overflo {
   overflow: hidden;
 }
-
 /* form */
 form {
   display: flex;

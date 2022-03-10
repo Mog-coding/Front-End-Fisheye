@@ -1,6 +1,6 @@
 /** userCard **/
 .nameCards {
-  color: #D3573C;
+  color: #d3573c;
   font-size: 2.3em;
   font-weight: normal;
   margin: 19px 0 0 0;
@@ -13,16 +13,16 @@
   padding: 0 20px;
 }
 .city {
-  font-size: 1.2em; /* 0.8em */
-  color: #901C1C;
+  font-size: 1.2em;
+  color: #901c1c;
 }
 .tagline {
-  font-size: 1em; /* 0.6em */
+  font-size: 1em;
   font-weight: normal;
   margin-top: 4px;
 }
 .price {
-  font-size: 1em;  /* 0.6em */
+  font-size: 1em;
   color: #525252;
   margin-top: 2px;
 }
@@ -30,11 +30,11 @@
   cursor: pointer;
 }
 .containerUserCard:hover h2 {
-  color: #901C1C;
+  color: #901c1c;
   font-weight: bold;
 }
 .photographer_section a:focus h2 {
-  color: #901C1C;
+  color: #901c1c;
   font-weight: bold;
 }
 
@@ -44,15 +44,15 @@
   font-weight: bold;
   color: white;
   border: none;
-  background-color: #901C1C;
+  background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
 }
 .contact_button:hover {
-  background-color: #DB8876;
+  background-color: #db8876;
   color: black;
 }
 .contact_button:focus {
-  background-color: #DB8876;
+  background-color: #db8876;
   color: black;
 }
