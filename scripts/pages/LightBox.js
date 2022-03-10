@@ -17,6 +17,7 @@ export default class LightBox {
     getElementById(idCliqué) {
         return this.listMedia.find(element => element.id === Number(idCliqué))
     }
+    // Passe au media suivant et l'affiche
     next() {
         let index = this.listMedia.findIndex(element => element.id === Number(this.currentElement.id));
         if (index + 1 === this.listMedia.length) {
@@ -27,6 +28,7 @@ export default class LightBox {
         this.mediaFactory = new MediaFactory(this.currentElement);
         this.display();
     }
+    // Passe au media précedent et l'affiche
     previous() {
         let index = this.listMedia.findIndex(element => element.id === Number(this.currentElement.id));
         if (index === 0) {

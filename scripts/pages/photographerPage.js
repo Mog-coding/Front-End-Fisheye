@@ -1,17 +1,20 @@
 //import photographer factory html
-import MediaFactory from "../factories/MediaFactory.js"
-import PhotographerFactory from "../factories/PhotographerFactory.js"
-import Image from "../model/Image.js"
-import Video from "../model/Video.js"
-import LightBox from "./LightBox.js"
+import MediaFactory from "../factories/MediaFactory.js";
+import PhotographerFactory from "../factories/PhotographerFactory.js";
+import Image from "../model/Image.js";
+import Video from "../model/Video.js";
+import LightBox from "./LightBox.js";
 
 
-/*RECUPERATION DES DONNEES AVEC FETCH */
-fetch("data/photographers.json")    // promise1 résolue: serveur répond
-    .then(function (response) {     // promise2 résolue: data chargée
-        return response.json();     // data json vers objet
+/* Récupération des données avec fetch */
+// Promise résolue: serveur répond
+fetch("data/photographers.json")
+    // Promise résolue: data chargée   
+    .then(function (response) {
+        return response.json();
     })
-    .then(function ({ media, photographers }) { //p3 résolue: donne data formatée 
+    // Promise résolue: donne data json vers objet
+    .then(function ({ media, photographers }) {
         // photographers: array contenant 6 objets photographe
 
         /*************
@@ -26,8 +29,7 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
             return objet.id === identifiant
         });
 
-        // VueArticle instance de class PhotographerFactory et création de bannière
-        // dans <article> via méthode de class
+        /* VueArticle instance de class PhotographerFactory et création de bannière dans <article> via méthode de class */
         const VueArticle = new PhotographerFactory(foundPhotographer);
         document.querySelector("#article").appendChild(VueArticle.createPhotographerBanner());
 
@@ -64,14 +66,7 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
         // initialise la Vue media avec media triés via string "Popularité"
         const buttonValue = document.querySelector("#buttonDrop1").value;
         trieMedia(buttonValue);
-        runHeartLikes();
-        runLightBox();
 
-        // Fait disparaitre/apparaitre menu DropDown
-        function disapperMenuDrop() {
-            buttonDrop2.classList.add("disappear");
-            buttonDrop3.classList.add("disappear");
-        }
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         document.querySelector("#buttonDrop1").addEventListener("click", (event) => {
             const buttonDrop2 = document.querySelector("#buttonDrop2");
@@ -86,7 +81,7 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
             } else {
                 disapperMenuDrop();
                 event.target.parentElement.setAttribute("aria-expanded", "false");
-            };
+            }
             // Rotation icon FA chevron: ajout/retrait class rotate
             if (document.querySelector("#buttonDrop1 i").classList.contains("rotate")) {
                 document.querySelector("#buttonDrop1 i").classList.remove("rotate")
@@ -94,6 +89,11 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
                 document.querySelector("#buttonDrop1 i").classList.add("rotate");
             }
         });
+        // Fait disparaitre/apparaitre menu DropDown
+        function disapperMenuDrop() {
+            buttonDrop2.classList.add("disappear");
+            buttonDrop3.classList.add("disappear");
+        }
 
         // si clic en dehors menu dropDown ET menu ouvert: fermer menu
         window.addEventListener("click", (event) => {
@@ -143,7 +143,7 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
             const nodeMedia = document.querySelector(".containerMedias");
             while (nodeMedia.firstChild) {
                 nodeMedia.removeChild(nodeMedia.firstChild);
-            };
+            }
             //creation d'une nouvelle Vue avec Medias classés
             createImageVideoCard(dataMedia);
         }
@@ -188,6 +188,9 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
          *************     Likes     *******************
          *************/
 
+        // Initialisation likes
+        runHeartLikes();
+
         function runHeartLikes() {
             // Tableau arrayLike contenant tous les likes de chaque média
             const arrayLike = [];
@@ -219,7 +222,7 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
                         like--;
                         total--;
                         event.target.classList.remove("heartColor");
-                    };
+                    }
                     // Mise à jour du nombre de like et du compteur
                     spanLike.textContent = like;
                     document.querySelector("#compteur").innerText = total;
@@ -243,7 +246,7 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
                             like--;
                             total--;
                             event.target.firstChild.classList.remove("heartColor");
-                        };
+                        }
                         // Mise à jour du nombre de like et du compteur
                         spanLike.textContent = like;
                         document.querySelector("#compteur").innerText = total;
@@ -254,10 +257,14 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
 
         }
 
-
         /*************
          *************     partie LIGHTBOX     *******************
          *************/
+
+        // lightBox instance de Lightbox
+        let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
+        lightBoxInit();
+        runLightBox();
 
         // Ferme la lightbox et supprime le media crée + gestion accessibilité 
         function closeLightbox() {
@@ -269,11 +276,8 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
             ariaHidden(".wrapper", false, "#lightbox", true);
         }
 
-        /* Lance lightbox quand clic sur medias, gère focus, aria-hidden,
-        et gère les clics et appuis touches sur menu  lightbox */
+        // Lance lightbox quand clic sur medias, gère focus, aria-hidden,
         function runLightBox() {
-            // lightBox instance de Lightbox
-            let lightBox = new LightBox(dataMedia); // dataMedia: [{}, {}, {} ]
             // Clic media lance lightbox + gestion accessibilité et focus
             document.querySelectorAll(".clickLightbox").forEach((el) => {
                 el.addEventListener("click", (event) => {
@@ -304,8 +308,12 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
                     }
                 })
             });
+        }
+
+        // Initialisation Lightbox gère les clics et appuis touches sur menu  
+        function lightBoxInit() {
             // Clic croix: fermeture LightBox
-            document.querySelector(".cross").addEventListener("click", function (event) {
+            document.querySelector(".cross").addEventListener("click", () => {
                 closeLightbox();
             })
             // Clic icone next: media suivant
@@ -343,6 +351,55 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
          *************     partie FORMULAIRE     *******************
          *************/
 
+        // Ouvre le modal quand click sur bouton 'contactez moi'
+        document.querySelector(".buttonContactezMoi").addEventListener("click", function () {
+            switchModal("block");
+        })
+
+        // Formulaire valide ou non
+        let formValid = false;
+
+        /* Ferme le modal quand click sur croix modal + gère accessibilité formulaire
+        Recharge la page si le formulaire a été validé */
+        document.querySelector(".closeForm").addEventListener("click", function () {
+            switchModal("none");
+            if (formValid) {
+                location.reload()
+            }
+        })
+
+        // Ajout nom photographe dans entête formulaire
+        document.querySelector(".containerModal h2").innerText =
+            `Contactez moi
+         ${foundPhotographer.name}`;
+
+        /* Submit formulaire
+        Si saisies valides: efface errorMessage, reset form, affiche thankMessage,
+        sinon, affiche erreurs message + empêche soumission form */
+        document.querySelector("#contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            formValid = false;
+            updateInput(dataInput);
+            //si formulaire valide
+            if (testAllIsValid(dataInput)) {
+                for (const key in dataInput) {
+                    afficheErrorMessage(dataInput[key]);
+                    console.log(`${key}: ${dataInput[key].noeud.value}`);
+                }
+                // Reset formulaire
+                document.querySelector("#contactForm").reset();
+                // Affichage message remerciement
+                document.querySelector(".modal").classList.add("thankMessage");
+                document.querySelector(".containerModal").innerHTML = `<div> Votre message a bien été envoyé à ${foundPhotographer.name}. </div>`;
+                formValid = true;
+            } else {
+                //sinon empêche submit formulaire et affiche message erreur
+                for (const key in dataInput) {
+                    afficheErrorMessage(dataInput[key]);
+                }
+            }
+        });
+
         // Empêche la technologie d'assistance d'accéder au contenu aria-hidden
         function ariaHidden(ele1, boole, ele2, boole2) {
             document.querySelector(ele1).setAttribute("aria-hidden", boole);
@@ -364,55 +421,6 @@ fetch("data/photographers.json")    // promise1 résolue: serveur répond
                 document.querySelector("body").classList.remove("overflo");
             }
         }
-        // Ouvre le modal quand click sur bouton 'contactez moi'
-        document.querySelector(".buttonContactezMoi").addEventListener("click", function () {
-            switchModal("block");
-        })
-
-        // Formulaire valide ou non
-        let formValid = false;
-
-        /* Ferme le modal quand click sur croix modal + gère accessibilité formulaire
-        Recharge la page si le formulaire a été validé */
-        document.querySelector(".closeForm").addEventListener("click", function () {
-            switchModal("none");
-            if (formValid) {
-                location.reload()
-            };
-        })
-
-        // Ajout nom photographe dans entête formulaire
-        document.querySelector(".containerModal h2").innerText =
-            `Contactez moi
-         ${foundPhotographer.name}`;
-
-        /* Submit formulaire
-        Si saisies valides: efface errorMessage, reset form, affiche thankMessage,
-        sinon, affiche erreurs message + empêche soumission form */
-        document.querySelector("#contactForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            formValid = false;
-            updateInput(dataInput);
-            //si formulaire valide
-            if (testAllIsValid(dataInput)) {
-                for (const key in dataInput) {
-                    afficheErrorMessage(dataInput[key]);
-                    console.log(`${key}: ${dataInput[key].noeud.value}`);
-                };
-                // Reset formulaire
-                document.querySelector("#contactForm").reset();
-                // Affichage message remerciement
-                document.querySelector(".modal").classList.add("thankMessage");
-                document.querySelector(".containerModal").innerHTML = `<div> Votre message a bien été envoyé à ${foundPhotographer.name}. </div>`;
-                formValid = true;
-            } else {
-                //sinon empêche submit formulaire et affiche message erreur
-                for (const key in dataInput) {
-                    afficheErrorMessage(dataInput[key]);
-                };
-            }
-        });
-
 
         /*************
          *************     Focus trap      *******************

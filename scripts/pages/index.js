@@ -1,13 +1,16 @@
 import Photographer from "../model/Photographer.js"
 import PhotographerFactory from "../factories/PhotographerFactory.js"
 
-/*RECUP DES DONNEES */
+/*Récupération des données */
 fetch("data/photographers.json") //promise1 résolue: serveur répond
-    .then(function (response) {   //promise2 résolue: data chargée
-        return response.json();   //data json vers objet
+    // Promise2 résolue: data chargée
+    .then(function (response) {  
+        return response.json();  
     })
-    .then(function (resp) { //promise2 donne data formaté objet, then
-        const { photographers } = resp; // extraction objet photographers
+    // Promise donne data json vers objet, then
+    .then(function (resp) { 
+        // Extraction objet photographers
+        const { photographers } = resp; 
         const dataFactory = photographers.map(function (el) {
             return new Photographer(el)
         })
