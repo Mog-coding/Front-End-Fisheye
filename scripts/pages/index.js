@@ -11,10 +11,10 @@ fetch("data/photographers.json") //promise1 résolue: serveur répond
     .then(function (resp) {
         // Extraction objet photographers
         const { photographers } = resp;
-        const dataFactory = photographers.map(function (el) {
+        const dataFactory = photographers.map((el) => {
             return new Photographer(el)
         })
-        dataFactory.forEach(function (el) {
+        dataFactory.forEach((el) => {
             const Template = new PhotographerFactory(el);
             document.querySelector(".photographer_section").appendChild(Template.createPhotographerCard());
         })

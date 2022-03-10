@@ -103,7 +103,7 @@ fetch("data/photographers.json")
         })
 
         // si focus en dehors menu dropDown ET menu ouvert: fermer menu
-        document.addEventListener('focusin', function () {
+        document.addEventListener('focusin', () => {
             if (!(document.activeElement.parentElement.id === "containerDrop")
                 &&
                 (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
@@ -194,7 +194,7 @@ fetch("data/photographers.json")
         function runHeartLikes() {
             // Tableau arrayLike contenant tous les likes de chaque média
             const arrayLike = [];
-            document.querySelectorAll(".likeNumber").forEach(function (el) {
+            document.querySelectorAll(".likeNumber").forEach((el) => {
                 arrayLike.push(Number(el.textContent));
             });
             // Addition de tous les likes du tableau ds total
@@ -207,9 +207,9 @@ fetch("data/photographers.json")
             document.querySelector("#price").innerText = `${foundPhotographer.price}€ / jour`;
 
             /* Listener sur coeur médias: si 1er clic: like +1, compteur total like +1, si 2eme clic: like -1 et compteur total like -1 */
-            document.querySelectorAll(".heart").forEach(function (el) {
+            document.querySelectorAll(".heart").forEach((el) => {
                 // Ajout Listener sur chaque coeur des médias
-                el.addEventListener("click", function (event) {
+                el.addEventListener("click", (event) => {
                     // Récupération du nombre de like du média
                     const spanLike = event.target.parentElement.previousElementSibling;
                     let like = Number(spanLike.textContent);
@@ -230,9 +230,9 @@ fetch("data/photographers.json")
             });
 
             /* Listener sur bouton coeur médias: si 1er enter: like +1, compteur total like +1, si 2eme enter: like -1 et compteur total like -1 */
-            document.querySelectorAll(".buttonHeart").forEach(function (el) {
+            document.querySelectorAll(".buttonHeart").forEach((el) => {
                 // Ajout Listener sur chaque bouton coeur des médias
-                el.addEventListener("keydown", function (event) {
+                el.addEventListener("keydown", (event) => {
                     if (event.key === "Enter" || event.keyCode === 13) {
                         // Récupération du nombre de like du média
                         const spanLike = event.target.previousElementSibling;
@@ -350,7 +350,7 @@ fetch("data/photographers.json")
          *************/
 
         // Ouvre le modal quand click sur bouton 'contactez moi'
-        document.querySelector(".buttonContactezMoi").addEventListener("click", function () {
+        document.querySelector(".buttonContactezMoi").addEventListener("click", () => {
             switchModal("block");
         })
 
@@ -359,7 +359,7 @@ fetch("data/photographers.json")
 
         /* Ferme le modal quand click sur croix modal + gère accessibilité formulaire
         Recharge la page si le formulaire a été validé */
-        document.querySelector(".closeForm").addEventListener("click", function () {
+        document.querySelector(".closeForm").addEventListener("click", () => {
             switchModal("none");
             if (formValid) {
                 location.reload()
@@ -374,7 +374,7 @@ fetch("data/photographers.json")
         /* Submit formulaire
         Si saisies valides: efface errorMessage, reset form, affiche thankMessage,
         sinon, affiche erreurs message + empêche soumission form */
-        document.querySelector("#contactForm").addEventListener("submit", function (event) {
+        document.querySelector("#contactForm").addEventListener("submit", (event) => {
             event.preventDefault();
             formValid = false;
             updateInput(dataInput);
@@ -436,7 +436,7 @@ fetch("data/photographers.json")
             const lastFocusEl = focusEls[focusEls.length - 1];
 
             /* Listener de touche appuyée sur l'élément passé en argument */
-            el.addEventListener("keydown", function (e) {
+            el.addEventListener("keydown", (e) => {
                 // Si tab appuyé 
                 if (e.key === "Tab" || e.keyCode === 9) {
                     // Si tab + shift appuyé sur 1 élement -> focus dernier élément
