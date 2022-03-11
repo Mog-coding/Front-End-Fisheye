@@ -71,18 +71,27 @@ fetch("data/photographers.json")
         const buttonDrop3 = document.querySelector("#buttonDrop3");
         trieMedia(buttonValue);
 
+        /* Fait apparaitre ou disparaitre le menu dropDown */
+        function dropDownVisible(para) {
+            if (para === "appear") {
+                buttonDrop2.classList.remove("disappear");
+                buttonDrop3.classList.remove("disappear");
+            } else if (para === "disappear") {
+                buttonDrop2.classList.add("disappear");
+                buttonDrop3.classList.add("disappear");
+            }
+        }
+
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         buttonDrop1.addEventListener("click", (event) => {
             /* Déselection focus bouton1 suite au click (sinon 2 boutons sélectionnés si focus :hover sur un autre bouton) */
             buttonDrop1.blur();
             // Apparition/disparition du menu dropdown: ajout/retrait class disappear
             if (buttonDrop2.classList.contains("disappear")) {
-                buttonDrop2.classList.remove("disappear");
-                buttonDrop3.classList.remove("disappear");
+                dropDownVisible("appear");
                 event.target.parentElement.setAttribute("aria-expanded", "true");
             } else {
-                buttonDrop2.classList.add("disappear");
-                buttonDrop3.classList.add("disappear");
+                dropDownVisible("disappear");
                 event.target.parentElement.setAttribute("aria-expanded", "false");
             }
             // Rotation icon FA chevron: ajout/retrait class rotate
@@ -98,8 +107,7 @@ fetch("data/photographers.json")
             if (!(event.target.parentElement.id === "containerDrop")
                 &&
                 (!buttonDrop2.classList.contains("disappear"))) {
-                    buttonDrop2.classList.add("disappear");
-                    buttonDrop3.classList.add("disappear");
+                dropDownVisible("disappear");
                 document.querySelector("#buttonDrop1 .fas").classList.remove("rotate");
             }
         })
@@ -109,8 +117,7 @@ fetch("data/photographers.json")
             if (!(document.activeElement.parentElement.id === "containerDrop")
                 &&
                 (!buttonDrop2.classList.contains("disappear"))) {
-                    buttonDrop2.classList.add("disappear");
-                    buttonDrop3.classList.add("disappear");
+                dropDownVisible("disappear");
                 document.querySelector("#buttonDrop1 .fas").classList.remove("rotate");
             }
         });
@@ -159,8 +166,7 @@ fetch("data/photographers.json")
             buttonDrop1.innerHTML = button2Value + "<span class='fas fa-chevron-down'></span>";
             buttonDrop2.innerText = button1Value;
             // Clic button2: menu DropDown disparait
-            buttonDrop2.classList.add("disappear");
-            buttonDrop3.classList.add("disappear");
+            dropDownVisible("disappear");
             // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
             trieMedia(button2Value);
             runHeartLikes();
@@ -175,8 +181,7 @@ fetch("data/photographers.json")
             buttonDrop3.setAttribute("value", button1Value);
             buttonDrop1.innerHTML = button3Value + "<span class='fas fa-chevron-down'></span>";
             buttonDrop3.innerText = button1Value;
-            buttonDrop2.classList.add("disappear");
-            buttonDrop3.classList.add("disappear");
+            dropDownVisible("disappear");
             trieMedia(button3Value);
             runHeartLikes();
             runLightBox()
