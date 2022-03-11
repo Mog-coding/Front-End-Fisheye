@@ -66,14 +66,15 @@ fetch("data/photographers.json")
 
         // initialise la Vue media avec media triés via string "Popularité"
         const buttonValue = document.querySelector("#buttonDrop1").value;
+        const buttonDrop1 = document.querySelector("#buttonDrop1");
         const buttonDrop2 = document.querySelector("#buttonDrop2");
         const buttonDrop3 = document.querySelector("#buttonDrop3");
         trieMedia(buttonValue);
 
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
-        document.querySelector("#buttonDrop1").addEventListener("click", (event) => {
+        buttonDrop1.addEventListener("click", (event) => {
             /* Déselection focus bouton1 suite au click (sinon 2 boutons sélectionnés si focus :hover sur un autre bouton) */
-            document.querySelector("#buttonDrop1").blur();
+            buttonDrop1.blur();
             // Apparition/disparition du menu dropdown: ajout/retrait class disappear
             if (buttonDrop2.classList.contains("disappear")) {
                 buttonDrop2.classList.remove("disappear");
@@ -96,9 +97,9 @@ fetch("data/photographers.json")
         window.addEventListener("click", (event) => {
             if (!(event.target.parentElement.id === "containerDrop")
                 &&
-                (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
-                document.querySelector("#buttonDrop2").classList.add("disappear");
-                document.querySelector("#buttonDrop3").classList.add("disappear");
+                (!buttonDrop2.classList.contains("disappear"))) {
+                    buttonDrop2.classList.add("disappear");
+                    buttonDrop3.classList.add("disappear");
                 document.querySelector("#buttonDrop1 .fas").classList.remove("rotate");
             }
         })
@@ -107,9 +108,9 @@ fetch("data/photographers.json")
         document.addEventListener('focusin', () => {
             if (!(document.activeElement.parentElement.id === "containerDrop")
                 &&
-                (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
-                document.querySelector("#buttonDrop2").classList.add("disappear");
-                document.querySelector("#buttonDrop3").classList.add("disappear");
+                (!buttonDrop2.classList.contains("disappear"))) {
+                    buttonDrop2.classList.add("disappear");
+                    buttonDrop3.classList.add("disappear");
                 document.querySelector("#buttonDrop1 .fas").classList.remove("rotate");
             }
         });
@@ -148,20 +149,18 @@ fetch("data/photographers.json")
         }
 
         /* Clic button2: Inverse valeur et contenu button1/2, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue */
-        document.querySelector("#buttonDrop2").addEventListener("click", () => {
-            const node1 = document.querySelector("#buttonDrop1");
-            const node2 = document.querySelector("#buttonDrop2");
+        buttonDrop2.addEventListener("click", () => {
             // Clic button2: Inversion des valeurs entre button2 et button1
-            const button1Value = node1.value;
-            const button2Value = node2.value;
-            node1.setAttribute("value", button2Value);
-            node2.setAttribute("value", button1Value);
+            const button1Value = buttonDrop1.value;
+            const button2Value = buttonDrop2.value;
+            buttonDrop1.setAttribute("value", button2Value);
+            buttonDrop2.setAttribute("value", button1Value);
             // Inversion du contenu des balises button2 et button1
-            node1.innerHTML = button2Value + "<span class='fas fa-chevron-down'></span>";
-            node2.innerText = button1Value;
+            buttonDrop1.innerHTML = button2Value + "<span class='fas fa-chevron-down'></span>";
+            buttonDrop2.innerText = button1Value;
             // Clic button2: menu DropDown disparait
-            document.querySelector("#buttonDrop2").classList.add("disappear");
-            document.querySelector("#buttonDrop3").classList.add("disappear");
+            buttonDrop2.classList.add("disappear");
+            buttonDrop3.classList.add("disappear");
             // Trie les médias et construction de nouvelle Vue suivant la nouvelle valeur de bouton1
             trieMedia(button2Value);
             runHeartLikes();
@@ -169,21 +168,20 @@ fetch("data/photographers.json")
         })
 
         /* Clic button3: Inverse valeur et contenu button1/3, ferme menu Dropdown, trie médias suivant nouvelle valeur et crée une nouvelle Vue */
-        document.querySelector("#buttonDrop3").addEventListener("click", () => {
-            const node1 = document.querySelector("#buttonDrop1");
-            const node3 = document.querySelector("#buttonDrop3");
-            const button1Value = node1.value;
-            const button3Value = node3.value;
-            node1.setAttribute("value", button3Value);
-            node3.setAttribute("value", button1Value);
-            node1.innerHTML = button3Value + "<span class='fas fa-chevron-down'></span>";
-            node3.innerText = button1Value;
-            document.querySelector("#buttonDrop2").classList.add("disappear");
-            document.querySelector("#buttonDrop3").classList.add("disappear");
+        buttonDrop3.addEventListener("click", () => {
+            const button1Value = buttonDrop1.value;
+            const button3Value = buttonDrop3.value;
+            buttonDrop1.setAttribute("value", button3Value);
+            buttonDrop3.setAttribute("value", button1Value);
+            buttonDrop1.innerHTML = button3Value + "<span class='fas fa-chevron-down'></span>";
+            buttonDrop3.innerText = button1Value;
+            buttonDrop2.classList.add("disappear");
+            buttonDrop3.classList.add("disappear");
             trieMedia(button3Value);
             runHeartLikes();
             runLightBox()
         })
+
 
         /*************
          *************     Likes     *******************
