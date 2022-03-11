@@ -303,7 +303,9 @@ fetch("data/photographers.json")
                     if (e.key === "Enter" || e.keyCode === 13) {
                         lightBox.show(e.currentTarget.firstElementChild.dataset.id);
                         ariaHidden(".wrapper", true, "#lightbox", false);
-
+                        setTimeout(function () {
+                            document.querySelector("#btnClose").focus();
+                        }, 1)
                     }
                 })
             });
