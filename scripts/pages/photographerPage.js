@@ -66,12 +66,12 @@ fetch("data/photographers.json")
 
         // initialise la Vue media avec media triés via string "Popularité"
         const buttonValue = document.querySelector("#buttonDrop1").value;
+        const buttonDrop2 = document.querySelector("#buttonDrop2");
+        const buttonDrop3 = document.querySelector("#buttonDrop3");
         trieMedia(buttonValue);
 
         // Clic sur bouton1 DropDown: apparition menu DropDown + rotation FA icon 
         document.querySelector("#buttonDrop1").addEventListener("click", (event) => {
-            const buttonDrop2 = document.querySelector("#buttonDrop2");
-            const buttonDrop3 = document.querySelector("#buttonDrop3");
             /* Déselection focus bouton1 suite au click (sinon 2 boutons sélectionnés si focus :hover sur un autre bouton) */
             document.querySelector("#buttonDrop1").blur();
             // Apparition/disparition du menu dropdown: ajout/retrait class disappear
@@ -114,7 +114,7 @@ fetch("data/photographers.json")
             }
         });
 
-        /* Trie les objets Media selon valeur string et crée une vue de ces Medias triés en ayant supprimés les Medias précédents */
+        /* Trie les objets Media selon valeur string et crée une vue de ces Medias triés en ayant supprimé les Medias précédents */
         function trieMedia(buttonValue) {
             // Si string='title' objets dataMedia.title triés par ordre alphabétique   
             if (buttonValue === "Titre") {

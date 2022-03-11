@@ -273,7 +273,6 @@ section {
   right: 25.5%;
   top: 40px;
 }
-
 .closeForm img {
   filter: invert(100%) sepia(8%) saturate(6063%) hue-rotate(58deg)
     brightness(121%) contrast(108%);
@@ -348,7 +347,11 @@ form input {
 }
 .buttonForm:hover {
   color: #901c1c;
-  background-color: rgb(236, 225, 225);
+  background-color: #FAFAFA;
+}
+.contact_button.buttonForm:focus {
+  background-color: #FAFAFA;
+  color: #901c1c;
 }
 .thankMessage {
   justify-content: center;
@@ -446,7 +449,7 @@ form input {
 .cross img:hover,
 .next img:hover,
 .previous img:hover,
-.closeForm:hover {
+.closeForm:hover img  {
   filter: invert(19%) sepia(27%) saturate(6301%) hue-rotate(346deg)
     brightness(84%) contrast(93%);
   cursor: pointer;
