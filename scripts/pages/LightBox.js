@@ -50,6 +50,9 @@ export default class LightBox {
         const htmlElement = this.mediaFactory.createLightboxContent();
         mediaContain.appendChild(htmlElement);
         document.querySelector("#lightbox").classList.add("show");
+        setTimeout(function(){
+            document.querySelector("#btnClose").focus();
+        }, 1)
     }
 
 }

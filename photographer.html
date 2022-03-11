@@ -33,7 +33,7 @@
           <div class="trierPar">Trier par</div>
           <nav class="containerDropDown" id="containerDrop" role="navigation">
             <button id="buttonDrop1" class="buttonDropDown contact_button" value="Popularité" aria-label="Trier par popularité">Popularité
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <span class="fas fa-chevron-down" aria-hidden="true"></span>
             </button>
             <button id="buttonDrop2" class="buttonDropDown contact_button disappear" value="Date" aria-label="Trier par date">Date
             </button>
@@ -49,8 +49,8 @@
       <aside role="complementary">
         <div class="containerCompteur">
           <div>
-            <span id="compteur">564</span>
-            <i class="fas fa-heart"></i>
+            <span id="compteur"></span>
+            <span class="fas fa-heart"></span>
           </div>
           <div id="price"></div>
         </div>
@@ -96,14 +96,13 @@
   <!-- Lightbox Medias -->
   <div id="lightbox">
     <nav class="content">
-      <button class="cross buttonStylDel enterClose" aria-label="Fermer la lightbox"><img src="./assets/icons/close.svg" alt=""></button>
+      <button class="cross buttonStylDel enterClose" id="btnClose" aria-label="Fermer la lightbox"><img src="./assets/icons/close.svg" alt=""></button>
       <button class="previous buttonStylDel" aria-label="média précédent"><img src="./assets/icons/circle-left.svg"  alt="" ></button>
       <div id="mediaContainer"></div>
       <button class="next buttonStylDel" aria-label="média suivant"><img src="./assets/icons/circle-right.svg" alt=""></button>
     </nav>
   </div>
-
-  <script src="scripts/utils/contactForm.js"></script>
+ 
   <script src="scripts/pages/photographerPage.js" type="module"></script>
 
 </body>

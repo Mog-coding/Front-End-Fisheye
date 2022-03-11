@@ -37,7 +37,7 @@ export default class MediaFactory {
         spanLike.classList.add("likeNumber");
         spanLike.innerText = this.media.likes;
         const iButton = document.createElement("button");
-        const iHeart = document.createElement("i");
+        const iHeart = document.createElement("span");
         iHeart.classList.add("fas", "fa-heart", "heart");
         /* Ajout enfants image */
         imgLink.appendChild(img);
@@ -69,7 +69,6 @@ export default class MediaFactory {
         vid.setAttribute("title", this.media.alt);
         vid.classList.add("clickLightbox");
         const playIcon = document.createElement("div");
-        /* playIcon.innerHTML = "<i class='fa-solid fa-circle-play'></i>" */
         playIcon.classList.add("playIcon");
         const source = document.createElement("source");
         source.setAttribute("src", "assets/Media/" + this.media.video);
@@ -87,7 +86,7 @@ export default class MediaFactory {
         spanLike.innerText = this.media.likes;
         const iButton = document.createElement("button");
         iButton.setAttribute("aria-label", "aimer le média");
-        const iHeart = document.createElement("i");
+        const iHeart = document.createElement("span");
         iHeart.classList.add("fas", "fa-heart", "heart");
         /* Ajout enfants video */
         vid.appendChild(source);

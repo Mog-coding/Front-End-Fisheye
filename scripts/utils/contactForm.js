@@ -65,3 +65,5 @@ function afficheErrorMessage(key) {
         key.noeud.nextElementSibling.innerHTML = "";
     }
 }
+
+export { dataInput, updateInput, testAllIsValid, afficheErrorMessage };

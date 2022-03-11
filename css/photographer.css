@@ -102,7 +102,7 @@ section {
   border-radius: unset;
 }
 /* icone chevron */
-#buttonDrop1 i {
+#buttonDrop1 .fas {
   pointer-events: none;
   margin-right: 10px;
 }
@@ -201,7 +201,7 @@ section {
   border: none;
   padding-top: 5px;
 }
-.sousTitre i {
+.sousTitre .fas {
   font-size: 1.7em;
 }
 .heart {
@@ -249,7 +249,7 @@ section {
   font-size: 1.37em;
   font-weight: bold;
 }
-.containerCompteur i {
+.containerCompteur .fas {
   padding-left: 2px;
 }
 

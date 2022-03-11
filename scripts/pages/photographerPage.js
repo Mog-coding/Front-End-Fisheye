@@ -4,6 +4,7 @@ import PhotographerFactory from "../factories/PhotographerFactory.js";
 import Image from "../model/Image.js";
 import Video from "../model/Video.js";
 import LightBox from "./LightBox.js";
+import { dataInput, updateInput, testAllIsValid, afficheErrorMessage } from "../utils/contactForm.js"
 
 
 /* Récupération des données avec fetch */
@@ -84,10 +85,10 @@ fetch("data/photographers.json")
                 event.target.parentElement.setAttribute("aria-expanded", "false");
             }
             // Rotation icon FA chevron: ajout/retrait class rotate
-            if (document.querySelector("#buttonDrop1 i").classList.contains("rotate")) {
-                document.querySelector("#buttonDrop1 i").classList.remove("rotate")
+            if (document.querySelector("#buttonDrop1 .fas").classList.contains("rotate")) {
+                document.querySelector("#buttonDrop1 .fas").classList.remove("rotate")
             } else {
-                document.querySelector("#buttonDrop1 i").classList.add("rotate");
+                document.querySelector("#buttonDrop1 .fas").classList.add("rotate");
             }
         });
 
@@ -98,7 +99,7 @@ fetch("data/photographers.json")
                 (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
                 document.querySelector("#buttonDrop2").classList.add("disappear");
                 document.querySelector("#buttonDrop3").classList.add("disappear");
-                document.querySelector("#buttonDrop1 i").classList.remove("rotate");
+                document.querySelector("#buttonDrop1 .fas").classList.remove("rotate");
             }
         })
 
@@ -109,7 +110,7 @@ fetch("data/photographers.json")
                 (!document.querySelector("#buttonDrop2").classList.contains("disappear"))) {
                 document.querySelector("#buttonDrop2").classList.add("disappear");
                 document.querySelector("#buttonDrop3").classList.add("disappear");
-                document.querySelector("#buttonDrop1 i").classList.remove("rotate");
+                document.querySelector("#buttonDrop1 .fas").classList.remove("rotate");
             }
         });
 
@@ -156,7 +157,7 @@ fetch("data/photographers.json")
             node1.setAttribute("value", button2Value);
             node2.setAttribute("value", button1Value);
             // Inversion du contenu des balises button2 et button1
-            node1.innerHTML = button2Value + "<i class='fas fa-chevron-down'></i>";
+            node1.innerHTML = button2Value + "<span class='fas fa-chevron-down'></span>";
             node2.innerText = button1Value;
             // Clic button2: menu DropDown disparait
             document.querySelector("#buttonDrop2").classList.add("disappear");
@@ -175,7 +176,7 @@ fetch("data/photographers.json")
             const button3Value = node3.value;
             node1.setAttribute("value", button3Value);
             node3.setAttribute("value", button1Value);
-            node1.innerHTML = button3Value + "<i class='fas fa-chevron-down'></i>";
+            node1.innerHTML = button3Value + "<span class='fas fa-chevron-down'></span>";
             node3.innerText = button1Value;
             document.querySelector("#buttonDrop2").classList.add("disappear");
             document.querySelector("#buttonDrop3").classList.add("disappear");
@@ -302,7 +303,7 @@ fetch("data/photographers.json")
                     if (e.key === "Enter" || e.keyCode === 13) {
                         lightBox.show(e.currentTarget.firstElementChild.dataset.id);
                         ariaHidden(".wrapper", true, "#lightbox", false);
-                        document.querySelector(".next").focus();
+
                     }
                 })
             });
