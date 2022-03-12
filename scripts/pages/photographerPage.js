@@ -124,7 +124,7 @@ fetch("data/photographers.json")
 
         /* Trie les objets Media selon valeur string et crée une vue de ces Medias triés en ayant supprimé les Medias précédents */
         function trieMedia(buttonValue) {
-            // Si string='title' objets dataMedia.title triés par ordre alphabétique   
+            // Si string='title' objets.title dataMedia triés par ordre alphabétique   
             if (buttonValue === "Titre") {
                 dataMedia.sort(function (a, b) {
                     if (a.title > b.title) return 1;
@@ -132,13 +132,13 @@ fetch("data/photographers.json")
                     return 0;
                 });
             }
-            // Si string='Popularité' objets dataMedia.likes triés par ordre décroissant  
+            // Si string='Popularité' objets.likes dataMedia triés par ordre décroissant  
             else if (buttonValue === "Popularité") {
                 dataMedia.sort(function (a, b) {
                     return b.likes - a.likes
                 });
             }
-            // Si string='Date' objets dataMedia.date triés par ordre alphabétique
+            // Si string='Date' objets.date dataMedia triés par ordre alphabétique
             else if (buttonValue === "Date") {
                 dataMedia.sort(function (a, b) {
                     if (a.date > b.date) return 1;

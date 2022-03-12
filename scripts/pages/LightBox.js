@@ -51,5 +51,4 @@ export default class LightBox {
         mediaContain.appendChild(htmlElement);
         document.querySelector("#lightbox").classList.add("show");
     }
-
 }
